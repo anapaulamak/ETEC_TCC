@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="css/style.css" rel="stylesheet"/>	
+<title>ProntOnline</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <header>
+		<div class="row">
+			<div class="col-4">
+				<img src="img/logo.png" class="ConfLogo"/>
+			</div>
+
+			<div class="col-3"></div>
+
+			<div class="col-3 ConfMenu1">
+				<h1 class="Fonte">Bem vindo(a)!</h1>
+                <a href="home.aspx" class="ConfButton2" onclick="Logout_Click">Sair da minha conta</a>
+			</div>	
+
+			<div class="col-2 ConfMenu1">
+				<img src="img/perfil.png" width="50%"/>
+			</div>
+		</div>
+	</header>
+    	<div class="PagInfoUsuario row">
+		    <div class="col-1">
+			    <div class="row">
+				    <div class="col-2"></div>
+				    <div class="col-8">
+					    <a href="InfUsuario.aspx"><img src="img/perfil.png" width="70%" class="IconeCor"/></a>
+					    <a href="ConsultaMedica.aspx"><img src="img/consulta.png" width="70%" class="IconeCor"/></a>
+					    <a href="Exame.aspx"><img src="img/exame.png" width="70%" class="IconeCor"/></a>
+					    <a href="Receita.aspx"> <img src="img/receita.png" width="70%" class="IconeCor"/></a>	
+                        <a href="StatusSaude.aspx"><img src="img/saude.png" width="70%" class="IconeCor"/></a>
+					    <a href="Vacina.aspx"><img src="img/vacina.png" width="70%" class="IconeCor"/></a>
+					    <a href="Mensagem.aspx"><img src="img/mensagem.png" width="70%" class="IconeCor"/></a>
+				    </div>
+				    <div class="col-2"></div>
+			    </div>
+		    </div>
+		    <div class="col-1"></div>
+		    <div class="col-10 PagForms">		
+			    <div class="row">
+				    <div class="col-1"></div>
+				    <div class="col-10">
+                        <form id="form1" runat="server">
+                        <div>
+                            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        </form>
+				    </div>
+				    <div class="col-1"></div>
+			    </div>		
+		    </div>
+       </div>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+﻿:root {
+    --VerdeClaroFundo: #d7fcff;
+    --AzulEscuro: #002966;
+    --VerdeAzulado: #51c4b1;
+    --cinza: #474c4d;
+}
+
+html, body {
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.row {
+    float: left;
+    min-width: 100%;
+    margin-bottom: 10px;
+}
+
+.col-1 {
+    width: 11.6%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+[class*="col-"] {
+    float: left;
+    text-align: center;
+    min-height: 1px;
+}
+
+.ConfLogo {
+    width: 450px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+}
+
+div {
+    font-family: 'Arial Unicode MS';
+}
+
+#MenuPrincipal{
+    padding-top: 90px;
+    padding-bottom: 0px;
+}
+
+.ItemMenu {
+    font-size: 1.8em;
+    color: #333333;
+    text-decoration: none;
+    font-family: "Arial Rounded MT";
+    align-content: center;
+    padding-bottom: 2px;
+}
+
+.menuCor {
+    background-color: #ccc;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-
+}
+
+.ItemMenu.visited {
+}
+
+.ItemMenu.hover {
+}
+
+
+.ConfFundoVerde {
+    background-color: var(--VerdeAzulado);
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.Titulo {
+    text-align: left;
+    font-family: 'Arial Rounded MT';
+    color: var(--cinza);
+}
+
+.ConfButton,.ConfButton:disabled {
+    background-color: var(--AzulEscuro);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 80%;
+    font-family: 'Arial Rounded MT';
+}
+
+
+
+.ConfButton2, .ConfButton2:disabled {
+        background-color: var(--AzulEscuro);
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.7em;
+        margin: 3px 1px;
+        cursor: pointer;
+        width: 50%;
+        font-family: 'Arial';
+    }
+
+.ConfButton3, .ConfButton3:disabled {
+    background-color: var(--AzulEscuro);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.5em;
+    margin: 3px 1px;
+    cursor: pointer;
+    width: 50%;
+    font-family: 'Arial';
+}
+
+.ConfImagem {
+    width: 70%;
+    padding-top: 20px;
+}
+
+.ConfForm {
+    display: block;
+    border-style: solid grey 5px;
+    padding: 10px;
+    font-family:'Arial Rounded MT';
+}
+
+.login {
+    background: #eee;
+    margin-top: 70px;
+    padding-top: 20px;
+    font-family: Arial;
+    font-size: 1.7em;
+    margin-bottom: 70px;
+} 
+
+.CadastroForm {
+    background: #eee;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-family: Arial;
+    font-size: 1.7em;
+    margin-bottom: 70px;
+}
+
+.login-input {
+    width: 100%;
+    height: 30px;
+    border: 0px solid;
+}
+
+
+.align-left {
+    text-align: left !important;
+}
+
+.ConfHome {
+    max-height: 100%;
+    max-width: 100%;
+    padding-top: 20px;
+    background-color: white;
+}
+
+.descricao {
+    padding-top: 30px;
+    text-align: center;
+}
+
+#Footer {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-family: georgia;
+    font-size: 1em;
+    padding: 2%;
+}
+
+.ConfMenu1 {
+    padding-top: 20px;
+}
+
+.PagForms {
+    background-color: #eee;
+    border: solid 3px var(--VerdeAzulado);
+    border-radius: 20px;
+
+}
+
+.IconeCor {
+    filter: grayscale(100%);
+}
+
+    .IconeCor:hover {
+        filter: grayscale(0%);
+    }
+
+
+.ConfImagemInicio {
+    width: 80%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.ConfGridView{
+    background-color: #ffffff;
+    border: solid, 3px, var(--AzulEscuro);
+}
+
+td{
+    padding:10px;
+}
+
+.Fonte{
+    font-family:'Arial Rounded MT';
+}
+
+.Fonte1 {
+    font-family: 'Arial Rounded MT';
+    font-size:1.2em;
+}
+
+.Foto{
+    border-radius:50px;
+}
