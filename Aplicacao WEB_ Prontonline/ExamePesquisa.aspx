@@ -29,7 +29,13 @@
         <br />
         <div class="col-7 align-left">
             <asp:Label ID="Label2" runat="server" Text="Resultado da Pesquisa"></asp:Label>
-            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1"></asp:GridView>
+            
+            
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            
+            
+<%--            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
 <%--                OnEditCommand="DataGrid1_EditCommand" OnUpdateCommand="DataGrid1_UpdateCommand"--%>
                 <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
@@ -48,7 +54,7 @@
                 <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            </asp:DataGrid>
+            </asp:DataGrid>--%>
         </div>
     </div>
 

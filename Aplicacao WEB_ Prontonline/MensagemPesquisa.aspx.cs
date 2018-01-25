@@ -36,6 +36,7 @@ public partial class MensagemPesquisa : System.Web.UI.Page
         int usuario = Convert.ToInt32(i.ID());
 
         String sql = "Select id_usuario, id_mensagem, dataEnvio, tipoMensagem, titulo, mensagem, situacao from tb_mensagem where titulo like @nomeMensagem and id_usuario=@id_usuario";
+        // inserir  resposta e dataResposta no comando
         c.command.CommandText = sql;
         c.command.Parameters.Add("@nomeMensagem", SqlDbType.VarChar).Value = nomeMensagem;
         c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;

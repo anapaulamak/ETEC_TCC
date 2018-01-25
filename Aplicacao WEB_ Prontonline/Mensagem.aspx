@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
-    <div class="row">
+    <div class="row">    
         <div class="col-11">
             <div class="row">
                 <br />
@@ -67,7 +67,24 @@
                 </div>
 			    <div class="col-1"></div>
                 <br />
-		    </div>    
+		    </div>   
+                
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="LabelResposta" runat="server" Text="Resposta"></asp:Label>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="TextBoxResposta" runat="server" TextMode="MultiLine" Width="90%"></asp:TextBox>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>  
     
             <div class="row">
                 <br />
@@ -81,67 +98,5 @@
             </div>
         </fieldset>
     </div>
-
-    <div class="row">
-        <div class="col-11">
-            <div class="row">
-                <br />
-                <h1 class="Titulo">PERGUNTAS FREQUENTES</h1>
-            </div>
-
-            <fieldset>
-                <div class="row">
-                    <br />
-		            <div class="col-1"></div>
-		            <div class="col-10 align-left">
-                        <asp:Label ID="Label6" runat="server" Text="Palavra-chave"></asp:Label>
-                    </div>
-			        <div class="col-1"></div>
-                    <br />
-		        </div>
-
-                <div class="row">
-		            <div class="col-1"></div>
-		            <div class="col-5 align-left">
-                        <asp:TextBox ID="TextBoxPalavra" runat="server" width="90%"></asp:TextBox>
-                    </div>
-		            <div class="col-3 align-left">
-                    <asp:Button ID="Button1" runat="server" Text="Buscar" class="ConfButton2" OnClick="Button1_Click"/>
-                    </div>
-                    <br />
-		        </div>
-
-                <div class="row">
-		            <div class="col-1"></div>
-		            <div class="col-10 align-left">
-                        <asp:Label ID="Label7" runat="server" Text="Resultado"></asp:Label>
-                    </div>
-			        <div class="col-1"></div>
-                    <br />
-		        </div>
-
-                <div class="row">
-		            <div class="col-1"></div>
-		            <div class="col-10 align-left">
-                        <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-                            <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
-                            <Columns>
-                                <asp:BoundColumn DataField="pergunta" HeaderText="Título"></asp:BoundColumn>
-                            </Columns>
-                            <EditItemStyle BackColor="#999999" />
-                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                            <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        </asp:DataGrid>
-                    </div>
-			        <div class="col-1"></div>
-                    <br />
-		        </div>                          
-            </fieldset>
-        </div>
-    </div>
-
 </asp:Content>
 

@@ -80,14 +80,14 @@
 		</div>
 
 		<div class="row">
-			<div class="col-6"></div>
+			<div class="col-3"></div>
 			<div class="col-2">
 				<asp:Button ID="ButtonEditar" runat="server" Text="Editar" class="ConfButton" OnClick="ButtonEditar_Click"/>
 			</div>
 			<div class="col-2">
 				<asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton"/>
 			</div>
-			<div class="col-2">
+			<div class="col-3">
                 <asp:Button ID="ButtonCancelar" runat="server" Text="Cancelar" class="ConfButton"/>
 			</div>
 		</div>

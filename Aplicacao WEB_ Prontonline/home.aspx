@@ -46,37 +46,36 @@
 		    <div class="col-6" >
 			<div class="row">
 				<div class="col-2"></div>
-				<div class="col-8 login ConfForm">
-					
+				<div class="col-8 login ConfForm">					
 					<div class="row">
-							<div class="col-1"></div>
-							<div class="col-10 align-left Fonte">
-								<asp:Label ID="Label1" runat="server">LOGIN</asp:Label>
-							</div>
-							<div class="col-1"></div>
+						<div class="col-1"></div>
+						<div class="col-10 align-left Fonte">
+							<asp:Label ID="Label1" runat="server">LOGIN</asp:Label>
 						</div>
+						<div class="col-1"></div>
+					</div>
 					<div class="row">
-							<div class="col-1"></div>
-							<div class="col-10 align-left Fonte">
-								<asp:TextBox ID="TextBoxLogin" runat="server" class="login-input" maxlength="11" value="" tabindex="1" width="100%"></asp:TextBox>
-                            </div>
-							<div class="col-1"></div>
-						</div>
+						<div class="col-1"></div>
+						<div class="col-10 align-left Fonte">
+							<asp:TextBox ID="TextBoxLogin" runat="server" class="login-input" maxlength="11" value="" tabindex="1" width="100%"></asp:TextBox>
+                        </div>
+						<div class="col-1"></div>
+					</div>
 
 				    <div class="row">
-							<div class="col-1"></div>
-							<div class="col-10 align-left Fonte">
-								<asp:Label ID="Label2" runat="server">SENHA</asp:Label>
-							</div>
-							<div class="col-1"></div>
+						<div class="col-1"></div>
+						<div class="col-10 align-left Fonte">
+							<asp:Label ID="Label2" runat="server">SENHA</asp:Label>
 						</div>
+						<div class="col-1"></div>
+					</div>
 					<div class="row">
-							<div class="col-1"></div>
-							<div class="col-10 align-left Fonte">
-								<asp:TextBox ID="TextBoxSenha" runat="server" class="login-input" type="password" maxlength="8" value="" tabindex="2" width="100%"></asp:TextBox>
-							</div>
-							<div class="col-1"></div>
+						<div class="col-1"></div>
+						<div class="col-10 align-left Fonte">
+							<asp:TextBox ID="TextBoxSenha" runat="server" class="login-input" type="password" maxlength="8" value="" tabindex="2" width="100%"></asp:TextBox>
 						</div>
+						<div class="col-1"></div>
+					</div>
 
                     <div class="row">
                         <div class="col-6">
@@ -141,7 +140,7 @@
 
 			    <div class="col-4">
 				    <img src="img/julia.jpg" width="50%" class="Foto"/>
-				    <p class="Fonte">JULIAa</p>
+				    <p class="Fonte">JULIA</p>
 			    </div>
 
 			    <div class="col-4">

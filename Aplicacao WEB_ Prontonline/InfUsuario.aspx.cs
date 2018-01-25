@@ -20,8 +20,11 @@ public partial class InfUsuario : System.Web.UI.Page
         TextBoxData.Enabled = false;
         RadioButtonList1.Enabled = false;
         ButtonSalvar.Enabled = false;
+        ButtonSalvar.CssClass = "ConfButton";
         ButtonCancelar.Enabled = false;
+        ButtonCancelar.CssClass = "ConfButton";
         ButtonEditar.Enabled = true;
+        
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -72,7 +75,8 @@ public partial class InfUsuario : System.Web.UI.Page
         ButtonSalvar.Enabled = true;
         ButtonCancelar.Enabled = true;
         ButtonEditar.Enabled = false;
-        TextBoxData.TextMode = TextBoxMode.Date;
+        ButtonEditar.CssClass = "ConfButton";
+        TextBoxData.Enabled = true;
     }
 
     protected void ButtonSalvar_Click(object sender, EventArgs e)

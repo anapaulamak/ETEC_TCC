@@ -38,6 +38,8 @@
                     <asp:BoundColumn DataField="tipoMensagem" HeaderText="Tipo da Mensagem"></asp:BoundColumn>
                     <asp:BoundColumn DataField="titulo" HeaderText="Assunto"></asp:BoundColumn>
                     <asp:BoundColumn DataField="mensagem" HeaderText="Mensagem"></asp:BoundColumn>
+<%--                    <asp:BoundColumn DataField="resposta" HeaderText="Resposta"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="dataResposta" HeaderText="Data da Resposta"></asp:BoundColumn>--%>
                     <asp:BoundColumn DataField="situacao" HeaderText="Situação"></asp:BoundColumn>
                     <asp:ButtonColumn CommandName="Delete" HeaderText="Excluir" Text="Excluir"></asp:ButtonColumn>
                     <asp:ButtonColumn CommandName="Select" HeaderText="Resposta" Text="Ver Resposta"></asp:ButtonColumn>

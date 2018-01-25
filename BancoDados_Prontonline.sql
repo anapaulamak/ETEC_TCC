@@ -421,3 +421,21 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Radiografia',1) 
              
 
+select * from tb_usuario
+
+select * from tb_exame
+
+Select te.nome 
+e.id_exame, e.data, e.nome, e.imagem from tb_exame as e
+
+m.nome from tb_medico as m 
+
+tb_tipoExame as te 
+
+select id_exame, data, nome, imagem from tb_exame where id_exame IN 
+(select id_medico from tb_consulta where id_medico IN 
+(select nome from tb_medico))
+
+Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as data, e.imagem as imagem, concat(Convert(VarChar,c.data, 120)+'-',m.nome) as consulta from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico join tb_exame as e on e.id_consulta=c.id_consulta join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame where te.nome like @nomeExame
+
+select * from tb_mensagem

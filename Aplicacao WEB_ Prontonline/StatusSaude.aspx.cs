@@ -47,36 +47,36 @@ public partial class Receitas : System.Web.UI.Page
 
     protected void ButtonCalcularIMC_Click(object sender, EventArgs e)
     {
-        double A = (Convert.ToDouble(TextBoxAltura.Text))/100;
+        double A = (Convert.ToDouble(TextBoxAltura.Text)) / 100;
         double P = Convert.ToDouble(TextBoxPeso.Text);
-        double IMC = P/Math.Pow(A,2);
+        double IMC = P / Math.Pow(A, 2);
 
-        TextBoxIMC.Text = Convert.ToString(System.Math.Round(IMC,2));
+        TextBoxIMC.Text = Convert.ToString(System.Math.Round(IMC, 2));
 
-            if (IMC < 18.5)
-            {
-                LabelIMC.Text = "Você está abaixo do peso";
-            }
-            else if (IMC <= 24.9)
-            {
-                LabelIMC.Text = "Você está com o peso ideal";
-            }
-            else if (IMC <= 29.9)
-            {
-                LabelIMC.Text = "Você está levemente acima do peso";
-            }
-            else if (IMC <= 34.9)
-            {
-                LabelIMC.Text = "Você está com obesidade grau 1";
-            }
-            else if (IMC <= 39.9)
-            {
-                LabelIMC.Text = "Você está com obesidade grau 2";
-            }
-            else
-            {
-                LabelIMC.Text = "Você está com obesidade mórbida!";
-            }
+        if (IMC < 18.5)
+        {
+            LabelIMC.Text = "Você está abaixo do peso";
+        }
+        else if (IMC <= 24.9)
+        {
+            LabelIMC.Text = "Você está com o peso ideal";
+        }
+        else if (IMC <= 29.9)
+        {
+            LabelIMC.Text = "Você está levemente acima do peso";
+        }
+        else if (IMC <= 34.9)
+        {
+            LabelIMC.Text = "Você está com obesidade grau 1";
+        }
+        else if (IMC <= 39.9)
+        {
+            LabelIMC.Text = "Você está com obesidade grau 2";
+        }
+        else
+        {
+            LabelIMC.Text = "Você está com obesidade mórbida!";
+        }
     }
 
     protected void ButtonColesterol_Click(object sender, EventArgs e)

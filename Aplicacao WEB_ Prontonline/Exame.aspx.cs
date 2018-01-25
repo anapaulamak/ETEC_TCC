@@ -14,8 +14,6 @@ public partial class Exame : System.Web.UI.Page
         {
             Response.Redirect("home.aspx");
         }
-
-
     }
 
     protected void ButtonMeusExames_Click(object sender, EventArgs e)

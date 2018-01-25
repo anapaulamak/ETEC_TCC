@@ -12,7 +12,8 @@ public partial class home : System.Web.UI.Page
     Conexao conectar = new Conexao();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //Se eu preencher o textbox com a data atual, não melhora??
+        //TextBoxNascimento.Text = Convert.ToString(DateTime.Now);
     }
 
     protected void ButtonCadastrar_Click(object sender, EventArgs e)
@@ -20,7 +21,9 @@ public partial class home : System.Web.UI.Page
         String nomeUsuario = Convert.ToString(TextBoxNome.Text);
         String emailUsuario = Convert.ToString(TextBoxEmail.Text);
         String cpf = Convert.ToString(TextBoxCPF.Text);
-        DateTime dataNascimento = Convert.ToDateTime(TextBoxNascimento.Text);
+        string script = "alert(" + TextBoxNascimento.Text + ");";
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScrirpt", script, true);
+        //DateTime dataNascimento = (TextBoxNascimento.Text == "dd/mm/aaaa") ? DateTime.Today : Convert.ToDateTime(TextBoxNascimento.Text);
         String sexo = Convert.ToString(RadioButtonList1.SelectedValue);
         String senha = Convert.ToString(TextBoxSenha1.Text);
 
@@ -35,7 +38,7 @@ public partial class home : System.Web.UI.Page
             c.command.Parameters.Add("@nomeUsuario", SqlDbType.VarChar).Value = nomeUsuario;
             c.command.Parameters.Add("@emailUsuario", SqlDbType.VarChar).Value = emailUsuario;
             c.command.Parameters.Add("@cpf", SqlDbType.Char).Value = cpf;
-            c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
+            //c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
             c.command.Parameters.Add("@sexo", SqlDbType.Char).Value = sexo;
             c.command.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
 
@@ -50,7 +53,7 @@ public partial class home : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script language = 'javascript'> alert ('Verifique se os dados informados estão corretos!');</script>");
+            //Response.Write("<script language = 'javascript'> alert ('Verifique se os dados informados estão corretos!');</script>");
         }
 
     }
@@ -70,6 +73,11 @@ public partial class home : System.Web.UI.Page
         else if (TextBoxCPF.Text == "" || TextBoxCPF.Text.Length < 11)
         {
             Response.Write("<script language = 'javascript'> alert ('Preencha corretamente o seu CPF!');</script>");
+            return false;
+        }
+        else if (TextBoxNascimento.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha corretamente a data no seu nascimento!');</script>");
             return false;
         }
         else if (TextBoxSenha1.Text == "" || TextBoxSenha1.Text.Length != 8)
@@ -110,7 +118,7 @@ public partial class home : System.Web.UI.Page
         {
             Session["logado"] = 1;
             Session["UserId"] = login;
-            Response.Redirect("Inicial.aspx");
+            Response.Redirect("InfUsuario.aspx");
         }
         else
         {

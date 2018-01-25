@@ -106,15 +106,8 @@ div {
     background-color: #ccc;
     padding-bottom: 20px;
     padding-top: 20px;
-    border-
+    border-radius: 10px;
 }
-
-.ItemMenu.visited {
-}
-
-.ItemMenu.hover {
-}
-
 
 .ConfFundoVerde {
     background-color: var(--VerdeAzulado);
@@ -128,7 +121,7 @@ div {
     color: var(--cinza);
 }
 
-.ConfButton,.ConfButton:disabled {
+.ConfButton{
     background-color: var(--AzulEscuro);
     border: none;
     border-radius: 5px;
@@ -142,25 +135,23 @@ div {
     width: 80%;
     font-family: 'Arial Rounded MT';
 }
-
-
-
-.ConfButton2, .ConfButton2:disabled {
-        background-color: var(--AzulEscuro);
-        border: none;
-        border-radius: 5px;
-        color: #ffffff;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 0.7em;
-        margin: 3px 1px;
-        cursor: pointer;
-        width: 50%;
-        font-family: 'Arial';
+    
+.ConfButton2{
+    background-color: var(--AzulEscuro);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.7em;
+    margin: 3px 1px;
+    cursor: pointer;
+    width: 50%;
+    font-family: 'Arial';
     }
 
-.ConfButton3, .ConfButton3:disabled {
+.ConfButton3{
     background-color: var(--AzulEscuro);
     border: none;
     border-radius: 5px;
@@ -184,7 +175,8 @@ div {
     display: block;
     border-style: solid grey 5px;
     padding: 10px;
-    font-family:'Arial Rounded MT';
+    font-family: 'Arial Rounded MT';
+    border-radius: 10px;
 }
 
 .login {
@@ -245,7 +237,6 @@ div {
     background-color: #eee;
     border: solid 3px var(--VerdeAzulado);
     border-radius: 20px;
-
 }
 
 .IconeCor {
@@ -255,7 +246,6 @@ div {
     .IconeCor:hover {
         filter: grayscale(0%);
     }
-
 
 .ConfImagemInicio {
     width: 80%;
@@ -283,4 +273,17 @@ td{
 
 .Foto{
     border-radius:50px;
+}
+
+title {
+    font-family: 'Arial Rounded MT';
+    font-size: 1.2em;
+    padding:5px;
+}
+
+.button_menu {
+    position: fixed !important;
+    bottom: 20px;
+    margin-right: 0px;
+    right: 60px;
 }
