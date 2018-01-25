@@ -15,6 +15,13 @@ public partial class ConsultaMedica : System.Web.UI.Page
         {
             Response.Redirect("home.aspx");
         }
+
+        if (!IsPostBack)
+        {
+            DropDownListMedico.AppendDataBoundItems = true;
+            DropDownListMedico.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            DropDownListMedico.SelectedIndex = 0;
+        }
     }
 
     protected void ButtonReceita_Click(object sender, EventArgs e)
@@ -70,5 +77,27 @@ public partial class ConsultaMedica : System.Web.UI.Page
     protected void ButtonAdicionarMedico_Click(object sender, EventArgs e)
     {
         Response.Redirect("AdicionarMedico.aspx");
+    }
+
+    protected void DropDownListMedico_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        int id_medico = Convert.ToInt32(DropDownListMedico.SelectedValue);
+
+        String sql = "select CRM from tb_medico where id_medico=@id_medico";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@id_medico", SqlDbType.Int).Value = id_medico;
+
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+
+        String CRM = dt.Tables[0].Rows[0]["CRM"].ToString();
+        TextBoxCRM.Text = CRM;
+
+        c.FecharConexao();
     }
 }

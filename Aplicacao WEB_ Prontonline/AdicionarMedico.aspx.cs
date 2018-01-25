@@ -19,12 +19,14 @@ public partial class AdicionarMedico : System.Web.UI.Page
     protected void ButtonAdicionar_Click(object sender, EventArgs e)
     {
         String novoMedico = Convert.ToString(TextBoxNomeMedico.Text);
+        String CRM = Convert.ToString(TextBoxCRM.Text);
         Conexao c = new Conexao();
         c.AbrirConexao();
 
-        String sql = "insert into tb_medico(nome) values(@nome)";
+        String sql = "insert into tb_medico(nome, CRM) values(@nome, @CRM)";
         c.command.CommandText = sql;
         c.command.Parameters.Add("@nome", SqlDbType.VarChar).Value = novoMedico;
+        c.command.Parameters.Add("@CRM", SqlDbType.VarChar).Value = CRM;
 
         c.command.ExecuteNonQuery();
         c.FecharConexao();

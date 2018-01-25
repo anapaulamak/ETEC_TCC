@@ -31,7 +31,7 @@
 				                <div class="col-12 align-left">
                                     <asp:Label ID="Label1" runat="server" Text="Nome Médico"></asp:Label>
                                     <br />
-                                    <asp:DropDownList ID="DropDownListMedico" runat="server" Width="85%" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico"></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownListMedico" runat="server" Width="85%" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" OnSelectedIndexChanged="DropDownListMedico_SelectedIndexChanged" AutoPostBack="True" ></asp:DropDownList>
 				                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_medico], [nome] FROM [tb_medico]"></asp:SqlDataSource>
                                 <br />
 				                </div>
@@ -42,7 +42,7 @@
 				                <div class="col-12 align-left">
                                     <asp:Label ID="Label2" runat="server" Text="CRM"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="TextBoxCRM" runat="server" Width="90%"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxCRM" runat="server" Width="90%" ></asp:TextBox>
                                 <br />
                                 </div>
                             </div>
@@ -59,9 +59,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8"></div>
-			            <div class="col-4 align-left">
-                            <asp:Button ID="ButtonAdicionarMedico" runat="server" Text="Cadastrar médico" CssClass="ConfButton2" OnClick="ButtonAdicionarMedico_Click" />
+                        <div class="col-9"></div>
+			            <div class="col-3 align-left">
+                            <asp:Button ID="ButtonAdicionarMedico" runat="server" Text="Cadastrar Novo Médico" CssClass="ConfButton2" OnClick="ButtonAdicionarMedico_Click" />
                         </div>
                     </div>
                 <br />

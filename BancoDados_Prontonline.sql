@@ -439,3 +439,6 @@ select id_exame, data, nome, imagem from tb_exame where id_exame IN
 Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as data, e.imagem as imagem, concat(Convert(VarChar,c.data, 120)+'-',m.nome) as consulta from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico join tb_exame as e on e.id_consulta=c.id_consulta join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame where te.nome like @nomeExame
 
 select * from tb_mensagem
+
+select * from tb_medico
+delete from tb_medico where id_medico > 0

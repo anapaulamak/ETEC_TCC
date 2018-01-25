@@ -132,7 +132,7 @@ div {
     font-size: 1.2em;
     margin: 4px 2px;
     cursor: pointer;
-    width: 80%;
+    width: 100%;
     font-family: 'Arial Rounded MT';
 }
     
@@ -147,7 +147,7 @@ div {
     font-size: 0.7em;
     margin: 3px 1px;
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     font-family: 'Arial';
     }
 
@@ -162,7 +162,7 @@ div {
     font-size: 0.5em;
     margin: 3px 1px;
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     font-family: 'Arial';
 }
 

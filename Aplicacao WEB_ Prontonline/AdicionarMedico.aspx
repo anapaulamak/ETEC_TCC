@@ -15,24 +15,41 @@
         <div class="col-11">
             <fieldset>
                 <div class="row">
-                    <div class="col-1"></div>
-				    <div class="col-10 align-left">
-                        <br />
-                        <asp:Label ID="Label1" runat="server" Text="Nome Médico"></asp:Label>
+                    <div class="col-6">
+                        <div class="row">
+				            <div class="col-10 align-left">
+                            <br />
+                            <asp:Label ID="Label1" runat="server" Text="Nome Médico"></asp:Label>
+                        </div>
                     </div>
-                </div>
+                        <div class="row">
+				            <div class="col-12 align-left">
+                                <asp:TextBox ID="TextBoxNomeMedico" runat="server" Width="90%"></asp:TextBox>
+				            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="row">
+				            <div class="col-10 align-left">
+                                <br />
+                                <asp:Label ID="Label2" runat="server" Text="CRM"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="row">
+				            <div class="col-12 align-left">
+                                <asp:TextBox ID="TextBoxCRM" runat="server" Width="90%"></asp:TextBox>
+				            </div>
+                        </div>
+                    </div>
+                </div>     
+                
                 <div class="row">
-                    <div class="col-1"></div>
-				    <div class="col-5 align-left">
-                        <asp:TextBox ID="TextBoxNomeMedico" runat="server" Width="80%"></asp:TextBox>
-                        <br />
-                        <br />
-				    </div>
-                    <div class="col-5">
-                        <asp:Button ID="ButtonAdicionar" runat="server" Text="Adicionar" CssClass="ConfButton2" onclick="ButtonAdicionar_Click"/>
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <asp:Button ID="ButtonAdicionar" runat="server" Text="Adicionar" CssClass="ConfButton2" onclick="ButtonAdicionar_Click"/>
+                        </div>
                     </div>
-                    <br />
-                </div>
             </fieldset>
             <br />
             <br />

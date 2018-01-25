@@ -65,7 +65,7 @@
 				<div class="col-8">
                     <a href="Calendario.aspx"><img src="img/calendario.png" width="70%" class="IconeCor" title="Calendário"/></a>
                     <a href="Mensagem.aspx"><img src="img/mensagem.png" width="70%" class="IconeCor" title="Mensagens"/></a>
-                    <a href="Faq.aspx"><img src="img/faq.png" width="70%" class="IconeCor button_menu" title="Perguntas Frequentes"/></a>
+                    <a href="Faq.aspx"><img src="img/faq.png" width="70%" class="IconeCor" title="Perguntas Frequentes"/></a>
 				</div>
 				<div class="col-2"></div>
 			</div>
