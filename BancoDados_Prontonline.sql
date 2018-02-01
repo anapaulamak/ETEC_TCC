@@ -440,5 +440,5 @@ Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as d
 
 select * from tb_mensagem
 
-select * from tb_medico
+select * from tb_consulta
 delete from tb_medico where id_medico > 0

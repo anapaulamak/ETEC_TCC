@@ -17,10 +17,10 @@
         <asp:Label ID="Label1" runat="server" Text="Pesquisar por data"></asp:Label>
         </div>
         <div class="col-4">
-        <asp:TextBox ID="TextBoxNome" runat="server" TextMode="Date"  Width="100%">Digite data do Status Saúde</asp:TextBox>               
+        <asp:TextBox ID="TextBoxNome" runat="server" TextMode="Date"  Width="60%">Digite data do Status Saúde</asp:TextBox>               
         </div>
         <div class="col-4">
-        <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton" OnClick="Button1_Click" />
+        <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton2" Width="80%" OnClick="Button1_Click" />
         </div>
     </div>
 

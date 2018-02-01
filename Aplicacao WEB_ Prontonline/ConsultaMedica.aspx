@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-9"></div>
+                        <div class="col-4"></div>
 			            <div class="col-3 align-left">
                             <asp:Button ID="ButtonAdicionarMedico" runat="server" Text="Cadastrar Novo Médico" CssClass="ConfButton2" OnClick="ButtonAdicionarMedico_Click" />
                         </div>
@@ -158,11 +158,12 @@
             <p class="align-left">Exames e Receitas</p>
                 <fieldset>            
                     <br />
-                    <div class="col-6">
+                    <div class="col-5">
                     <asp:Button ID="ButtonReceita" runat="server" Text="Cadastrar Exame" class="ConfButton" OnClick="ButtonExame_Click"/>
                     <br /><br />
                     </div>
-                    <div class="col-6">
+                    <div class="col-1"></div>
+                    <div class="col-5">
                     <asp:Button ID="ButtonExame" runat="server" Text="Cadastrar Receita" class="ConfButton" OnClick="ButtonReceita_Click"/>
                     <br /><br />
                     </div>
@@ -175,10 +176,11 @@
         <br />
         <br />
         <div class="col-2"></div>
-        <div class="col-5">
+        <div class="col-4">
             <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar" class="ConfButton" OnClick="ButtonAdicionar_Click"></asp:Button>
         </div>
-        <div class="col-5">
+        <div class="col-1"></div>
+        <div class="col-4">
             <asp:Button ID="ButtonMinhasConsulta" runat="server" Text="Minhas Consultas" class="ConfButton" OnClick="ButtonMinhasConsulta_Click"/>
         </div>
         <br />

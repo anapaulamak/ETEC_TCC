@@ -19,7 +19,8 @@
         <div class="col-4">
         <asp:TextBox ID="TextBoxNome" runat="server" Width="100%"></asp:TextBox>
         </div>
-        <div class="col-4">
+        <div class="col-1"></div>
+        <div class="col-3">
         <asp:Button ID="Button1" runat="server" Text="Buscar" class="ConfButton2" OnClick="Button1_Click"/>
         </div>
     </div>

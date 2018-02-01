@@ -17,10 +17,10 @@
         <asp:Label ID="Label1" runat="server" Text="Pesquisar"></asp:Label>
         </div>
         <div class="col-4">
-        <asp:TextBox ID="TextBoxNome" runat="server" Width="90%"></asp:TextBox>
+        <asp:TextBox ID="TextBoxNome" runat="server" Width="80%"></asp:TextBox>
         </div>
         <div class="col-4">
-        <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton2" OnClick="ButtonBuscar_Click" />
+        <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton2" Width="80%" OnClick="ButtonBuscar_Click" />
         </div>
     </div>
 

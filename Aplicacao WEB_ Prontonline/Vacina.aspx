@@ -68,15 +68,15 @@
     <div class="row">
         <br />
         <br />
-        <div class="col-5"></div>
-		<div class="col-3">
+        <div class="col-4"></div>
+		<div class="col-2">
             <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton" Onclick="ButtonSalvar_Click"/>
         </div>
+        <div class="col-1"></div>
 		<div class="col-4">
             <asp:Button ID="ButtonMinhasVacinas" runat="server" Text="Minhas Vacinas" class="ConfButton" OnClick="ButtonMinhasVacinas_Click"/>
         </div>             
     </div>
-
 
 </asp:Content>
 

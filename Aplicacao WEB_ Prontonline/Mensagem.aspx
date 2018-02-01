@@ -92,6 +92,7 @@
                 <div class="col-4">
                 <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" class="ConfButton" OnClick="ButtonEnviar_Click"/>
                 </div>
+                <div class="col-1"></div>
                 <div class="col-4">
                 <asp:Button ID="ButtonMinhasMensagens" runat="server" Text="Minhas Mensagens" class="ConfButton" OnClick="ButtonMinhasMensagens_Click"/>
                 </div>

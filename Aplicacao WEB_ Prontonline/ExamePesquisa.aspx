@@ -19,7 +19,8 @@
         <div class="col-4">
         <asp:TextBox ID="TextBoxNome" runat="server" Width="100%"></asp:TextBox>
         </div>
-        <div class="col-3">
+        <div class="col-1"></div>
+        <div class="col-2">
         <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton2" OnClick="Button1_Click"/>
         </div>
     </div>
@@ -35,9 +36,9 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
             
             
-<%--            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
-<%--                OnEditCommand="DataGrid1_EditCommand" OnUpdateCommand="DataGrid1_UpdateCommand"--%>
-                <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
+            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
+<%--            OnEditCommand="DataGrid1_EditCommand" OnUpdateCommand="DataGrid1_UpdateCommand"--%>
+               <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundColumn DataField="id_exame" HeaderText="Registro" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn DataField="consulta" HeaderText="Consulta"></asp:BoundColumn>
@@ -54,7 +55,7 @@
                 <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            </asp:DataGrid>--%>
+            </asp:DataGrid>
         </div>
     </div>
 

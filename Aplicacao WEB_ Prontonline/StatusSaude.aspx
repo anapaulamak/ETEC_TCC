@@ -46,9 +46,9 @@
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-2">
                             <br />                  
-                            <asp:Button ID="ButtonCalcularIMC" runat="server" Text="Calcular" class="ConfButton2" OnClick="ButtonCalcularIMC_Click"/>
+                            <asp:Button ID="ButtonCalcularIMC" runat="server" Text="Calcular" class="ConfButton2" Width="70%" OnClick="ButtonCalcularIMC_Click"/>
                         </div>
 
                         <div class="col-2"> 
@@ -60,13 +60,13 @@
                             </div>
                             <div class="row">
 					            <div class="col-12 align-left">
-                                    <asp:TextBox ID="TextBoxIMC" runat="server" Width="80%"></asp:TextBox>
-                                    <br />
+                                    <asp:TextBox ID="TextBoxIMC" runat="server" Width="80%"></asp:TextBox>                                    
                                 </div>
+                                <br />
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-2">
                             <div class="row">
                                 <div class="col-12"> 
                                 <br />
@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="col-3 align-left">
-                            <asp:Button ID="ButtonColesterol" runat="server" Text="Mostrar" class="ConfButton2" OnClick="ButtonColesterol_Click"/>
+                            <asp:Button ID="ButtonColesterol" runat="server" Text="Mostrar" class="ConfButton2" Width="80%" OnClick="ButtonColesterol_Click"/>
                         </div>
 
                         <div class="col-6">
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="col-3 align-left">
-                            <asp:Button ID="ButtonGlicemia" runat="server" Text="Mostrar" CssClass="ConfButton2" Onclick="ButtonGlicemia_Click"/>
+                            <asp:Button ID="ButtonGlicemia" runat="server" Text="Mostrar" CssClass="ConfButton2" Width="80%" Onclick="ButtonGlicemia_Click"/>
                         </div>
 
                         <div class="col-6">

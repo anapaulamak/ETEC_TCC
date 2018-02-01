@@ -30,7 +30,7 @@
                             <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
                             <br />
                             <br />
-                            <asp:Button ID="ButtonAdicionar1" runat="server" Text="Adicionar" class="ConfButton2" OnClick="ButtonAdicionar1_Click"/>
+                            <asp:Button ID="ButtonAdicionar1" runat="server" Text="Adicionar" class="ConfButton2" Width="80%" OnClick="ButtonAdicionar1_Click"/>
                         </div>
                         <div class="col-6 align-left">
                             <asp:DataGrid ID="DataGridAlergia" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnDeleteCommand="DataGridAlergia_DeleteCommand" PageSize="5">
@@ -66,7 +66,7 @@
                             <asp:TextBox ID="TextBoxData2" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
                             <br />
                             <br />
-                            <asp:Button ID="ButtonAdicionar2" runat="server" Text="Adicionar" CssClass="ConfButton2" OnClick="ButtonAdicionar2_Click"/>
+                            <asp:Button ID="ButtonAdicionar2" runat="server" Text="Adicionar" CssClass="ConfButton2" Width="80%" OnClick="ButtonAdicionar2_Click"/>
                         </div>
                         <div class="col-6 align-left">
                             <asp:DataGrid ID="DataGridCirurgia" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnDeleteCommand="DataGridCirurgia_DeleteCommand">
@@ -102,7 +102,7 @@
                             <asp:TextBox ID="TextBoxData3" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
                             <br />
                             <br/>
-                            <asp:Button ID="ButtonAdicionar3" runat="server" Text="Adicionar" CssClass="ConfButton2" OnClick="ButtonAdicionar3_Click"/>
+                            <asp:Button ID="ButtonAdicionar3" runat="server" Text="Adicionar" CssClass="ConfButton2" Width="80%" OnClick="ButtonAdicionar3_Click"/>
                         </div>
                         <div class="col-6 align-left">
                             <asp:DataGrid ID="DataGridFratura" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnDeleteCommand="DataGridFratura_DeleteCommand">
@@ -130,11 +130,11 @@
         <div class="row">
             <br />
             <br />
-            <div class="col-5"></div>
+            <div class="col-4"></div>
             <div class="col-2">
                 <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton" OnClick="ButtonSalvar_Click"/>
             </div>    
-			
+			<div class="col-1"></div>
             <div class="col-4">
                 <asp:Button ID="ButtonMeusStatus" runat="server" Text="Meus Status Saúde" class="ConfButton" OnClick="ButtonMeusStatus_Click"/>
             </div>             
