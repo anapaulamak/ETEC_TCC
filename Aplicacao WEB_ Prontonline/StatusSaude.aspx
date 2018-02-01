@@ -60,8 +60,8 @@
                             </div>
                             <div class="row">
 					            <div class="col-12 align-left">
-                                    <asp:TextBox ID="TextBoxIMC" runat="server" Width="80%"></asp:TextBox>                                    
-                                </div>
+                                    <asp:TextBox ID="TextBoxIMC" runat="server" Width="80%"></asp:TextBox>
+					            </div>
                                 <br />
                             </div>
                         </div>

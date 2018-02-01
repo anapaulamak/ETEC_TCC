@@ -18,31 +18,63 @@ public partial class Receitas : System.Web.UI.Page
 
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
-        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-        int id_usuario = Convert.ToInt32(i.ID());
+        if (Validar() == true)
+        {
+            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+            int id_usuario = Convert.ToInt32(i.ID());
 
-        double altura = Convert.ToDouble(TextBoxAltura.Text);
-        double peso = Convert.ToDouble(TextBoxPeso.Text);
+            double altura = Convert.ToDouble(TextBoxAltura.Text);
+            double peso = Convert.ToDouble(TextBoxPeso.Text);
 
-        double colesterol = Convert.ToDouble(TextBoxColesterol.Text);
-        double glicemia = Convert.ToDouble(TextBoxGlicemia.Text);
+            double colesterol = Convert.ToDouble(TextBoxColesterol.Text);
+            double glicemia = Convert.ToDouble(TextBoxGlicemia.Text);
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
+            Conexao c = new Conexao();
+            c.AbrirConexao();
 
-        String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia) values (@id_usuario, @altura, @peso, @colesterol, @glicemia)";
-        c.command.CommandText = sql;
+            String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia) values (@id_usuario, @altura, @peso, @colesterol, @glicemia)";
+            c.command.CommandText = sql;
 
-        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
-        c.command.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
-        c.command.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
-        c.command.Parameters.Add("@colesterol", SqlDbType.Decimal).Value = colesterol;
-        c.command.Parameters.Add("@glicemia", SqlDbType.Decimal).Value = glicemia;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
+            c.command.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
+            c.command.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
+            c.command.Parameters.Add("@colesterol", SqlDbType.Decimal).Value = colesterol;
+            c.command.Parameters.Add("@glicemia", SqlDbType.Decimal).Value = glicemia;
 
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
+            c.command.ExecuteNonQuery();
+            c.FecharConexao();
 
-        Response.Redirect("StatusSaude2.aspx");
+            Response.Redirect("StatusSaude2.aspx");
+        }
+
+    }
+
+    protected Boolean Validar()
+    {
+        if (TextBoxPeso.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu peso corretamente!');</script>");
+            return false;
+        }
+        else if (TextBoxAltura.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha a sua altura corretamente!');</script>");
+            return false;
+        }
+        else if (TextBoxColesterol.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu Colesterol Total!');</script>");
+            return false;
+        }
+        else if (TextBoxGlicemia.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu nível glicêmico!');</script>");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     protected void ButtonCalcularIMC_Click(object sender, EventArgs e)

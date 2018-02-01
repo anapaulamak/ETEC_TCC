@@ -11,6 +11,21 @@ public partial class StatusSaude2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            DropDownListAlergia.AppendDataBoundItems = true;
+            DropDownListAlergia.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            DropDownListAlergia.SelectedIndex = 0;
+
+            DropDownListCirurgia.AppendDataBoundItems = true;
+            DropDownListCirurgia.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            DropDownListCirurgia.SelectedIndex = 0;
+
+            DropDownListFratura.AppendDataBoundItems = true;
+            DropDownListFratura.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            DropDownListFratura.SelectedIndex = 0;
+        }
+
         Conexao c = new Conexao();
         c.AbrirConexao();
 
@@ -39,26 +54,47 @@ public partial class StatusSaude2 : System.Web.UI.Page
         Response.Redirect("StatusSaudePesquisa.aspx");
     }
 
+    protected Boolean ValidarAlergia()
+    {
+        if (DropDownListAlergia.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Escolha uma alergia!');</script>");
+            return false;
+        }
+        else if (TextBoxData.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Selecione uma data!');</script>");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     protected void ButtonAdicionar1_Click(object sender, EventArgs e)
     {
-        int id_tipoAlergia = Convert.ToInt32(DropDownListAlergia.Text);
-        int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
-        DateTime dataAlergia = Convert.ToDateTime(TextBoxData.Text);
+        if (ValidarAlergia() == true)
+        {
+            int id_tipoAlergia = Convert.ToInt32(DropDownListAlergia.Text);
+            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
+            DateTime dataAlergia = Convert.ToDateTime(TextBoxData.Text);
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
+            Conexao c = new Conexao();
+            c.AbrirConexao();
 
-        String sql = "insert into tb_alergia (id_tipoAlergia, id_saude, dataAlergia) values (@id_tipoAlergia, @id_saude, @dataAlergia)";
-        c.command.CommandText = sql;
-        c.command.Parameters.Add("@id_tipoAlergia", SqlDbType.Int).Value = id_tipoAlergia;
-        c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
-        c.command.Parameters.Add("@dataAlergia", SqlDbType.DateTime).Value = dataAlergia;
+            String sql = "insert into tb_alergia (id_tipoAlergia, id_saude, dataAlergia) values (@id_tipoAlergia, @id_saude, @dataAlergia)";
+            c.command.CommandText = sql;
+            c.command.Parameters.Add("@id_tipoAlergia", SqlDbType.Int).Value = id_tipoAlergia;
+            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@dataAlergia", SqlDbType.DateTime).Value = dataAlergia;
 
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
+            c.command.ExecuteNonQuery();
+            c.FecharConexao();
 
-        CadastroAlergia();
+            CadastroAlergia();
+        }
     }
+
     private void CadastroAlergia()
     {
         Conexao c = new Conexao();
@@ -76,9 +112,9 @@ public partial class StatusSaude2 : System.Web.UI.Page
 
         DataGridAlergia.DataSource = dt;
         DataGridAlergia.DataBind();
-        c.FecharConexao();
-
+        c.FecharConexao();    
     }
+
     protected void DataGridAlergia_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
         int registro;
@@ -93,25 +129,46 @@ public partial class StatusSaude2 : System.Web.UI.Page
         CadastroAlergia();
     }
 
+
+    protected Boolean ValidarCirurgia()
+    {
+        if (DropDownListCirurgia.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Escolha uma cirurgia!');</script>");
+            return false;
+        }
+        else if (TextBoxData2.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Selecione uma data!');</script>");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     protected void ButtonAdicionar2_Click(object sender, EventArgs e)
     {
-        int tipoCirurgia = Convert.ToInt32(DropDownListCirurgia.Text);
-        int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
-        DateTime dataCirurgia = Convert.ToDateTime(TextBoxData2.Text);
+        if (ValidarCirurgia() == true)
+        {
+            int tipoCirurgia = Convert.ToInt32(DropDownListCirurgia.Text);
+            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
+            DateTime dataCirurgia = Convert.ToDateTime(TextBoxData2.Text);
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
+            Conexao c = new Conexao();
+            c.AbrirConexao();
 
-        String sql = "insert into tb_cirurgia (id_tipoCirurgia, id_saude, dataCirurgia) values (@id_tipoCirurgia, @id_saude, @dataCirurgia)";
-        c.command.CommandText = sql;
-        c.command.Parameters.Add("@id_tipoCirurgia", SqlDbType.Int).Value = tipoCirurgia;
-        c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
-        c.command.Parameters.Add("@dataCirurgia", SqlDbType.DateTime).Value = dataCirurgia;
+            String sql = "insert into tb_cirurgia (id_tipoCirurgia, id_saude, dataCirurgia) values (@id_tipoCirurgia, @id_saude, @dataCirurgia)";
+            c.command.CommandText = sql;
+            c.command.Parameters.Add("@id_tipoCirurgia", SqlDbType.Int).Value = tipoCirurgia;
+            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@dataCirurgia", SqlDbType.DateTime).Value = dataCirurgia;
 
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
+            c.command.ExecuteNonQuery();
+            c.FecharConexao();
+            CadastroCirurgia();
+        }
 
-        CadastroCirurgia();
     }
     private void CadastroCirurgia()
     {
@@ -147,25 +204,44 @@ public partial class StatusSaude2 : System.Web.UI.Page
         CadastroCirurgia();
     }
 
+    protected Boolean ValidarFratura()
+    {
+        if (DropDownListFratura.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Escolha uma Fratura!');</script>");
+            return false;
+        }
+        else if (TextBoxData3.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Selecione uma data!');</script>");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     protected void ButtonAdicionar3_Click(object sender, EventArgs e)
     {
-        int tipoFratura = Convert.ToInt32(DropDownListFratura.Text);
-        int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
-        DateTime dataFratura = Convert.ToDateTime(TextBoxData3.Text);
+        if (ValidarFratura() == true)
+        {
+            int tipoFratura = Convert.ToInt32(DropDownListFratura.Text);
+            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
+            DateTime dataFratura = Convert.ToDateTime(TextBoxData3.Text);
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
+            Conexao c = new Conexao();
+            c.AbrirConexao();
 
-        String sql = "insert into tb_fratura (id_tipoFratura, id_saude, dataFratura) values (@id_tipoFratura, @id_saude, @dataFratura)";
-        c.command.CommandText = sql;
-        c.command.Parameters.Add("@id_tipoFratura", SqlDbType.Int).Value = tipoFratura;
-        c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
-        c.command.Parameters.Add("@dataFratura", SqlDbType.DateTime).Value = dataFratura;
+            String sql = "insert into tb_fratura (id_tipoFratura, id_saude, dataFratura) values (@id_tipoFratura, @id_saude, @dataFratura)";
+            c.command.CommandText = sql;
+            c.command.Parameters.Add("@id_tipoFratura", SqlDbType.Int).Value = tipoFratura;
+            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@dataFratura", SqlDbType.DateTime).Value = dataFratura;
 
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
-
-        CadastroFratura();
+            c.command.ExecuteNonQuery();
+            c.FecharConexao();
+            CadastroFratura();
+        }
     }
 
     private void CadastroFratura()

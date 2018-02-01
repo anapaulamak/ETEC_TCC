@@ -27,7 +27,7 @@
                             <asp:SqlDataSource ID="SqlDataSourceAlergia" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_tipoAlergia], [descricao] FROM [tb_tipoAlergia]  where situacao=1"></asp:SqlDataSource>
                         </div>
                         <div class="col-3 align-left">
-                            <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" Width="80%"></asp:TextBox>
                             <br />
                             <br />
                             <asp:Button ID="ButtonAdicionar1" runat="server" Text="Adicionar" class="ConfButton2" Width="80%" OnClick="ButtonAdicionar1_Click"/>
@@ -63,7 +63,7 @@
                             <asp:SqlDataSource ID="SqlDataSourceCirurgia" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_tipoCirurgia], [descricao] FROM [tb_tipoCirurgia]  where situacao=1"></asp:SqlDataSource>
                         </div>
                         <div class="col-3 align-left">
-                            <asp:TextBox ID="TextBoxData2" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxData2" runat="server" TextMode="Date" Width="80%"></asp:TextBox>
                             <br />
                             <br />
                             <asp:Button ID="ButtonAdicionar2" runat="server" Text="Adicionar" CssClass="ConfButton2" Width="80%" OnClick="ButtonAdicionar2_Click"/>
@@ -99,7 +99,7 @@
                             <asp:SqlDataSource ID="SqlDataSourceFratura" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_tipoFratura], [descricao] FROM [tb_tipoFratura]  where situacao=1"></asp:SqlDataSource>
                         </div>
                         <div class="col-3 align-left">
-                            <asp:TextBox ID="TextBoxData3" runat="server" TextMode="Date" Width="60%"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxData3" runat="server" TextMode="Date" Width="80%"></asp:TextBox>
                             <br />
                             <br/>
                             <asp:Button ID="ButtonAdicionar3" runat="server" Text="Adicionar" CssClass="ConfButton2" Width="80%" OnClick="ButtonAdicionar3_Click"/>
