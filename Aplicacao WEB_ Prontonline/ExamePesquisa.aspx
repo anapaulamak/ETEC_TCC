@@ -28,18 +28,11 @@
     <div class="row">
         <br />
         <br />
-        <div class="col-7 align-left">
-            <asp:Label ID="Label2" runat="server" Text="Resultado da Pesquisa"></asp:Label>
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1"></asp:GridView>
-            
-            
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-            
-            
-            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
-<%--            OnEditCommand="DataGrid1_EditCommand" OnUpdateCommand="DataGrid1_UpdateCommand"--%>
+        <div class="col-11 align-left">
+            <asp:Label ID="Label2" runat="server" Text="Resultado da Pesquisa"></asp:Label>          
+            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" PageSize="5">
                <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
-                <Columns>
+               <Columns>
                     <asp:BoundColumn DataField="id_exame" HeaderText="Registro" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn DataField="consulta" HeaderText="Consulta"></asp:BoundColumn>
                     <asp:BoundColumn DataField="data" HeaderText="Data"></asp:BoundColumn>
@@ -47,13 +40,12 @@
                     <asp:BoundColumn DataField="tipoExame" HeaderText="Tipo de Exame"></asp:BoundColumn>
                     <asp:BoundColumn DataField="imagem" HeaderText="Imagem"></asp:BoundColumn>
                     <asp:ButtonColumn CommandName="Delete" HeaderText="Excluir" Text="Excluir"></asp:ButtonColumn>
-                    <%--<asp:EditCommandColumn CancelText="Cancelar" EditText="Editar" HeaderText="Editar" UpdateText="Atualizar"></asp:EditCommandColumn>--%>
                 </Columns>
                 <EditItemStyle BackColor="#999999" />
-                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <FooterStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
                 <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" Mode="NumericPages" />
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
             </asp:DataGrid>
         </div>

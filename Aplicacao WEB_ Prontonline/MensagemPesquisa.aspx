@@ -27,9 +27,9 @@
     <div class="row">
         <br />
         <br />
-        <div class="col-7 align-left">
+        <div class="col-11 align-left">
             <asp:Label ID="Label2" runat="server" Text="Resultado da Pesquisa"></asp:Label>
-            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:DataGrid ID="DataGrid1" runat="server" CssClass="ConfGridView" AutoGenerateColumns="False" OnDeleteCommand="DataGrid1_DeleteCommand" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
                 <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
 <%--                    <asp:BoundColumn DataField="id_usuario" HeaderText="Registro" Visible="False"></asp:BoundColumn>--%>
@@ -45,8 +45,8 @@
                     <asp:ButtonColumn CommandName="Select" HeaderText="Resposta" Text="Ver Resposta"></asp:ButtonColumn>
                 </Columns>
                 <EditItemStyle BackColor="#999999" />
-                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <FooterStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
                 <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />

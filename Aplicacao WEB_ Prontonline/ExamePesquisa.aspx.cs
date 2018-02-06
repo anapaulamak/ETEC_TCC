@@ -24,28 +24,31 @@ public partial class ExamesPesquisa : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //PesquisaExame();
+        PesquisaExame();
     }
+    private void PesquisaExame()
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+        String nomeExame = "%" + TextBoxNome.Text + "%";
 
-    //private void PesquisaExame()
-    //{
-    //    Conexao c = new Conexao();
-    //    c.AbrirConexao();
-    //    String nomeExame = "%" + TextBoxNome.Text + "%";
+        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+        int usuario = Convert.ToInt32(i.ID());
 
-    //    String sql = "Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as data, e.imagem as imagem, concat(Convert(VarChar,c.data, 120)+'-',m.nome) as consulta from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico join tb_exame as e on e.id_consulta=c.id_consulta join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame where te.nome like @nomeExame";
-    //    c.command.CommandText = sql;
-    //    c.command.Parameters.Add("@nomeExame", SqlDbType.VarChar).Value = nomeExame;
+        String sql = "Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as data, e.imagem as imagem, concat(Convert(VarChar,c.data, 120)+'-',m.nome) as consulta, c.id_consulta from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico join tb_exame as e on e.id_consulta=c.id_consulta join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame where te.nome like @nomeExame and c.id_usuario=@id_usuario";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@nomeExame", SqlDbType.VarChar).Value = nomeExame;
+        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
 
-    //    SqlDataAdapter dAdapter = new SqlDataAdapter();
-    //    DataSet dt = new DataSet();
-    //    dAdapter.SelectCommand = c.command;
-    //    dAdapter.Fill(dt);
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
 
-    //    DataGrid1.DataSource = dt;
-    //    DataGrid1.DataBind();
-    //    c.FecharConexao();
-    //}
+        DataGrid1.DataSource = dt;
+        DataGrid1.DataBind();
+        c.FecharConexao();
+    }
 
     protected void DataGrid1_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
@@ -57,7 +60,7 @@ public partial class ExamesPesquisa : System.Web.UI.Page
         c.command.Parameters.Add("@registro", SqlDbType.Int).Value = registro;
         c.command.ExecuteNonQuery();
         c.FecharConexao();
-       //PesquisaExame();
+        PesquisaExame();
     }
 
     //protected void DataGrid1_EditCommand(object source, DataGridCommandEventArgs e)

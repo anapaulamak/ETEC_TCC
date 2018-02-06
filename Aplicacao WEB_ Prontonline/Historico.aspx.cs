@@ -6,11 +6,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
-public partial class StatusSaude2 : System.Web.UI.Page
+public partial class Historico : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Convert.ToInt32(Session["logado"]) != 1)
+        {
+            Response.Redirect("home.aspx");
+        }
+
         if (!IsPostBack)
         {
             DropDownListAlergia.AppendDataBoundItems = true;
@@ -24,36 +28,14 @@ public partial class StatusSaude2 : System.Web.UI.Page
             DropDownListFratura.AppendDataBoundItems = true;
             DropDownListFratura.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             DropDownListFratura.SelectedIndex = 0;
+
+            CadastroAlergia();
+            CadastroCirurgia();
+            CadastroFratura();
         }
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
-
-        String sql = "select id_saude from tb_statusSaude where id_usuario=@id_usuario";
-        c.command.CommandText = sql;
-
-        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-        int id_usuario = Convert.ToInt32(i.ID());
-
-        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
-
-        SqlDataAdapter dAdapter = new SqlDataAdapter();
-        DataSet dt = new DataSet();
-        dAdapter.SelectCommand = c.command;
-        dAdapter.Fill(dt);
-
-        String id_saude = dt.Tables[0].Rows[0]["id_saude"].ToString();
-        c.FecharConexao();
-
-        TextBoxIdSaude.Text = id_saude;
 
     }
-
-    protected void ButtonMeusStatus_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("StatusSaudePesquisa.aspx");
-    }
-
     protected Boolean ValidarAlergia()
     {
         if (DropDownListAlergia.Text == "")
@@ -71,39 +53,39 @@ public partial class StatusSaude2 : System.Web.UI.Page
             return true;
         }
     }
-    protected void ButtonAdicionar1_Click(object sender, EventArgs e)
+    protected void ButtonAdicionarAlergia_Click(object sender, EventArgs e)
     {
         if (ValidarAlergia() == true)
         {
+            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+            int usuario = Convert.ToInt32(i.ID());
             int id_tipoAlergia = Convert.ToInt32(DropDownListAlergia.Text);
-            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
             DateTime dataAlergia = Convert.ToDateTime(TextBoxData.Text);
 
             Conexao c = new Conexao();
             c.AbrirConexao();
-
-            String sql = "insert into tb_alergia (id_tipoAlergia, id_saude, dataAlergia) values (@id_tipoAlergia, @id_saude, @dataAlergia)";
+            String sql = "insert into tb_alergia (id_tipoAlergia, id_usuario, dataAlergia) values (@id_tipoAlergia, @id_usuario, @dataAlergia)";
             c.command.CommandText = sql;
             c.command.Parameters.Add("@id_tipoAlergia", SqlDbType.Int).Value = id_tipoAlergia;
-            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
             c.command.Parameters.Add("@dataAlergia", SqlDbType.DateTime).Value = dataAlergia;
-
             c.command.ExecuteNonQuery();
             c.FecharConexao();
 
             CadastroAlergia();
         }
     }
-
     private void CadastroAlergia()
     {
         Conexao c = new Conexao();
         c.AbrirConexao();
-        String Alergia = TextBoxIdSaude.Text;
 
-        String sql = "select a.id_saude, a.id_alergia, a.dataAlergia, ta.descricao from tb_tipoAlergia as ta inner join tb_alergia as a on ta.id_tipoAlergia=a.id_tipoAlergia where id_saude=@Alergia";
+        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+        int usuario = Convert.ToInt32(i.ID());
+
+        String sql = "select a.id_usuario, a.id_alergia, a.dataAlergia, ta.descricao from tb_tipoAlergia as ta inner join tb_alergia as a on ta.id_tipoAlergia=a.id_tipoAlergia where a.id_usuario=@id_usuario";
         c.command.CommandText = sql;
-        c.command.Parameters.Add("@Alergia", SqlDbType.Int).Value = Alergia;
+        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
 
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -112,9 +94,8 @@ public partial class StatusSaude2 : System.Web.UI.Page
 
         DataGridAlergia.DataSource = dt;
         DataGridAlergia.DataBind();
-        c.FecharConexao();    
+        c.FecharConexao();
     }
-
     protected void DataGridAlergia_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
         int registro;
@@ -128,8 +109,6 @@ public partial class StatusSaude2 : System.Web.UI.Page
 
         CadastroAlergia();
     }
-
-
     protected Boolean ValidarCirurgia()
     {
         if (DropDownListCirurgia.Text == "")
@@ -147,38 +126,39 @@ public partial class StatusSaude2 : System.Web.UI.Page
             return true;
         }
     }
-    protected void ButtonAdicionar2_Click(object sender, EventArgs e)
+    protected void ButtonAdicionarCirurgia_Click(object sender, EventArgs e)
     {
         if (ValidarCirurgia() == true)
         {
-            int tipoCirurgia = Convert.ToInt32(DropDownListCirurgia.Text);
-            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
+            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+            int usuario = Convert.ToInt32(i.ID());
+            int id_tipoCirurgia = Convert.ToInt32(DropDownListCirurgia.Text);
             DateTime dataCirurgia = Convert.ToDateTime(TextBoxData2.Text);
 
             Conexao c = new Conexao();
             c.AbrirConexao();
-
-            String sql = "insert into tb_cirurgia (id_tipoCirurgia, id_saude, dataCirurgia) values (@id_tipoCirurgia, @id_saude, @dataCirurgia)";
+            String sql = "insert into tb_cirurgia (id_tipoCirurgia, id_usuario, dataCirurgia) values (@id_tipoCirurgia, @id_usuario, @dataCirurgia)";
             c.command.CommandText = sql;
-            c.command.Parameters.Add("@id_tipoCirurgia", SqlDbType.Int).Value = tipoCirurgia;
-            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@id_tipoCirurgia", SqlDbType.Int).Value = id_tipoCirurgia;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
             c.command.Parameters.Add("@dataCirurgia", SqlDbType.DateTime).Value = dataCirurgia;
-
             c.command.ExecuteNonQuery();
             c.FecharConexao();
+
             CadastroCirurgia();
         }
-
     }
     private void CadastroCirurgia()
     {
         Conexao c = new Conexao();
         c.AbrirConexao();
-        String Cirurgia = TextBoxIdSaude.Text;
 
-        String sql = "select c.id_cirurgia, c.id_saude, c.dataCirurgia, tc.descricao from tb_tipoCirurgia as tc inner join tb_cirurgia as c on tc.id_tipoCirurgia=c.id_tipoCirurgia where id_saude=@Cirurgia";
+        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+        int usuario = Convert.ToInt32(i.ID());
+
+        String sql = "select c.id_cirurgia, c.id_usuario, c.dataCirurgia, tc.descricao from tb_tipoCirurgia as tc inner join tb_cirurgia as c on tc.id_tipoCirurgia=c.id_tipoCirurgia where c.id_usuario=@id_usuario";
         c.command.CommandText = sql;
-        c.command.Parameters.Add("@Cirurgia", SqlDbType.Int).Value = Cirurgia;
+        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
 
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -189,7 +169,6 @@ public partial class StatusSaude2 : System.Web.UI.Page
         DataGridCirurgia.DataBind();
         c.FecharConexao();
     }
-
     protected void DataGridCirurgia_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
         int registro;
@@ -203,7 +182,6 @@ public partial class StatusSaude2 : System.Web.UI.Page
 
         CadastroCirurgia();
     }
-
     protected Boolean ValidarFratura()
     {
         if (DropDownListFratura.Text == "")
@@ -221,38 +199,39 @@ public partial class StatusSaude2 : System.Web.UI.Page
             return true;
         }
     }
-    protected void ButtonAdicionar3_Click(object sender, EventArgs e)
+    protected void ButtonAdicionarFratura_Click(object sender, EventArgs e)
     {
         if (ValidarFratura() == true)
         {
-            int tipoFratura = Convert.ToInt32(DropDownListFratura.Text);
-            int id_saude = Convert.ToInt32(TextBoxIdSaude.Text);
+            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+            int usuario = Convert.ToInt32(i.ID());
+            int id_tipoFratura = Convert.ToInt32(DropDownListFratura.Text);
             DateTime dataFratura = Convert.ToDateTime(TextBoxData3.Text);
 
             Conexao c = new Conexao();
             c.AbrirConexao();
-
-            String sql = "insert into tb_fratura (id_tipoFratura, id_saude, dataFratura) values (@id_tipoFratura, @id_saude, @dataFratura)";
+            String sql = "insert into tb_fratura (id_tipoFratura, id_usuario, dataFratura) values (@id_tipoFratura, @id_usuario, @dataFratura)";
             c.command.CommandText = sql;
-            c.command.Parameters.Add("@id_tipoFratura", SqlDbType.Int).Value = tipoFratura;
-            c.command.Parameters.Add("@id_saude", SqlDbType.Int).Value = id_saude;
+            c.command.Parameters.Add("@id_tipoFratura", SqlDbType.Int).Value = id_tipoFratura;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
             c.command.Parameters.Add("@dataFratura", SqlDbType.DateTime).Value = dataFratura;
-
             c.command.ExecuteNonQuery();
             c.FecharConexao();
+
             CadastroFratura();
         }
     }
-
     private void CadastroFratura()
     {
         Conexao c = new Conexao();
         c.AbrirConexao();
-        String Fratura = TextBoxIdSaude.Text;
 
-        String sql = "select f.id_fratura, f.id_saude, f.dataFratura, tf.descricao from tb_tipoFratura as tf inner join tb_fratura as f on tf.id_tipoFratura=f.id_tipoFratura where id_saude=@Fratura";
+        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+        int usuario = Convert.ToInt32(i.ID());
+
+        String sql = "select f.id_fratura, f.id_usuario, f.dataFratura, tf.descricao from tb_tipoFratura as tf inner join tb_fratura as f on tf.id_tipoFratura=f.id_tipoFratura where f.id_usuario=@id_usuario";
         c.command.CommandText = sql;
-        c.command.Parameters.Add("@Fratura", SqlDbType.Int).Value = Fratura;
+        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
 
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -263,7 +242,6 @@ public partial class StatusSaude2 : System.Web.UI.Page
         DataGridFratura.DataBind();
         c.FecharConexao();
     }
-
     protected void DataGridFratura_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
         int registro;
@@ -277,7 +255,6 @@ public partial class StatusSaude2 : System.Web.UI.Page
 
         CadastroFratura();
     }
-
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
         Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");

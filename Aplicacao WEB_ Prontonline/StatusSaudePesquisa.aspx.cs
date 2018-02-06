@@ -32,6 +32,7 @@ public partial class StatusSaudePesquisa : System.Web.UI.Page
         Conexao c = new Conexao();
         c.AbrirConexao();
         DateTime dataStatusSaude = Convert.ToDateTime(TextBoxNome.Text);
+
         IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
         int usuario = Convert.ToInt32(i.ID());
 

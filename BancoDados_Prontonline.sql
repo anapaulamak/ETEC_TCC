@@ -109,7 +109,6 @@ create table tb_vacina(
 )
 go
 
-
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_faq' AND xtype='U')
 create table tb_faq(
 	id_faq INT IDENTITY(1,1) PRIMARY KEY not null,
@@ -152,7 +151,6 @@ create table tb_mensagem(
 go
 
 --esse codigo adiciona a data de cadastro da informação na data
-
 CREATE TRIGGER dataEnvioMensagem
 ON tb_mensagem
 instead of insert 
@@ -193,11 +191,12 @@ create table tb_tipoFratura(
 )
 go
 
+-- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_fratura' AND xtype='U')
 create table tb_fratura(
 	id_fratura INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoFratura INT FOREIGN KEY REFERENCES tb_tipoFratura(id_tipoFratura),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataFratura DATE
 )
 go
@@ -210,11 +209,12 @@ create table tb_tipoAlergia(
 )
 go
 
+-- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_alergia' AND xtype='U')
 create table tb_alergia(
 	id_alergia INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoAlergia INT FOREIGN KEY REFERENCES tb_tipoAlergia(id_tipoAlergia),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataAlergia DATE
 )
 go
@@ -227,19 +227,15 @@ create table tb_tipoCirurgia(
 )
 go
 
+-- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_cirurgia' AND xtype='U')
 create table tb_cirurgia(
 	id_cirurgia INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoCirurgia INT FOREIGN KEY REFERENCES tb_tipoCirurgia(id_tipoCirurgia),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataCirurgia DATE
 )
 go
-
-select * from tb_usuario
-select * from tb_tipoAlergia
-
-delete from tb_usuario where id_usuario = 3
 
 INSERT INTO tb_tipoAlergia (descricao, situacao) 
 VALUES	('Polén', 1),
@@ -283,7 +279,6 @@ VALUES  ('Alergia e Imunologia', 1),
 	('Ortopedia', 1),
 	('Pediatria', 1)
 	   
-
 INSERT INTO tb_tipoVacina (descricao, situacao)
 VALUES 	('BCG',1),
 	('Hepatite B ',1),
@@ -421,24 +416,6 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Radiografia',1) 
              
 
-select * from tb_usuario
-
-select * from tb_exame
-
-Select te.nome 
-e.id_exame, e.data, e.nome, e.imagem from tb_exame as e
-
-m.nome from tb_medico as m 
-
-tb_tipoExame as te 
-
-select id_exame, data, nome, imagem from tb_exame where id_exame IN 
-(select id_medico from tb_consulta where id_medico IN 
-(select nome from tb_medico))
-
-Select te.nome as tipoExame, e.id_exame as id_exame, e.nome as nome, e.data as data, e.imagem as imagem, concat(Convert(VarChar,c.data, 120)+'-',m.nome) as consulta from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico join tb_exame as e on e.id_consulta=c.id_consulta join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame where te.nome like @nomeExame
-
-select * from tb_mensagem
-
-select * from tb_consulta
-delete from tb_medico where id_medico > 0
+select * from tb_cirurgia
+Select * from tb_faq where pergunta like '%problemas%'
+select * from tb_faq

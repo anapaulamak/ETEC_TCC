@@ -23,7 +23,7 @@ public partial class Faq : System.Web.UI.Page
         c.AbrirConexao();
         String nomeFaq = "%" + TextBoxPalavra.Text + "%";
 
-        String sql = "Select pergunta, resposta from tb_faq where pergunta=@pergunta";
+        String sql = "Select pergunta, resposta from tb_faq where pergunta like @pergunta";
         c.command.CommandText = sql;
         c.command.Parameters.Add("@pergunta", SqlDbType.VarChar).Value = nomeFaq;
 

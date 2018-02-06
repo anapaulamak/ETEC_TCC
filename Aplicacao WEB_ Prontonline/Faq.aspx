@@ -45,15 +45,15 @@
                     <div class="row">
 		                <div class="col-1"></div>
 		                <div class="col-10 align-left">
-                            <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
                                 <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:BoundColumn DataField="pergunta" HeaderText="Pergunta"></asp:BoundColumn>
                                     <asp:BoundColumn DataField="resposta" HeaderText="Resposta"></asp:BoundColumn>
                                 </Columns>
                                 <EditItemStyle BackColor="#999999" />
-                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <FooterStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#002966" Font-Bold="True" ForeColor="White" />
                                 <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />

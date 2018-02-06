@@ -21,8 +21,9 @@ public partial class home : System.Web.UI.Page
         String nomeUsuario = Convert.ToString(TextBoxNome.Text);
         String emailUsuario = Convert.ToString(TextBoxEmail.Text);
         String cpf = Convert.ToString(TextBoxCPF.Text);
-        string script = "alert(" + TextBoxNascimento.Text + ");";
-        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScrirpt", script, true);
+        String dataNascimento = Convert.ToString(TextBoxNascimento.Text);
+        //string script = "alert(" + TextBoxNascimento.Text + ");";
+        //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScrirpt", script, true);
         //DateTime dataNascimento = (TextBoxNascimento.Text == "dd/mm/aaaa") ? DateTime.Today : Convert.ToDateTime(TextBoxNascimento.Text);
         String sexo = Convert.ToString(RadioButtonList1.SelectedValue);
         String senha = Convert.ToString(TextBoxSenha1.Text);
@@ -38,22 +39,22 @@ public partial class home : System.Web.UI.Page
             c.command.Parameters.Add("@nomeUsuario", SqlDbType.VarChar).Value = nomeUsuario;
             c.command.Parameters.Add("@emailUsuario", SqlDbType.VarChar).Value = emailUsuario;
             c.command.Parameters.Add("@cpf", SqlDbType.Char).Value = cpf;
-            //c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
+            c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
             c.command.Parameters.Add("@sexo", SqlDbType.Char).Value = sexo;
             c.command.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
 
             c.command.ExecuteNonQuery();
-            //Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
+            Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
             c.FecharConexao();
 
-            //Session["logado"] = 1;
-            //Session["UserId"] = cpf;
+            Session["logado"] = 1;
+            Session["UserId"] = cpf;
 
-            Response.Redirect("Inicial.aspx");
+            Response.Redirect("InfUsuario.aspx");
         }
         else
         {
-            //Response.Write("<script language = 'javascript'> alert ('Verifique se os dados informados estão corretos!');</script>");
+            Response.Write("<script language = 'javascript'> alert ('Verifique se os dados informados estão corretos!');</script>");
         }
 
     }

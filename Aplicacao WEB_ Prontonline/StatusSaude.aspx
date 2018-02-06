@@ -159,10 +159,14 @@
         <div class="row">
             <br />
             <br />
-            <div class="col-9"></div>
+            <div class="col-5"></div>
             <div class="col-2">
-                <asp:Button ID="ButtonSalvar" runat="server" Text="Próximo" class="ConfButton" onClick="ButtonSalvar_Click"/>
+                <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton" onClick="ButtonSalvar_Click"/>
             </div>    
+            <div class="col-1"></div>
+            <div class="col-3">
+                <asp:Button ID="ButtonMeusStatus" runat="server" Text="Meus Status Saúde" class="ConfButton" OnClick="ButtonMeusStatus_Click"/>
+            </div>  
         </div>
     </div>
 </asp:Content>

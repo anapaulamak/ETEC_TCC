@@ -31,6 +31,7 @@ public partial class ConsultaMedicaPesquisa : System.Web.UI.Page
         Conexao c = new Conexao();
         c.AbrirConexao();
         String buscaMotivo = "%" + TextBoxNome.Text + "%";
+
         IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
         int usuario = Convert.ToInt32(i.ID());
 
@@ -54,6 +55,7 @@ public partial class ConsultaMedicaPesquisa : System.Web.UI.Page
     {
         int registro;
         registro = Convert.ToInt32(e.Item.Cells[0].Text);
+
         Conexao c = new Conexao();
         c.AbrirConexao();
         c.command.CommandText = "delete from tb_consulta where id_consulta=@registro";

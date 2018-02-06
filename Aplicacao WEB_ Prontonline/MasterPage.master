@@ -39,8 +39,9 @@
 					    <a href="ConsultaMedica.aspx"><img src="img/consulta.png" width="70%" class="IconeCor" title="Consultas Médicas"/></a>
 					    <a href="Exame.aspx"><img src="img/exame.png" width="70%" class="IconeCor" title="Exames Médicos"/></a>
 					    <a href="Receita.aspx"> <img src="img/receita.png" width="70%" class="IconeCor" title="Receitas Médicas"/></a>	
+    				    <a href="Vacina.aspx"><img src="img/vacina.png" width="70%" class="IconeCor" title="Vacinas"/></a>
                         <a href="StatusSaude.aspx"><img src="img/saude.png" width="70%" class="IconeCor" title="Status Saúde"/></a>
-					    <a href="Vacina.aspx"><img src="img/vacina.png" width="70%" class="IconeCor" title="Vacinas"/></a>
+	                    <a href="Historico.aspx"><img src="img/historico.png" width="70%" class="IconeCor" title="Histórico de Eventos"/></a>
 				    </div>
 				    <div class="col-2"></div>
 			    </div>

@@ -16,6 +16,11 @@ public partial class Receitas : System.Web.UI.Page
         }
     }
 
+    protected void ButtonMeusStatus_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StatusSaudePesquisa.aspx");
+    }
+
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
         if (Validar() == true)
@@ -44,7 +49,6 @@ public partial class Receitas : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
 
-            Response.Redirect("StatusSaude2.aspx");
         }
 
     }
