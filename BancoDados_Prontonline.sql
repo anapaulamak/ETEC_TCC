@@ -417,5 +417,5 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
              
 
 select * from tb_cirurgia
-Select * from tb_faq where pergunta like '%problemas%'
+Select pergunta, resposta from tb_faq where pergunta like '%problemas%'
 select * from tb_faq
