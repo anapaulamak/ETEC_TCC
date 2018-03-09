@@ -26,6 +26,7 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_medico' AND xtype='U')
 create table tb_medico(
 	id_medico INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	CRM VARCHAR(20),
 	nome VARCHAR(50)
 )
@@ -56,6 +57,7 @@ create table tb_consulta(
 	data DATE,
 	motivo VARCHAR(200),
 	diagnostico VARCHAR(200),
+	sintomas VARCHAR(200),
 	recomendacoes VARCHAR(200),
 	obs VARCHAR(200)
 )
@@ -89,6 +91,19 @@ create table tb_receita(
 	data DATE
 )
 go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_remerio' AND xtype='U')
+create table tb_remedios(
+	id_remedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_usuario INT FOREIGN KEY REFERENCES  tb_usuario(id_usuario),
+	nome VARCHAR(200),
+	dosagem VARCHAR(200),
+	imagem VARCHAR(300),
+	dataInicio DATE, 
+	dataFim DATE
+)
+go
+
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_tipoVacina' AND xtype='U')
 create table tb_tipoVacina(
@@ -127,6 +142,7 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_funcionario' AND xtype='U')
 create table tb_funcionario(
 	id_funcionario INT IDENTITY(1,1) PRIMARY KEY not null,
+	id_permissao INT FOREIGN KEY REFERENCES tb_permissao(id_permissao),
 	nome VARCHAR(50),
 	CPF CHAR(20),
 	senha CHAR(8),
@@ -138,28 +154,15 @@ create table tb_funcionario(
 )
 go
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_usersys' AND xtype='U')
-create table tb_usersys(
-	id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	nome VARCHAR (50),
-	senha VARCHAR (50),
-	email VARCHAR(50),
-	telefone CHAR(20),
-	cpf CHAR (15),
-	sexo VARCHAR (20),
-	funcao VARCHAR(20)
-)
-go
-
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_mensagem' AND xtype='U')
 create table tb_mensagem(
 	id_mensagem INT IDENTITY(1,1) PRIMARY KEY not null,
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	tipoMensagem VARCHAR(50),
 	titulo VARCHAR(50),
 	mensagem VARCHAR(500),
 	dataEnvio DATETIME,
 	situacao BIT,
-	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	resposta VARCHAR(500),
 	dataResposta DATETIME
 )
@@ -431,6 +434,3 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Radiografia',1) 
                           
 INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')
-
-INSERT INTO tb_usersys ( nome, senha, email, telefone, cpf, sexo, funcao)
-values ('JOLIA','JOLIA','JOLIA',1138515460,43169500880,'Valentina','Julia')
