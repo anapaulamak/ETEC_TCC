@@ -77,7 +77,6 @@ create table tb_exame(
 	data DATE,
 	nome VARCHAR(200),
 	imagem VARCHAR(300)
-
 )
 go
 
@@ -132,7 +131,23 @@ create table tb_funcionario(
 	CPF CHAR(20),
 	senha CHAR(8),
 	email VARCHAR(50),
+	genero VARCHAR(20),
+	funcao VARCHAR(30),
 	telefone CHAR(28),
+	situacao bit,	
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_usersys' AND xtype='U')
+create table tb_usersys(
+	id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	nome VARCHAR (50),
+	senha VARCHAR (50),
+	email VARCHAR(50),
+	telefone CHAR(20),
+	cpf CHAR (15),
+	sexo VARCHAR (20),
+	funcao VARCHAR(20)
 )
 go
 
@@ -414,8 +429,8 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Ressonância Magnética do Tórax',1),     
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
-             
+                          
+INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')
 
-select * from tb_cirurgia
-Select pergunta, resposta from tb_faq where pergunta like '%problemas%'
-select * from tb_faq
+INSERT INTO tb_usersys ( nome, senha, email, telefone, cpf, sexo, funcao)
+values ('JOLIA','JOLIA','JOLIA',1138515460,43169500880,'Valentina','Julia')
