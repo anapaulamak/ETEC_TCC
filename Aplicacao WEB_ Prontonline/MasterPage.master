@@ -21,8 +21,9 @@
 			<div class="col-3"></div>
 
 			<div class="col-3 ConfMenu1">
-				<h1 class="Fonte">Bem vindo(a)!</h1>
+				<h1 class="Fonte">Bem vindo(a), <asp:Label ID="lblNomeUsuario" runat="server" Text="Label"></asp:Label>!</h1>
                 <a href="home.aspx" class="ConfButton2" onclick="Logout_Click">Sair da minha conta</a>
+                <br />
 			</div>	
 
 			<div class="col-2 ConfMenu1">

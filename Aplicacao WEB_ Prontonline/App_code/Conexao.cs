@@ -10,7 +10,7 @@ public class Conexao
 
     public SqlConnection conexao;
     public SqlCommand command;
-    string strConexao = "Server=DESKTOP-E55J7RG; DataBase=Prontonline; user id=sa;password=12345";
+    string strConexao = "Server=localhost; DataBase=Prontonline; user id=sa;password=12345";
     //string strConexao = "Server=localhost;DataBase=exe_produtos; trusted_connection=true";
 
     public void AbrirConexao()

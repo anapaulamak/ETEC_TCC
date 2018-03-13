@@ -128,7 +128,7 @@ public partial class ConsultaMedica : System.Web.UI.Page
         Response.Redirect("AdicionarMedico.aspx");
     }
 
-    protected void DropDownListMedico_SelectedIndexChanged(object sender, EventArgs e)
+    protected void DropDownListMedico_SelectedIndexChanged1(object sender, EventArgs e)
     {
         Conexao c = new Conexao();
         c.AbrirConexao();

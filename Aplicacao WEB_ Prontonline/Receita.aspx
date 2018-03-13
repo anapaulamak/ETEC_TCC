@@ -25,7 +25,11 @@
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
                     <asp:DropDownList ID="DropDownListMedico" runat="server" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" Width="90%"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_medico], [nome] FROM [tb_medico]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString2 %>" SelectCommand="SELECT m.nome, m.id_medico, u.id_usuario FROM tb_medico as m JOIN tb_usuario as u ON m.id_usuario = u.id_usuario WHERE u.cpf=@cpf">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="cpf" SessionField="UserId" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </div>
 			    <div class="col-1"></div>
                 <br />

@@ -31,8 +31,12 @@
 				                <div class="col-12 align-left">
                                     <asp:Label ID="Label1" runat="server" Text="Nome Médico"></asp:Label>
                                     <br />
-                                    <asp:DropDownList ID="DropDownListMedico" runat="server" Width="85%" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" OnSelectedIndexChanged="DropDownListMedico_SelectedIndexChanged" AutoPostBack="True" ></asp:DropDownList>
-				                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_medico], [nome] FROM [tb_medico]"></asp:SqlDataSource>
+                                    <asp:DropDownList ID="DropDownListMedico" runat="server" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" Width="90%" OnSelectedIndexChanged="DropDownListMedico_SelectedIndexChanged1" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString2 %>" SelectCommand="SELECT m.nome, m.id_medico, u.id_usuario FROM tb_medico as m JOIN tb_usuario as u ON m.id_usuario = u.id_usuario WHERE u.cpf=@cpf">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="cpf" SessionField="UserId" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                 <br />
 				                </div>
                             </div>

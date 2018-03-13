@@ -57,7 +57,6 @@ create table tb_consulta(
 	data DATE,
 	motivo VARCHAR(200),
 	diagnostico VARCHAR(200),
-	sintomas VARCHAR(200),
 	recomendacoes VARCHAR(200),
 	obs VARCHAR(200)
 )
@@ -78,7 +77,7 @@ create table tb_exame(
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	data DATE,
 	nome VARCHAR(200),
-	imagem VARCHAR(300)
+	imagem VARBINARY(MAX)
 )
 go
 
@@ -87,7 +86,7 @@ create table tb_receita(
 	id_receita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	nome VARCHAR(200),
-	imagem VARCHAR(300),
+	imagem VARBINARY(MAX),
 	data DATE
 )
 go
@@ -98,7 +97,7 @@ create table tb_remedios(
 	id_usuario INT FOREIGN KEY REFERENCES  tb_usuario(id_usuario),
 	nome VARCHAR(200),
 	dosagem VARCHAR(200),
-	imagem VARCHAR(300),
+	imagem VARBINARY(MAX),
 	dataInicio DATE, 
 	dataFim DATE
 )
@@ -119,7 +118,7 @@ create table tb_vacina(
 	id_tipoVacina INT FOREIGN KEY REFERENCES tb_tipoVacina(id_tipoVacina),
 	id_usuario INT FOREIGN KEY REFERENCES tb_usuario (id_usuario),
 	data DATE,
-	imagem VARCHAR(300)
+	imagem VARBINARY(MAX)
 )
 go
 
