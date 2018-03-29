@@ -30,7 +30,9 @@
 			    <div class="col-1"></div>
                 <br />
 		    </div>
+        </div>
             
+        <div class="col-6">     
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-5 align-left">
@@ -47,22 +49,55 @@
 			    <div class="col-1"></div>
                 <br />
 		    </div>
-        </div>
-            
-        <div class="col-6">     
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Label ID="Label5" runat="server" Text="Insira o endereço da imagem"></asp:Label>
-                </div>
-            </div>
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:TextBox ID="TextBoxImagem" runat="server" Width="90%"></asp:TextBox>
-                </div>
-            </div>
         </div>        
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <br />
+            <h2 class="Titulo">Imagens da Vacina</h2>
+            <br />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="Label5" runat="server" Text="Nome da imagem"></asp:Label>
+                </div>
+            </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="NomeImagemVacina" runat="server" width="90%" />
+                </div>
+            </div>                               
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:FileUpload ID="ImagemVacina" runat="server" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Button ID="btnImagemVacina" runat="server" Text="Inserir"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">            
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Image ID="img" runat="server"/>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">

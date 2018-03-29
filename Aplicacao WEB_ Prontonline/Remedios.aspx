@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Receita.aspx.cs" Inherits="Receita" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Remedios.aspx.cs" Inherits="Remedios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-6">
             <br />
-            <h1 class="Titulo">RECEITAS MÉDICAS</h1>
+            <h1 class="Titulo">MEUS REMÉDIOS</h1>
             <br />
         </div>
     </div>
@@ -16,7 +16,7 @@
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:Label ID="Label1" runat="server" Text="Nome do Médico"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="Nome do Remédio"></asp:Label>
                 </div>
 			    <div class="col-1"></div>
                 <br />
@@ -24,12 +24,7 @@
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:DropDownList ID="DropDownListMedico" runat="server" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" Width="90%"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString2 %>" SelectCommand="SELECT m.nome, m.id_medico, u.id_usuario FROM tb_medico as m JOIN tb_usuario as u ON m.id_usuario = u.id_usuario WHERE u.cpf=@cpf">
-                        <SelectParameters>
-                            <asp:SessionParameter Name="cpf" SessionField="UserId" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+                    <asp:TextBox ID="TextBoxRemedio" runat="server" width="90%"></asp:TextBox>
                 </div>
 			    <div class="col-1"></div>
                 <br />
@@ -38,7 +33,7 @@
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:Label ID="Label2" runat="server" Text="Associar à Consulta:"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Dosagem"></asp:Label>
                 </div>
 			    <div class="col-1"></div>
                 <br />
@@ -46,23 +41,18 @@
             <div class="row">
 		        <div class="col-1"></div>
                 <div class="col-10 align-left">
-                <asp:DropDownList ID="DropDownListConsulta" runat="server" DataSourceID="SqlDataSource1" DataTextField="EXP1" DataValueField="id_consulta" Width="90%"></asp:DropDownList>
-			    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT concat ( c.data, ' - ' + m.nome) as EXP1, c.id_consulta, u.id_usuario FROM tb_usuario as u JOIN tb_consulta as c on u.id_usuario=c.id_usuario INNER JOIN tb_medico AS m ON c.id_medico = m.id_medico WHERE u.CPF=@cpf">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="cpf" SessionField="UserId" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
+                    <asp:TextBox ID="TextBoxDosagem" runat="server" width="90%"></asp:TextBox>
                 </div>
 			    <div class="col-1"></div>
                 <br />
 		    </div>
         </div>
 
-        <div class="col-6">                
+        <div class="col-6">
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:Label ID="Label3" runat="server" Text="Data"></asp:Label>
+                    <asp:Label ID="LabelDataInicio" runat="server" Text="Começou a tomar em: "></asp:Label>
                 </div>
 			    <div class="col-1"></div>
                 <br />
@@ -70,7 +60,24 @@
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxDataInicio" runat="server" TextMode="Date"></asp:TextBox>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="LabelDataFim" runat="server" Text="Parar de tomar em: "></asp:Label>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="TextBoxDataFim" runat="server" TextMode="Date"></asp:TextBox>
                 </div>
 			    <div class="col-1"></div>
                 <br />
@@ -81,7 +88,7 @@
     <div class="row">
         <div class="col-6">
             <br />
-            <h2 class="Titulo">Imagens da Receita Médica</h2>
+            <h2 class="Titulo">Imagens do Remédio</h2>
             <br />
         </div>
     </div>
@@ -90,36 +97,37 @@
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:Label ID="Label5" runat="server" Text="Nome da imagem"></asp:Label>
+                    <asp:Label ID="txt_nome" runat="server" Text="Nome da imagem"></asp:Label>
                 </div>
             </div>
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:TextBox ID="NomeImagemReceita" runat="server" width="90%" />
+                    <asp:TextBox ID="NomeImagemRemedio" runat="server" width="90%" />
                 </div>
             </div>                               
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:FileUpload ID="ImagemReceita" runat="server" />
+                    <asp:FileUpload ID="ImagemRemedio" runat="server" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-1"></div>
 		        <div class="col-10 align-left">
-                    <asp:Button ID="btnImagemReceita" runat="server" Text="Inserir"/>
+                    <asp:Button ID="btnImagemRemedio" runat="server" Text="Inserir" OnClick="btnImagemRemedio_Click"/>
                 </div>
             </div>
         </div>
     </div>
-
+            
     <div class="row">
 		<div class="col-1"></div>
 		<div class="col-10 align-left">
             <asp:Image ID="img" runat="server"/>
         </div>
     </div>
+
     <div class="row">
         <br />
         <br />
@@ -129,9 +137,8 @@
         </div>
         <div class="col-1"></div>
 		<div class="col-4">
-            <asp:Button ID="ButtonMinhasReceitas" runat="server" Text="Minhas Receitas" class="ConfButton" OnClick="ButtonMinhasReceitas_Click" />
+            <asp:Button ID="ButtonMeusRemedios" runat="server" Text="Meus Remedios" class="ConfButton" OnClick="ButtonMeusRemedios_Click" />
         </div>             
     </div>
-
 </asp:Content>
 

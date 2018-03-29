@@ -43,6 +43,7 @@
     				    <a href="Vacina.aspx"><img src="img/vacina.png" width="70%" class="IconeCor" title="Vacinas"/></a>
                         <a href="StatusSaude.aspx"><img src="img/saude.png" width="70%" class="IconeCor" title="Status Saúde"/></a>
 	                    <a href="Historico.aspx"><img src="img/historico.png" width="70%" class="IconeCor" title="Histórico de Eventos"/></a>
+                        <a href="Remedios.aspx"><img src="img/remedios.png" width="70%" class="IconeCor" title="Remédios"/></a>
 				    </div>
 				    <div class="col-2"></div>
 			    </div>

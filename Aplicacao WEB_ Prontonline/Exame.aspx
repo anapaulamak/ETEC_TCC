@@ -30,61 +30,7 @@
 			    <div class="col-1"></div>
                 <br />
 		    </div>
-                
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Label ID="Label2" runat="server" Text="Nome do Exame"></asp:Label>
-                </div>
-			    <div class="col-1"></div>
-                <br />
-		    </div>
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:TextBox ID="TextBoxNome" runat="server" Width="90%"></asp:TextBox>
-                </div>
-			    <div class="col-1"></div>
-                <br />
-		    </div>
-            
-        </div>
-    
-        <div class="col-6">      
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Label ID="Label5" runat="server" Text="Endereço da imagem"></asp:Label>
-                </div>
-            </div>
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:TextBox ID="TextBoxImagem" runat="server" Width="90%"></asp:TextBox>
-                </div>
-            </div>
 
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Label ID="Label3" runat="server" Text="Data do Exame"></asp:Label>
-                </div>
-			    <div class="col-1"></div>
-                <br />
-		        </div>
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date"></asp:TextBox>
-                </div>
-			    <div class="col-1"></div>
-                <br />
-		    </div>
-		</div>
-    </div>
-
-    <div class="row">
-        <div class="col-6">
             <div class="row">
 		        <div class="col-1"></div>
 		        <div class="col-10 align-left">
@@ -107,8 +53,92 @@
                 <br />
 		    </div>
         </div>
+    
+        <div class="col-6">               
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="Label2" runat="server" Text="Nome do Exame"></asp:Label>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="TextBoxNome" runat="server" Width="90%"></asp:TextBox>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="Label3" runat="server" Text="Data do Exame"></asp:Label>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		        </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date"></asp:TextBox>
+                </div>
+			    <div class="col-1"></div>
+                <br />
+		    </div>
+		</div>
     </div>
 
+    <div class="row">
+        <div class="col-6">
+            <br />
+            <h2 class="Titulo">Imagens do Exame</h2>
+            <br />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Label ID="Label5" runat="server" Text="Nome da imagem"></asp:Label>
+                </div>
+            </div>
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:TextBox ID="NomeImagemExame" runat="server" width="90%" />
+                </div>
+            </div>                               
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:FileUpload ID="ImagemExame" runat="server" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Button ID="btnImagemExame" runat="server" Text="Inserir"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">            
+            <div class="row">
+		        <div class="col-1"></div>
+		        <div class="col-10 align-left">
+                    <asp:Image ID="img" runat="server"/>
+                </div>
+            </div>
+        </div>
+    </div>
+  
     <div class="row">
         <br />
         <br />

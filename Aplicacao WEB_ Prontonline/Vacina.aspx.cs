@@ -38,17 +38,15 @@ public partial class img_Vacina : System.Web.UI.Page
 
             int id_tipoVacina = Convert.ToInt32(DropDownListTipo.SelectedValue);
             DateTime dataVacina = Convert.ToDateTime(TextBoxData.Text);
-            String imagem = Convert.ToString(TextBoxImagem.Text);
 
             Conexao c = new Conexao();
             c.AbrirConexao();
 
-            String sql = "insert into tb_vacina (id_tipoVacina, data, imagem, id_usuario) values (@tipoVacina, @data, @imagem, @id_usuario)";
+            String sql = "insert into tb_vacina (id_tipoVacina, data, id_usuario) values (@tipoVacina, @data, @id_usuario)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@tipoVacina", SqlDbType.Int).Value = id_tipoVacina;
             c.command.Parameters.Add("@data", SqlDbType.DateTime).Value = dataVacina;
-            c.command.Parameters.Add("@imagem", SqlDbType.VarChar).Value = imagem;
             c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
 
             c.command.ExecuteNonQuery();

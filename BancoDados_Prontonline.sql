@@ -76,8 +76,24 @@ create table tb_exame(
 	id_tipoExame INT FOREIGN KEY REFERENCES tb_tipoExame(id_tipoExame),
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	data DATE,
-	nome VARCHAR(200),
-	imagem VARBINARY(MAX)
+	nome VARCHAR(200)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgExame' AND xtype='U')
+create table tb_imgExame(
+	id_imgExame INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	imagemExame VARBINARY(MAX),
+	nomeImgExame VARCHAR(50)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgExame_exame' AND xtype='U')
+create table tb_imgExame_exame(
+	id_imgExame_exame INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_exame INT FOREIGN KEY REFERENCES  tb_exame(id_exame),
+	id_imgExame INT FOREIGN KEY REFERENCES  tb_imgExame(id_imgExame),
+
 )
 go
 
@@ -86,8 +102,24 @@ create table tb_receita(
 	id_receita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	nome VARCHAR(200),
-	imagem VARBINARY(MAX),
 	data DATE
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgReceita' AND xtype='U')
+create table tb_imgReceita(
+	id_imgReceita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	imagemReceita VARBINARY(MAX),
+	nomeImgReceita VARCHAR(50)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgReceita_receita' AND xtype='U')
+create table tb_imgReceita_receita(
+	id_imgReceita_receita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_receita INT FOREIGN KEY REFERENCES  tb_receita(id_receita),
+	id_imgReceita INT FOREIGN KEY REFERENCES  tb_imgReceita(id_imgReceita),
+
 )
 go
 
@@ -97,9 +129,24 @@ create table tb_remedios(
 	id_usuario INT FOREIGN KEY REFERENCES  tb_usuario(id_usuario),
 	nome VARCHAR(200),
 	dosagem VARCHAR(200),
-	imagem VARBINARY(MAX),
 	dataInicio DATE, 
 	dataFim DATE
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgRemedio' AND xtype='U')
+create table tb_imgRemedio(
+	id_imgRemedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	imagemRemedio VARBINARY(MAX),
+	nomeImgRemedio VARCHAR(50)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgRemedio_remedio' AND xtype='U')
+create table tb_imgRemedio_remedio(
+	id_imgRemedio_reemedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_remedio INT FOREIGN KEY REFERENCES  tb_remedios(id_remedio),
+	id_imgRemedio INT FOREIGN KEY REFERENCES  tb_imgRemedio(id_imgRemedio)
 )
 go
 
@@ -119,6 +166,23 @@ create table tb_vacina(
 	id_usuario INT FOREIGN KEY REFERENCES tb_usuario (id_usuario),
 	data DATE,
 	imagem VARBINARY(MAX)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgVacina' AND xtype='U')
+create table tb_imgVacina(
+	id_imgVacina INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	imagemVacina VARBINARY(MAX),
+	nomeImgVacina VARCHAR(50)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgVacina_vacina' AND xtype='U')
+create table tb_imgVacina_vacina(
+	id_imgVacina_vacina INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_vacina INT FOREIGN KEY REFERENCES  tb_vacina(id_vacina),
+	id_imgVacina INT FOREIGN KEY REFERENCES  tb_imgVacina(id_imgVacina),
+
 )
 go
 
@@ -312,20 +376,6 @@ VALUES 	('BCG',1),
 	('Dupla Adulto',1),
 	('dTpa*',1)
 
-INSERT INTO tb_medico (CRM, nome)
-VALUES  ('CRM-SP 789441', 'Isabela Forni'),
-	('CRM-SP 785245', 'Natan Silva'),
-	('CRM-MG 545431', 'Sabrina Marques'),
-	('CRN-RJ 548214', 'Ana Freitas'),
-	('CRM-MG 394356', 'Carina Peixoto'),
-	('CRM-RS 294120', 'Rafael Villar'),
-	('CRM-RJ 124816', 'Jose Teixeira Filho'),
-	('CRM-MG 364331', 'Amanda Marreiro'),
-	('CRM-SP 125647', 'Flavio Zanardi'),
-	('CRM-BA 875426', 'Bruno Reis'),
-	('CRM-PE 343864', 'Flavio Hiroshi'),
-	('CRM-RJ 347896', 'Bruno Barreiro')
-
 INSERT INTO tb_faq (pergunta, resposta, situacao)
 VALUES  ('Se eu tiver problemas com o sistema, como faço para solucioná-los?', 'O ProntOnline possui uma equipe de suporte altamente qualificada e preparada para resolver seus problemas, além de oferecer um atendimento rápido e eficiente. Você também conta com o suporte online via chat.', 1),
 	('Existe um aplicativo para uso em dispositivos móveis?', 'Ainda não. Mas, nossa equipe de desenvolvimento já está trabalhando para desenvolver um aplicativo para IOS e Android.', 1),
@@ -432,4 +482,5 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
                           
-INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')
+INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')select * from tb_medico
+select * from tb_imgRemedio
