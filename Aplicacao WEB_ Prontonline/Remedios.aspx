@@ -86,58 +86,17 @@
     </div>
 
     <div class="row">
-        <div class="col-6">
-            <br />
-            <h2 class="Titulo">Imagens do Remédio</h2>
-            <br />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Label ID="txt_nome" runat="server" Text="Nome da imagem"></asp:Label>
-                </div>
-            </div>
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:TextBox ID="NomeImagemRemedio" runat="server" width="90%" />
-                </div>
-            </div>                               
-            <div class="row">
-		        <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:FileUpload ID="ImagemRemedio" runat="server" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1"></div>
-		        <div class="col-10 align-left">
-                    <asp:Button ID="btnImagemRemedio" runat="server" Text="Inserir" OnClick="btnImagemRemedio_Click"/>
-                </div>
-            </div>
-        </div>
-    </div>
-            
-    <div class="row">
-		<div class="col-1"></div>
-		<div class="col-10 align-left">
-            <asp:Image ID="img" runat="server"/>
-        </div>
-    </div>
-
-    <div class="row">
         <br />
         <br />
-        <div class="col-4"></div>
-		<div class="col-2">
-            <asp:Button ID="ButtonAdicionar" runat="server" Text="Adicionar" class="ConfButton" OnClick="ButtonAdicionar_Click" />
+        <div class="col-3"></div>
+		<div class="col-3">
+            <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar Agora" class="ConfButton" OnClick="ButtonAdicionar_Click" Width="90%" />
         </div>
-        <div class="col-1"></div>
-		<div class="col-4">
-            <asp:Button ID="ButtonMeusRemedios" runat="server" Text="Meus Remedios" class="ConfButton" OnClick="ButtonMeusRemedios_Click" />
+		<div class="col-3">
+            <asp:Button ID="ButtonAdicionarImagem" runat="server" Text="Adicionar Imagens" class="ConfButton" OnClick="ButtonAdicionarImagem_Click" />
+        </div>
+		<div class="col-3">
+            <asp:Button ID="ButtonMeusRemedios" runat="server" Text="Meus Remedios" class="ConfButton" Width="90%" OnClick="ButtonMeusRemedios_Click" />
         </div>             
     </div>
 </asp:Content>

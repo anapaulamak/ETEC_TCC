@@ -287,3 +287,8 @@ title {
     margin-right: 0px;
     right: 60px;
 }
+
+.lblImgConf {
+    width: 300px!important;
+    height: 300px!important;
+}

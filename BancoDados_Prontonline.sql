@@ -484,3 +484,5 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
                           
 INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')select * from tb_medico
 select * from tb_imgRemedio
+
+select * from tb_remedios
