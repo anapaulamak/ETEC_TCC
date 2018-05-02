@@ -5,53 +5,48 @@
 <head runat="server">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link href="css/Reset.css" rel="stylesheet" />
 <link href="css/style.css" rel="stylesheet"/>	
+<link type="text/css" rel="stylesheet" href="Content/css/bootstrap.min.css"/>
+
 <title>ProntOnline</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-
 <body>
     <header>
 		<div class="row">
-			<div class="col-4">
+			<div class="col-md-4">
 				<img src="img/logo.png" class="ConfLogo"/>
 			</div>
-
-			<div class="col-3"></div>
-
-			<div class="col-3 ConfMenu1">
-				<h1 class="Fonte">Bem vindo(a), <asp:Label ID="lblNomeUsuario" runat="server" Text="Label"></asp:Label>!</h1>
-                <a href="home.aspx" class="ConfButton2" onclick="Logout_Click">Sair da minha conta</a>
-                <br />
-			</div>	
-
-			<div class="col-2 ConfMenu1">
-				<img src="img/perfil.png" width="50%"/>
-			</div>
+			<div class="col-md-4"></div>
+			<div class="col-md-4 ConfMenu1">
+				<h1 class="Fonte3">Bem vindo(a), 
+                <asp:Label ID="lblNomeUsuario" runat="server" Text="Label"></asp:Label>!</h1>
+                <div class="row">
+                    <div class="col-md-6"></div>
+                        <a href="home.aspx" class="ConfButton2" onclick="Logout_Click">Sair da minha conta</a>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
 		</div>
 	</header>
     	<div class="PagInfoUsuario row">
-		    <div class="col-1">
+		    <div class="col-md-1 IconeConf align-center">
+				<a href="ConsultaMedica.aspx" class="IconeConf"><img src="img/consulta.png" class="IconeCor" title="Consultas Médicas"/></a>
+				<a href="Exame.aspx" class="IconeConf"><img src="img/exame.png" class="IconeCor" title="Exames Médicos"/></a>
+				<a href="Receita.aspx" class="IconeConf"> <img src="img/receita.png" class="IconeCor" title="Receitas Médicas"/></a>	
+    			<a href="Vacina.aspx" class="IconeConf"><img src="img/vacina.png" class="IconeCor" title="Vacinas"/></a>
+                <a href="StatusSaude.aspx" class="IconeConf"><img src="img/saude.png" class="IconeCor" title="Status Saúde"/></a>
+	            <a href="Historico.aspx" class="IconeConf"><img src="img/historico.png" class="IconeCor" title="Histórico Médico"/></a>
+                <a href="Remedios.aspx" class="IconeConf"><img src="img/remedios.png" class="IconeCor" title="Remédios"/></a>
+            </div>
+
+		    <div class="col-md-10 PageForms">		
 			    <div class="row">
-				    <div class="col-2"></div>
-				    <div class="col-8">
-					    <a href="InfUsuario.aspx"><img src="img/perfil.png" width="70%" class="IconeCor" title="Informações do Usuário"/></a>
-					    <a href="ConsultaMedica.aspx"><img src="img/consulta.png" width="70%" class="IconeCor" title="Consultas Médicas"/></a>
-					    <a href="Exame.aspx"><img src="img/exame.png" width="70%" class="IconeCor" title="Exames Médicos"/></a>
-					    <a href="Receita.aspx"> <img src="img/receita.png" width="70%" class="IconeCor" title="Receitas Médicas"/></a>	
-    				    <a href="Vacina.aspx"><img src="img/vacina.png" width="70%" class="IconeCor" title="Vacinas"/></a>
-                        <a href="StatusSaude.aspx"><img src="img/saude.png" width="70%" class="IconeCor" title="Status Saúde"/></a>
-	                    <a href="Historico.aspx"><img src="img/historico.png" width="70%" class="IconeCor" title="Histórico de Eventos"/></a>
-                        <a href="Remedios.aspx"><img src="img/remedios.png" width="70%" class="IconeCor" title="Remédios"/></a>
-				    </div>
-				    <div class="col-2"></div>
-			    </div>
-		    </div>
-		    <div class="col-9 PagForms">		
-			    <div class="row">
-				    <div class="col-1"></div>
-				    <div class="col-10">
+				    <div class="col-md-1"></div>
+				    <div class="col-md-10">
                         <form id="form1" runat="server">
                         <div>
                             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
@@ -60,19 +55,22 @@
                         </div>
                         </form>
 				    </div>
-				    <div class="col-1"></div>
+				    <div class="col-md-1 "></div>
 			    </div>               
 		    </div>           
-            <div class="col-1">
-                <div class="col-2"></div>
-				<div class="col-8">
-                    <a href="Calendario.aspx"><img src="img/calendario.png" width="70%" class="IconeCor" title="Calendário"/></a>
-                    <a href="Mensagem.aspx"><img src="img/mensagem.png" width="70%" class="IconeCor" title="Mensagens"/></a>
-                    <a href="Faq.aspx"><img src="img/faq.png" width="70%" class="IconeCor" title="Perguntas Frequentes"/></a>
-				</div>
-				<div class="col-2"></div>
-			</div>
+            
+            <div class="col-md-1 IconeConf align-center">
+                <a href="InfUsuario.aspx" class="IconeConf"><img src="img/perfil.png" class="IconeCor" title="Informações do Usuário"/></a>
+                <a href="Calendario.aspx" class="IconeConf"><img src="img/calendario.png" class="IconeCor" title="Calendário"/></a>
+                <a href="Mensagem.aspx" class="IconeConf"><img src="img/mensagem.png" class="IconeCor" title="Mensagens"/></a>
+                <a href="Faq.aspx" class="IconeConf"><img src="img/faq.png" class="IconeCor" title="Perguntas Frequentes"/></a>
+            </div>
        </div>
+
+<!--Jquery/Bootstrap-->
+<script src="Scripts/js/jquery-3.3.1.min.js"></script>
+<script src="Scripts/js/bootstrap.min.js"></script>
+<!--Jquery/Bootstrap-->
 
 </body>
 </html>

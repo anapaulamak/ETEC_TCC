@@ -45,53 +45,8 @@ public partial class ExamesPesquisa : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        DataGrid1.DataSource = dt;
-        DataGrid1.DataBind();
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
         c.FecharConexao();
     }
-
-    protected void DataGrid1_DeleteCommand(object source, DataGridCommandEventArgs e)
-    {
-        int registro;
-        registro = Convert.ToInt32(e.Item.Cells[0].Text);
-        Conexao c = new Conexao();
-        c.AbrirConexao();
-        c.command.CommandText = "delete from tb_exame where id_exame=@registro";
-        c.command.Parameters.Add("@registro", SqlDbType.Int).Value = registro;
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
-        PesquisaExame();
-    }
-
-    //protected void DataGrid1_EditCommand(object source, DataGridCommandEventArgs e)
-    //{
-    //    int linha = e.Item.ItemIndex;
-    //    DataGrid1.EditItemIndex = linha;
-    //    PesquisaExame();
-    //}
-
-    //protected void DataGrid1_UpdateCommand(object source, DataGridCommandEventArgs e)
-    //{
-    //    Conexao c = new Conexao();
-    //    c.AbrirConexao();
-
-    //    int id_exame = Convert.ToInt32(e.Item.Cells[0].Text);
-    //    String nome = ((TextBox)Convert.ChangeType(e.Item.Cells[1].Controls[0], typeof(TextBox))).Text;
-    //    String data = ((TextBox)Convert.ChangeType(e.Item.Cells[2].Controls[0], typeof(TextBox))).Text;
-    //    String imagem = ((TextBox)Convert.ChangeType(e.Item.Cells[3].Controls[0], typeof(TextBox))).Text;
-    //    String tipoExame = ((TextBox)Convert.ChangeType(e.Item.Cells[4].Controls[0], typeof(TextBox))).Text;
-    //    String sql = "update tb_exame set nome=@nome, data=@data, tipoExame=@tipoExame, imagem=@imagem where id_exame=@id_exame";
-
-    //    c.command.CommandText = sql;
-    //    c.command.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
-    //    c.command.Parameters.Add("@data", SqlDbType.DateTime).Value = data;
-    //    c.command.Parameters.Add("@imagem", SqlDbType.VarChar).Value = imagem;
-    //    c.command.Parameters.Add("@tipoExame", SqlDbType.Int).Value = tipoExame;
-
-    //    c.command.ExecuteNonQuery();
-    //    c.FecharConexao();
-
-    //    DataGrid1.EditItemIndex = -1;
-    //    PesquisaExame();
-    //}
 }

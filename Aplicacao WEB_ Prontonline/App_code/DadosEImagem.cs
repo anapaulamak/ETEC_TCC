@@ -11,6 +11,7 @@ public class DadosEImagem
     public string Nome { get; set; }
     public byte[] Caminho { get; set; }
 
+
     public DadosEImagem()
     {
         //

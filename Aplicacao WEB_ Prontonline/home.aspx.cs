@@ -26,6 +26,7 @@ public partial class home : System.Web.UI.Page
         //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScrirpt", script, true);
         //DateTime dataNascimento = (TextBoxNascimento.Text == "dd/mm/aaaa") ? DateTime.Today : Convert.ToDateTime(TextBoxNascimento.Text);
         String sexo = Convert.ToString(RadioButtonList1.SelectedValue);
+        String estado = Convert.ToString(DropDownListEstado.Text);
         String senha = Convert.ToString(TextBoxSenha1.Text);
 
         Conexao c = new Conexao();
@@ -33,7 +34,7 @@ public partial class home : System.Web.UI.Page
 
         if (Validar() == true)
         {
-            String sql = "insert into tb_usuario (nome_usuario, e_mail_usuario, cpf, data_nascimento, sexo, senha) values (@nomeUsuario, @emailUsuario, @cpf, @dataNascimento, @sexo, @senha)";
+            String sql = "insert into tb_usuario (nome_usuario, e_mail_usuario, cpf, data_nascimento, sexo, senha, estado) values (@nomeUsuario, @emailUsuario, @cpf, @dataNascimento, @sexo, @senha, @estado)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@nomeUsuario", SqlDbType.VarChar).Value = nomeUsuario;
@@ -42,6 +43,7 @@ public partial class home : System.Web.UI.Page
             c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
             c.command.Parameters.Add("@sexo", SqlDbType.Char).Value = sexo;
             c.command.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+            c.command.Parameters.Add("@estado", SqlDbType.Char).Value = estado;
 
             c.command.ExecuteNonQuery();
             Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");

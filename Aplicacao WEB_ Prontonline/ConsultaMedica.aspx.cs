@@ -28,16 +28,6 @@ public partial class ConsultaMedica : System.Web.UI.Page
         }
     }
 
-    protected void ButtonReceita_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Receita.aspx");
-    }
-
-    protected void ButtonExame_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Exame.aspx");
-    }
-
     protected void ButtonMinhasConsulta_Click(object sender, EventArgs e)
     {
         Response.Redirect("ConsultaMedicaPesquisa.aspx");

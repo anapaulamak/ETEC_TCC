@@ -15,10 +15,17 @@ public partial class InfUsuario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         TextBoxNome.Enabled = false;
+        TextBoxNome.CssClass = "ConfTextBox";
         TextBoxEmail.Enabled = false;
+        TextBoxEmail.CssClass = "ConfTextBox";
         TextBoxCPF.Enabled = false;
+        TextBoxCPF.CssClass = "CConfTextBox";
         TextBoxData.Enabled = false;
+        TextBoxData.CssClass = "ConfTextBox";
+        DropDownListEstado.Enabled = false;
+        DropDownListEstado.CssClass = "ConfTextBox";
         RadioButtonList1.Enabled = false;
+        RadioButtonList1.CssClass = "ConfTextBox";
         ButtonSalvar.Enabled = false;
         ButtonSalvar.CssClass = "ConfButton";
         ButtonCancelar.Enabled = false;
@@ -58,6 +65,9 @@ public partial class InfUsuario : System.Web.UI.Page
                 String data = dt.Tables[0].Rows[0]["data_nascimento"].ToString();
                 TextBoxData.Text = data;
 
+                String estado = dt.Tables[0].Rows[0]["estado"].ToString();
+                DropDownListEstado.Text = estado;
+
                 String sexo = dt.Tables[0].Rows[0]["sexo"].ToString();
                 RadioButtonList1.SelectedValue = sexo;
 
@@ -71,6 +81,7 @@ public partial class InfUsuario : System.Web.UI.Page
         TextBoxNome.Enabled = true;
         TextBoxEmail.Enabled = true;
         TextBoxData.Enabled = true;
+        DropDownListEstado.Enabled = true;
         RadioButtonList1.Enabled = true;
         ButtonSalvar.Enabled = true;
         ButtonCancelar.Enabled = true;
@@ -81,10 +92,10 @@ public partial class InfUsuario : System.Web.UI.Page
 
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
-        AtualizarInfo(TextBoxNome.Text, Convert.ToDateTime(TextBoxData.Text), TextBoxEmail.Text, Session["CPF"].ToString());
+        AtualizarInfo(TextBoxNome.Text, Convert.ToDateTime(TextBoxData.Text), TextBoxEmail.Text, DropDownListEstado.Text, Session["CPF"].ToString());
     }
 
-    private void AtualizarInfo(string nome, DateTime data, string email, string cpf)
+    private void AtualizarInfo(string nome, DateTime data, string email, string cpf, string estado)
     {
         Conexao c = new Conexao();
         try
@@ -93,7 +104,7 @@ public partial class InfUsuario : System.Web.UI.Page
 
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "update tb_usuario set nome_usuario = @nome_usuario, data_nascimento = @data_nascimento, e_mail_usuario = @e_mail_usuario  where cpf = @cpf";
+            comando.CommandText = "update tb_usuario set nome_usuario = @nome_usuario, data_nascimento = @data_nascimento, e_mail_usuario = @e_mail_usuario estado = @estado where cpf = @cpf";
 
             SqlParameter parametro = new SqlParameter();
             parametro.ParameterName = "@nome_usuario";
@@ -118,6 +129,12 @@ public partial class InfUsuario : System.Web.UI.Page
             parametro3.SqlDbType = SqlDbType.VarChar;
             parametro3.Value = cpf;
             comando.Parameters.Add(parametro3);
+
+            SqlParameter parametro4 = new SqlParameter();
+            parametro4.ParameterName = "@estado";
+            parametro4.SqlDbType = SqlDbType.VarChar;
+            parametro4.Value = estado;
+            comando.Parameters.Add(parametro4);
 
             comando.ExecuteNonQuery();
         }

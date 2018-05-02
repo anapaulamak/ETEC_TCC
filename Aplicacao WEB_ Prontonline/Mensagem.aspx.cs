@@ -15,7 +15,9 @@ public partial class Memsagem : System.Web.UI.Page
         {
             Response.Redirect("home.aspx");
         }
+
         TextBoxResposta.Enabled = false;
+        TextBoxResposta.CssClass = "ConfTextArea";
 
         if (!IsPostBack)
         {
@@ -40,23 +42,24 @@ public partial class Memsagem : System.Web.UI.Page
             String tipoMensagem = Convert.ToString(DropDownListTipo.SelectedValue);
             String assunto = Convert.ToString(TextBoxAssunto.Text);
             String mensagem = Convert.ToString(TextBoxMensagem.Text);
+            int situacao = Convert.ToInt32(LabelSituacao.Text);
 
             Conexao c = new Conexao();
             c.AbrirConexao();
 
-            String sql = "insert into tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario) values (@tipoMensagem, @titulo, @mensagem, @id_usuario)";
+            String sql = "insert into tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario, situacao) values (@tipoMensagem, @titulo, @mensagem, @id_usuario, @situacao)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@tipoMensagem", SqlDbType.VarChar).Value = tipoMensagem;
             c.command.Parameters.Add("@titulo", SqlDbType.VarChar).Value = assunto;
             c.command.Parameters.Add("@mensagem", SqlDbType.VarChar).Value = mensagem;
             c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
+            c.command.Parameters.Add("@situacao", SqlDbType.Int).Value = situacao;
 
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Mensagem enviada com sucesso!');</script>");
         }
-
 
     }
 

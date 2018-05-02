@@ -33,7 +33,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Conexao c = new Conexao();
                 c.AbrirConexao();
 
-                String sql = "select nome_usuario from tb_usuario where cpf=@cpf";
+                String sql = "Select LEFT(nome_usuario, (CHARINDEX(' ', nome_usuario)-1)) as firstName from tb_usuario where cpf=@cpf";
                 c.command.CommandText = sql;
                 c.command.Parameters.Add("@cpf", SqlDbType.Char).Value = Session["UserId"];
 
@@ -42,7 +42,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 dAdapter.SelectCommand = c.command;
                 dAdapter.Fill(dt);
 
-                String nome = dt.Tables[0].Rows[0]["nome_usuario"].ToString();
+                String nome = dt.Tables[0].Rows[0]["firstName"].ToString();
                 lblNomeUsuario.Text = nome;
 
                 c.FecharConexao();

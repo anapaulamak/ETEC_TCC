@@ -5,108 +5,166 @@
     --cinza: #474c4d;
 }
 
+.row{
+    margin-left:0!important;
+    margin-right:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, 
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, 
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, 
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 html, body {
-    margin: 0px;
+    margin-right: 0px;
+    padding: 0px;
+    width:100%;
 }
 
-body {
-    margin: 0px;
-    min-width: 100%;
-    max-width: 100%;
+#inicio {
+    margin:0;
+    padding:0;
 }
 
-.row {
-    float: left;
-    min-width: 100%;
-    margin-bottom: 10px;
-}
-
-.col-1 {
-    width: 11.6%;
-}
-
-.col-2 {
-    width: 16.66%;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-.col-4 {
-    width: 33.33%;
-}
-
-.col-5 {
-    width: 41.66%;
-}
-
-.col-6 {
-    width: 50%;
-}
-
-.col-7 {
-    width: 58.33%;
-}
-
-.col-8 {
-    width: 66.66%;
-}
-
-.col-9 {
-    width: 75%;
-}
-
-.col-10 {
-    width: 83.33%;
-}
-
-.col-11 {
-    width: 91.66%;
-}
-
-.col-12 {
-    width: 100%;
-}
-
-[class*="col-"] {
-    float: left;
-    text-align: center;
-    min-height: 1px;
-}
-
-.ConfLogo {
-    width: 450px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 1.8em;
-}
-
-div {
-    font-family: 'Arial Unicode MS';
-}
-
-#MenuPrincipal{
-    padding-top: 90px;
-    padding-bottom: 0px;
+#MenuPrincipal {
+    padding-top: 9%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .ItemMenu {
     font-size: 1.8em;
     color: #333333;
-    text-decoration: none;
+    text-decoration: none!important;
     font-family: "Arial Rounded MT";
     align-content: center;
-    padding-bottom: 2px;
+    padding-bottom: 4px;
 }
 
 .menuCor {
     background-color: #ccc;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.ConfImagem {
+    width: 95%;
+    padding-top:20px;
+}
+
+.ConfForm1 {
+    display: block;
+    border-style: none;
+    border-radius: 5px;
+    background: #eee;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    padding: 20px;
+    font-size: 1.5em;
+    font-family: 'Arial Rounded MT';
+}
+
+.ConfForm2 {
+    display: block;
+    border-style: none;
+    border-radius: 5px;
+    background: #eee;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 1.3em;
+    font-family: 'Arial Rounded MT';
+}
+
+.AjustNovoLink {
+    margin-left: 15%;
+    text-decoration: none;
+}
+
+.CadastroForm {
+    background: #eee;
+    padding: 20px;
+    font-family: Arial;
+    font-size: 1.7em;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#ProntOnline {
+    height: 65%;
+    max-width: 100%;
+    background-color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    vertical-align: middle;
+}
+
+.descricao {
+    margin-left: 10%;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Arial Rounded MT';
+    margin-top: 15%;
+    font-size:1.8em;
+}
+
+.ajustIconHome {
+    margin-top: 1%;
+    margin-bottom:1%;
+}
+
+.ConfVideo {
+    float: right;
+}
+
+.Foto {
     border-radius: 10px;
+    width: 100%;
+}
+
+.FonteFoto {
+    font-family: 'Arial Rounded MT';
+    font-size: 2em;
+    margin-left: 3%;
+}
+
+.FonteFotoDescricao {
+    font-family: 'Arial Rounded MT';
+    font-size: 1em;
+    margin-left: 3%;
+}
+
+.ConfFotos {
+    margin-bottom: 5%;
+    margin-left: 3% !important;
+}
+
+.IconRedesSociais1{
+    margin:3px;
+    width:50px;
+    height:50px;
+}
+
+.IconRedesSociais2 {
+    margin: 3px;
+    width: 45px;
+    height: 45px;
+}
+
+.ConfFormItens {
+    margin-bottom: 5%;
+}
+
+#FormCadastro{
+    padding:5%;
 }
 
 .ConfFundoVerde {
@@ -115,43 +173,39 @@ div {
     max-width: 100%;
 }
 
-.Titulo {
-    text-align: left;
-    font-family: 'Arial Rounded MT';
-    color: var(--cinza);
-}
-
-.ConfButton{
+.ConfButton {
     background-color: var(--AzulEscuro);
+    color: #ffffff;
     border: none;
     border-radius: 5px;
-    color: #ffffff;
     padding: 10px 20px;
+    margin-top: 7%;
+    margin-bottom: 5%;
+    cursor: pointer;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     font-size: 1.2em;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 100%;
     font-family: 'Arial Rounded MT';
 }
-    
-.ConfButton2{
+
+.ConfButton2 {
     background-color: var(--AzulEscuro);
+    color: #ffffff;
     border: none;
     border-radius: 5px;
-    color: #ffffff;
     padding: 10px 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
     text-align: center;
     text-decoration: none;
     font-size: 0.7em;
-    margin: 3px 1px;
+    font-family: 'Arial Rounded MT';
     cursor: pointer;
     width: 100%;
-    font-family: 'Arial';
-    }
+}
 
-.ConfButton3{
+.ConfButton3 {
     background-color: var(--AzulEscuro);
     border: none;
     border-radius: 5px;
@@ -163,89 +217,71 @@ div {
     margin: 3px 1px;
     cursor: pointer;
     width: 100%;
-    font-family: 'Arial';
-}
-
-.ConfImagem {
-    width: 70%;
-    padding-top: 20px;
-}
-
-.ConfForm {
-    display: block;
-    border-style: solid grey 5px;
-    padding: 10px;
     font-family: 'Arial Rounded MT';
-    border-radius: 10px;
 }
-
-.login {
-    background: #eee;
-    margin-top: 70px;
-    padding-top: 20px;
-    font-family: Arial;
-    font-size: 1.7em;
-    margin-bottom: 70px;
-} 
-
-.CadastroForm {
-    background: #eee;
-    margin-top: 10px;
-    padding-top: 20px;
-    font-family: Arial;
-    font-size: 1.7em;
-    margin-bottom: 70px;
-}
-
-.login-input {
-    width: 100%;
-    height: 30px;
-    border: 0px solid;
-}
-
 
 .align-left {
     text-align: left !important;
 }
-
-.ConfHome {
-    max-height: 100%;
-    max-width: 100%;
-    padding-top: 20px;
-    background-color: white;
+.align-center {
+    text-align: center !important;
+}
+.align-right {
+    text-align: right !important;
 }
 
-.descricao {
-    padding-top: 30px;
+h1 {
     text-align: center;
+    font-size: 1.6em;
+}
+
+.Titulo {
+    text-align: left;
+    font-family: 'Arial Rounded MT';
+    color: var(--cinza);
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 #Footer {
-    justify-content: center;
-    align-content: center;
     text-align: center;
-    font-family: georgia;
-    font-size: 1em;
+    font-family: 'Arial Rounded MT';
+    font-size: 1.2em;
     padding: 2%;
+    background-color: var(--VerdeAzulado);
 }
 
-.ConfMenu1 {
-    padding-top: 20px;
+.PagInfoUsuario{
+    margin:0!important;
+    padding:0!important;
 }
 
-.PagForms {
+.PageForms {
     background-color: #eee;
     border: solid 3px var(--VerdeAzulado);
     border-radius: 20px;
+    padding-top:1%;
+    padding-bottom:5%;
+}
+
+.IconeConf {
+    padding-right: 0 !important;
+    padding-left: 0!important;
+    margin: 0 !important;
 }
 
 .IconeCor {
     filter: grayscale(100%);
+    width: 80%;
 }
 
     .IconeCor:hover {
         filter: grayscale(0%);
     }
+
+.ConfMenu1 {
+    padding-top: 20px;
+}
 
 .ConfImagemInicio {
     width: 80%;
@@ -258,22 +294,36 @@ div {
     border: solid, 3px, var(--AzulEscuro);
 }
 
-td{
-    padding:10px;
+.ConfTextBox{
+    height: 25px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: none;
 }
 
-.Fonte{
-    font-family:'Arial Rounded MT';
+.ConfTextArea {
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .Fonte1 {
     font-family: 'Arial Rounded MT';
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
-.Foto{
-    border-radius:50px;
+.Fonte2 {
+    font-family: 'Arial Rounded MT';
+    font-size: 3em;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    text-align: center;
 }
+
+.Fonte3 {
+    font-family: 'Arial Rounded MT';
+    font-size: 2em;
+}
+
 
 title {
     font-family: 'Arial Rounded MT';
@@ -291,4 +341,8 @@ title {
 .lblImgConf {
     width: 300px!important;
     height: 300px!important;
+}
+
+.ConfGridViewItens{
+    padding:10px;
 }
