@@ -35,7 +35,7 @@ public class Conexao
     }
 
     
-    public SqlDataReader Iniciando(string contextquery)
+    public SqlDataReader SelecionaImg(string contextquery)
     {
         Conexao c = new Conexao();
         try
@@ -54,6 +54,7 @@ public class Conexao
             return null;
         }
     }
+
 }
 
 

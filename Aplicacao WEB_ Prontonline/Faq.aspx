@@ -18,11 +18,11 @@
         </asp:SqlDataSource>
 
         <div class="row">
-            <div class="col-md-4 align-left">
+            <div class="col-md-5 align-left">
                 <asp:Label ID="Label6" runat="server" Text="Palavra-chave"></asp:Label>
-                <asp:TextBox ID="TextBoxPalavra" runat="server" width="100%" class="ConfTextBox"></asp:TextBox>
+                <asp:TextBox ID="TextBoxPalavra" runat="server" width="90%" class="ConfTextBox"></asp:TextBox>
             </div>
-		    <div class="col-md-4 align-left">
+		    <div class="col-md-3 align-left">
                 <asp:Button ID="Button1" runat="server" Text="Buscar" class="ConfButton2" OnClick="Button1_Click"/>
 		    </div>
         </div>

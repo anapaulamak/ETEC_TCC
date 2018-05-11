@@ -7,14 +7,14 @@
     <h1 class="Titulo align-left">CONSULTA MÉDICA</h1>
 
     <div class="row">
-        <p class="align-left">Informações do Médico</p>
+        <p class="align-left Fonte3">Informações do Médico</p>
         <div class="col-md-4 align-left"> 
             <asp:Label ID="Label1" runat="server" Text="Nome Médico"></asp:Label>
             <asp:DropDownList ID="DropDownListMedico" runat="server" 
                 DataSourceID="SqlDataSource2" 
                 DataTextField="nome" 
                 DataValueField="id_medico" 
-                Width="100%" 
+                Width="90%" 
                 OnSelectedIndexChanged="DropDownListMedico_SelectedIndexChanged1" 
                 AutoPostBack="True"
                 class="ConfTextBox"></asp:DropDownList>
@@ -30,18 +30,20 @@
                   
         <div class="col-md-4 align-left">
             <asp:Label ID="Label2" runat="server" Text="CRM"></asp:Label>
-            <asp:TextBox ID="TextBoxCRM" runat="server" Width="100%" class="ConfTextBox"></asp:TextBox>
+            <asp:TextBox ID="TextBoxCRM" runat="server" Width="90%" class="ConfTextBox"></asp:TextBox>
         </div>
 
         <div class="col-md-4 align-left">
             <asp:Label ID="Label3" runat="server" Text="Especialidade"></asp:Label>
             <asp:DropDownList 
                 ID="DropDownListEspecialidade" 
-                runat="server" Width="100%" 
+                runat="server" 
+                Width="90%" 
                 DataSourceID="SqlDataSource1" 
                 DataTextField="nome" 
                 DataValueField="id_especialidade"
                 class="ConfTextBox"></asp:DropDownList>
+
             <asp:SqlDataSource ID="SqlDataSource1" 
                 runat="server" 
                 ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" 
@@ -58,7 +60,7 @@
 
     <div class="row align-left">
         <div>
-            <p class="align-left">Informações da Consulta</p>
+            <p class="align-left Fonte3">Informações da Consulta</p>
             <asp:Label ID="Label9" runat="server" Text="Data do Exame" ></asp:Label>
             <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" class="ConfTextBox"></asp:TextBox>
         </div>
@@ -92,10 +94,10 @@
     <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-3">
-            <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar" class="ConfButton" OnClick="ButtonAdicionar_Click"></asp:Button>
+            <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar" class="ConfButton" OnClick="ButtonAdicionar_Click" Width="90%"></asp:Button>
         </div>
         <div class="col-md-3">
-            <asp:Button ID="ButtonMinhasConsulta" runat="server" Text="Minhas Consultas" class="ConfButton" OnClick="ButtonMinhasConsulta_Click"/>
+            <asp:Button ID="ButtonMinhasConsulta" runat="server" Text="Minhas Consultas" class="ConfButton" OnClick="ButtonMinhasConsulta_Click" Width="90%"/>
         </div>
     </div>
 </div>

@@ -127,7 +127,7 @@ html, body {
 
 .Foto {
     border-radius: 10px;
-    width: 100%;
+    width: 80%;
 }
 
 .FonteFoto {
@@ -157,6 +157,10 @@ html, body {
     margin: 3px;
     width: 45px;
     height: 45px;
+}
+
+.IconsRedes {
+    margin-bottom:0;
 }
 
 .ConfFormItens {
@@ -199,7 +203,7 @@ html, body {
     margin-bottom: 5%;
     text-align: center;
     text-decoration: none;
-    font-size: 0.7em;
+    font-size: 0.9em;
     font-family: 'Arial Rounded MT';
     cursor: pointer;
     width: 100%;
@@ -218,6 +222,22 @@ html, body {
     cursor: pointer;
     width: 100%;
     font-family: 'Arial Rounded MT';
+}
+
+.ConfButton4 {
+    background-color: var(--AzulEscuro)!important;
+    color: #ffffff!important;
+    border: none!important;
+    border-radius: 5px!important;
+    padding: 10px 20px!important;
+    margin-top: 7%!important;
+    margin-bottom: 5%!important;
+    cursor: pointer!important;
+    width: 90%!important;
+    text-align: center!important;
+    text-decoration: none!important;
+    font-size: 1.2em!important;
+    font-family: 'Arial Rounded MT'!important;
 }
 
 .align-left {
@@ -248,7 +268,7 @@ h1 {
     font-family: 'Arial Rounded MT';
     font-size: 1.2em;
     padding: 2%;
-    background-color: var(--VerdeAzulado);
+    /*background-color: var(--VerdeAzulado);*/
 }
 
 .PagInfoUsuario{
@@ -298,12 +318,17 @@ h1 {
     height: 25px;
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-left:3%;
+    margin-right:3%;
     border: none;
 }
 
 .ConfTextArea {
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border: none;
 }
 
 .Fonte1 {
@@ -324,6 +349,16 @@ h1 {
     font-size: 2em;
 }
 
+.Fonte4 {
+    font-family: 'Arial Rounded MT';
+    font-size: 1.2em;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
+    margin-bottom:5%;
+    color: White;
+}
 
 title {
     font-family: 'Arial Rounded MT';
@@ -345,4 +380,27 @@ title {
 
 .ConfGridViewItens{
     padding:10px;
+}
+
+.ConfGridView{
+    width: 60%;
+}
+
+.ConfIconValores{
+    width: 40%;
+    height: 40%;
+}
+
+.confValores {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.FonteValores {
+    font-family: 'Arial Rounded MT';
+    font-size: 2em;
+    margin-left: 3%;
+    color: white;
 }

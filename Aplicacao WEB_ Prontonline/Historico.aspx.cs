@@ -95,6 +95,8 @@ public partial class Historico : System.Web.UI.Page
         DataGridAlergia.DataSource = dt;
         DataGridAlergia.DataBind();
         c.FecharConexao();
+
+        TextBoxData.Text = "";
     }
     protected void DataGridAlergia_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
@@ -168,6 +170,8 @@ public partial class Historico : System.Web.UI.Page
         DataGridCirurgia.DataSource = dt;
         DataGridCirurgia.DataBind();
         c.FecharConexao();
+
+        TextBoxData2.Text = "";
     }
     protected void DataGridCirurgia_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
@@ -241,6 +245,7 @@ public partial class Historico : System.Web.UI.Page
         DataGridFratura.DataSource = dt;
         DataGridFratura.DataBind();
         c.FecharConexao();
+        TextBoxData3.Text = "";
     }
     protected void DataGridFratura_DeleteCommand(object source, DataGridCommandEventArgs e)
     {
@@ -254,9 +259,5 @@ public partial class Historico : System.Web.UI.Page
         c.FecharConexao();
 
         CadastroFratura();
-    }
-    protected void ButtonSalvar_Click(object sender, EventArgs e)
-    {
-        Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
     }
 }

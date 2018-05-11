@@ -10,13 +10,8 @@
             <div class="row">
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
-                    <asp:Label ID="Label1" runat="server" Text="Nome do Médico"></asp:Label>
-                    <asp:DropDownList ID="DropDownListMedico" runat="server" DataSourceID="SqlDataSource2" DataTextField="nome" DataValueField="id_medico" Width="100%" class="ConfTextBox"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString2 %>" SelectCommand="SELECT m.nome, m.id_medico, u.id_usuario FROM tb_medico as m JOIN tb_usuario as u ON m.id_usuario = u.id_usuario WHERE u.cpf=@cpf">
-                        <SelectParameters>
-                            <asp:SessionParameter Name="cpf" SessionField="UserId" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+                    <asp:Label ID="Label1" runat="server" Text="Receita Médica"></asp:Label>
+                    <asp:TextBox ID="TextBoxNomeReceita" runat="server" Width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
 			    <div class="col-md-1"></div>
 		    </div>
@@ -51,11 +46,11 @@
     <div class="row">
         <div class="col-md-3"></div>
 		<div class="col-md-3">
-            <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar Agora" class="ConfButton" Width="90%" />
+            <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar Agora" class="ConfButton" Width="90%" OnClick="ButtonSalvar_Click" />
         </div>
 		<div class="col-md-3">
-            <button id="ButtonAdicionarImagem"
-                class="btn btn-primary ConfButton" type="button" 
+            <button id="ButtonAdicionarImagem" runat="server"
+                class="btn btn-primary ConfButton4" type="button" 
                 data-toggle="collapse" data-target="#inserirImagem" 
                 aria-expanded="false" aria-controls="#inserirImagem">Adicionar Imagens</button>
         </div>
@@ -66,7 +61,11 @@
 
     <div id="inserirImagem" class="collapse">     
         <div class="row">
-            <h2 class="Titulo">Imagens da Receita Médica</h2>   
+            <div>
+                <h2 class="Titulo">Imagens da Receita Médica</h2>   
+                <asp:Label ID="lblIdReceita" runat="server" Text="idReceita" Visible="false"></asp:Label>
+                <asp:Label ID="lblIdImgReceita" runat="server" Text="idImagemReceita" Visible="false"></asp:Label>
+            </div>
 
             <div class="col-md-8">
                 <div class="row">
@@ -79,7 +78,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <asp:Button ID="btnImagemReceita" runat="server" Text="Inserir" CssClass="ConfButton"/>
+                <asp:Button ID="btnImagemReceita" runat="server" Text="Inserir" CssClass="ConfButton" OnClick="btnImagemReceita_Click"/>
             </div>
         </div>
 

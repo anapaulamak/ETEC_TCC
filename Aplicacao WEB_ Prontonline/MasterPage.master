@@ -38,8 +38,6 @@
 				<a href="Exame.aspx" class="IconeConf"><img src="img/exame.png" class="IconeCor" title="Exames Médicos"/></a>
 				<a href="Receita.aspx" class="IconeConf"> <img src="img/receita.png" class="IconeCor" title="Receitas Médicas"/></a>	
     			<a href="Vacina.aspx" class="IconeConf"><img src="img/vacina.png" class="IconeCor" title="Vacinas"/></a>
-                <a href="StatusSaude.aspx" class="IconeConf"><img src="img/saude.png" class="IconeCor" title="Status Saúde"/></a>
-	            <a href="Historico.aspx" class="IconeConf"><img src="img/historico.png" class="IconeCor" title="Histórico Médico"/></a>
                 <a href="Remedios.aspx" class="IconeConf"><img src="img/remedios.png" class="IconeCor" title="Remédios"/></a>
             </div>
 
@@ -61,7 +59,9 @@
             
             <div class="col-md-1 IconeConf align-center">
                 <a href="InfUsuario.aspx" class="IconeConf"><img src="img/perfil.png" class="IconeCor" title="Informações do Usuário"/></a>
-                <a href="Calendario.aspx" class="IconeConf"><img src="img/calendario.png" class="IconeCor" title="Calendário"/></a>
+                <a href="StatusSaude.aspx" class="IconeConf"><img src="img/saude.png" class="IconeCor" title="Status Saúde"/></a>
+	            <a href="Historico.aspx" class="IconeConf"><img src="img/historico.png" class="IconeCor" title="Histórico Médico"/></a>
+<%--                <a href="Calendario.aspx" class="IconeConf"><img src="img/calendario.png" class="IconeCor" title="Calendário"/></a>--%>
                 <a href="Mensagem.aspx" class="IconeConf"><img src="img/mensagem.png" class="IconeCor" title="Mensagens"/></a>
                 <a href="Faq.aspx" class="IconeConf"><img src="img/faq.png" class="IconeCor" title="Perguntas Frequentes"/></a>
             </div>

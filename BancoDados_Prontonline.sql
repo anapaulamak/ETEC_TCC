@@ -19,7 +19,8 @@ create table tb_usuario(
 	sexo CHAR,
 	data_nascimento DATE,
 	e_mail_usuario VARCHAR(30),
-	senha CHAR(8)
+	senha CHAR(8),
+	estado CHAR(2)
 ) 
 go
 
@@ -83,17 +84,9 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgExame' AND xtype='U')
 create table tb_imgExame(
 	id_imgExame INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	imagemExame VARBINARY(MAX),
-	nomeImgExame VARCHAR(50)
-)
-go
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgExame_exame' AND xtype='U')
-create table tb_imgExame_exame(
-	id_imgExame_exame INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_exame INT FOREIGN KEY REFERENCES  tb_exame(id_exame),
-	id_imgExame INT FOREIGN KEY REFERENCES  tb_imgExame(id_imgExame),
-
+	imagemExame VARBINARY(MAX),
+	nomeImgExame VARCHAR(100)
 )
 go
 
@@ -109,17 +102,9 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgReceita' AND xtype='U')
 create table tb_imgReceita(
 	id_imgReceita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	imagemReceita VARBINARY(MAX),
-	nomeImgReceita VARCHAR(50)
-)
-go
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgReceita_receita' AND xtype='U')
-create table tb_imgReceita_receita(
-	id_imgReceita_receita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_receita INT FOREIGN KEY REFERENCES  tb_receita(id_receita),
-	id_imgReceita INT FOREIGN KEY REFERENCES  tb_imgReceita(id_imgReceita),
-
+	imagemReceita VARBINARY(MAX),
+	nomeImgReceita VARCHAR(100)
 )
 go
 
@@ -137,19 +122,11 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgRemedio' AND xtype='U')
 create table tb_imgRemedio(
 	id_imgRemedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	imagemRemedio VARBINARY(MAX),
-	nomeImgRemedio VARCHAR(50)
-)
-go
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgRemedio_remedio' AND xtype='U')
-create table tb_imgRemedio_remedio(
-	id_imgRemedio_reemedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_remedio INT FOREIGN KEY REFERENCES  tb_remedios(id_remedio),
-	id_imgRemedio INT FOREIGN KEY REFERENCES  tb_imgRemedio(id_imgRemedio)
+	imagemRemedio VARBINARY(MAX),
+	nomeImgRemedio VARCHAR(100)
 )
 go
-
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_tipoVacina' AND xtype='U')
 create table tb_tipoVacina(
@@ -165,24 +142,15 @@ create table tb_vacina(
 	id_tipoVacina INT FOREIGN KEY REFERENCES tb_tipoVacina(id_tipoVacina),
 	id_usuario INT FOREIGN KEY REFERENCES tb_usuario (id_usuario),
 	data DATE,
-	imagem VARBINARY(MAX)
 )
 go
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgVacina' AND xtype='U')
 create table tb_imgVacina(
 	id_imgVacina INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	imagemVacina VARBINARY(MAX),
-	nomeImgVacina VARCHAR(50)
-)
-go
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgVacina_vacina' AND xtype='U')
-create table tb_imgVacina_vacina(
-	id_imgVacina_vacina INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_vacina INT FOREIGN KEY REFERENCES  tb_vacina(id_vacina),
-	id_imgVacina INT FOREIGN KEY REFERENCES  tb_imgVacina(id_imgVacina),
-
+	imagemVacina VARBINARY(MAX),
+	nomeImgVacina VARCHAR(100)
 )
 go
 
@@ -238,8 +206,8 @@ instead of insert
 AS 
 BEGIN
 
-INSERT INTO tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario, dataEnvio)
-SELECT tipoMensagem, titulo, mensagem, id_usuario, GETDATE() FROM INSERTED
+INSERT INTO tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario, situacao, resposta, dataResposta, dataEnvio)
+SELECT tipoMensagem, titulo, mensagem, id_usuario, situacao, resposta, dataResposta, GETDATE() FROM INSERTED
 END
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_statusSaude' AND xtype='U')
@@ -272,7 +240,6 @@ create table tb_tipoFratura(
 )
 go
 
--- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_fratura' AND xtype='U')
 create table tb_fratura(
 	id_fratura INT IDENTITY(1,1) PRIMARY KEY not null,
@@ -290,7 +257,6 @@ create table tb_tipoAlergia(
 )
 go
 
--- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_alergia' AND xtype='U')
 create table tb_alergia(
 	id_alergia INT IDENTITY(1,1) PRIMARY KEY not null,
@@ -308,7 +274,6 @@ create table tb_tipoCirurgia(
 )
 go
 
--- alterei chave estrangeira de StatusSaude para Usuario
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_cirurgia' AND xtype='U')
 create table tb_cirurgia(
 	id_cirurgia INT IDENTITY(1,1) PRIMARY KEY not null,
@@ -481,8 +446,9 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Ressonância Magnética do Tórax',1),     
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
-                          
-INSERT INTO tb_permissao (descricao) values ('Administrador'), ('Suporte')select * from tb_medico
-select * from tb_imgRemedio
+                         
+select * from tb_medico
+insert into tb_medico (id_usuario, CRM, nome) values (1, '12345','Doutora Maria')
 
 select * from tb_remedios
+select * from tb_ImgRemedio

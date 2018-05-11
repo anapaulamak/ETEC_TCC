@@ -12,8 +12,7 @@ public partial class home : System.Web.UI.Page
     Conexao conectar = new Conexao();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Se eu preencher o textbox com a data atual, não melhora??
-        //TextBoxNascimento.Text = Convert.ToString(DateTime.Now);
+
     }
 
     protected void ButtonCadastrar_Click(object sender, EventArgs e)
@@ -22,9 +21,6 @@ public partial class home : System.Web.UI.Page
         String emailUsuario = Convert.ToString(TextBoxEmail.Text);
         String cpf = Convert.ToString(TextBoxCPF.Text);
         String dataNascimento = Convert.ToString(TextBoxNascimento.Text);
-        //string script = "alert(" + TextBoxNascimento.Text + ");";
-        //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScrirpt", script, true);
-        //DateTime dataNascimento = (TextBoxNascimento.Text == "dd/mm/aaaa") ? DateTime.Today : Convert.ToDateTime(TextBoxNascimento.Text);
         String sexo = Convert.ToString(RadioButtonList1.SelectedValue);
         String estado = Convert.ToString(DropDownListEstado.Text);
         String senha = Convert.ToString(TextBoxSenha1.Text);
@@ -107,25 +103,25 @@ public partial class home : System.Web.UI.Page
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
 
-        String login = TextBoxLogin.Text;
-        String senha = TextBoxSenha.Text;
-
-        c.command.CommandText = "Select count(*) as LOGINS from tb_usuario where cpf=@cpf and senha=@senha";
-        c.command.Parameters.Add("@cpf", SqlDbType.VarChar).Value = login;
-        c.command.Parameters.Add("@senha", SqlDbType.VarChar).Value = senha;
+        c.command.CommandText = "Select * from tb_usuario where cpf=@cpf and senha=@senha";
+        c.command.Parameters.Add("@cpf", SqlDbType.VarChar).Value = TextBoxLogin.Text;
+        c.command.Parameters.Add("@senha", SqlDbType.VarChar).Value = TextBoxSenha.Text;
 
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        if (Convert.ToInt32(dt.Tables[0].DefaultView[0].Row["LOGINS"]) == 1)
+        if (dt.Tables[0].DefaultView.Count == 1)
         {
             Session["logado"] = 1;
-            Session["UserId"] = login;
+            Session["UserId"] = dt.Tables[0].DefaultView[0].Row["cpf"].ToString();
+            Session["IdUsuario"] = Convert.ToInt32(dt.Tables[0].DefaultView[0].Row["id_usuario"].ToString());
             Response.Redirect("InfUsuario.aspx");
         }
         else
         {
             Response.Write("<script language = 'javascript'> alert ('Login Invalido');</script>");
+            TextBoxLogin.Text = "";
+            TextBoxSenha.Text = "";
         }
     }
 }

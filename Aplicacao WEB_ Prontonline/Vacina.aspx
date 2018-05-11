@@ -13,16 +13,7 @@
                     <asp:Label ID="LabelTipoVacina" runat="server" Text="Tipo da vacina"></asp:Label>
                     <asp:DropDownList ID="DropDownListTipo" runat="server" width="100%" class="ConfTextBox" DataSourceID="SqlDataSource1" DataTextField="descricao" DataValueField="id_tipoVacina" ></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString %>" SelectCommand="SELECT [id_tipoVacina], [descricao] FROM [tb_tipoVacina] where situacao=1"></asp:SqlDataSource>
-                </div>
-			    <div class="col-md-1"></div>
-                <br />
-		    </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="row">
-		        <div class="col-md-1"></div>
-		        <div class="col-md-10 align-left">
+                    <br />
                     <asp:Label ID="LabelData" runat="server" Text="Data"></asp:Label>
                     <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
@@ -39,7 +30,7 @@
         </div>
 		<div class="col-md-3">
             <button id="ButtonAdicionarImagem" runat="server"
-                class="btn btn-primary ConfButton" type="button" 
+                class="btn btn-primary ConfButton4" type="button" 
                 data-toggle="collapse" data-target="#inserirImagem" 
                 aria-expanded="false" aria-controls="#inserirImagem">Adicionar Imagens</button>
         </div>

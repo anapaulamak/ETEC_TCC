@@ -14,8 +14,7 @@ public partial class img_Vacina : System.Web.UI.Page
     Conexao c = new Conexao();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //ButtonAdicionarImagem.Enabled = false;
-        //ButtonAdicionarImagem.CssClass = "ConfButton";
+        ButtonAdicionarImagem.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -39,9 +38,6 @@ public partial class img_Vacina : System.Web.UI.Page
     {
         if (Validar() == true)
         {
-            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-            int usuario = Convert.ToInt32(i.ID());
-
             int id_tipoVacina = Convert.ToInt32(DropDownListTipo.SelectedValue);
             DateTime dataVacina = Convert.ToDateTime(TextBoxData.Text);
 
@@ -53,12 +49,12 @@ public partial class img_Vacina : System.Web.UI.Page
 
             c.command.Parameters.Add("@tipoVacina", SqlDbType.Int).Value = id_tipoVacina;
             c.command.Parameters.Add("@data", SqlDbType.DateTime).Value = dataVacina;
-            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = Session["IdUsuario"];
 
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação inserida com sucesso!');</script>");
-            //ButtonAdicionarImagem.Enabled = true;
+            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdVacina();
         }
@@ -107,7 +103,7 @@ public partial class img_Vacina : System.Web.UI.Page
 
 
     /*Inserção da imagem da vacina na tabela imgVacina*/
-    public string InserirDados(DadosEImagem imagemVacina)
+    public string InserirDadosImgVacina(DadosEImagem imagemVacina)
     {
         Conexao c = new Conexao();
         try
@@ -115,7 +111,7 @@ public partial class img_Vacina : System.Web.UI.Page
             c.AbrirConexao();
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "INSERT INTO tb_imgVacina (imagemVacina, nomeImgVacina) VALUES (@imagemVacina, @nomeImgVacina)" + "SELECT SCOPE_IDENTITY()";
+            comando.CommandText = "INSERT INTO tb_imgVacina (imagemVacina, nomeImgVacina, id_vacina) VALUES (@imagemVacina, @nomeImgVacina, @id_vacina)" + "SELECT SCOPE_IDENTITY()";
             // O SELECT SCOPE_IDENTITY() retorna o valor do escopo de identidade, nesse caso, o ID 
 
             SqlParameter parametro1 = new SqlParameter();
@@ -125,11 +121,12 @@ public partial class img_Vacina : System.Web.UI.Page
             comando.Parameters.Add(parametro1);
 
             comando.Parameters.Add("@imagemVacina", SqlDbType.VarBinary).Value = imagemVacina.Caminho;
+            c.command.Parameters.Add("@id_vacina", SqlDbType.Int).Value = lblIdVacina;
 
             var idI = comando.ExecuteScalar();
             lblIdImgVacina.Text = (idI + "");
             // O ExecuteScalar() é um método que retorna o valor da primeira coluna e da primeira linha (ou seja, o ID)
-            string url = ("IMGHandler.ashx?id=" + idI).ToString();
+            string url = ("IMGHandlerVacina.ashx?id=" + idI).ToString();
             return url;
 
         }
@@ -144,7 +141,7 @@ public partial class img_Vacina : System.Web.UI.Page
         }
     }
 
-    /*Evento no botão para salvar a imagem*/
+    /*Evento no botão para salvar a imagem e mostrá-la na tela*/
     protected void btnImagemVacina_Click(object sender, EventArgs e)
     {
         byte[] image;
@@ -161,28 +158,12 @@ public partial class img_Vacina : System.Web.UI.Page
             usuario.Nome = NomeImagemVacina.Text;
             usuario.Caminho = image;
 
-            img1.ImageUrl = InserirDados(usuario);
-            InserirAssociativaImgVacina();
+            img1.ImageUrl = InserirDadosImgVacina(usuario);
+
+            DropDownListTipo.Text = "";
+            TextBoxData.Text = "";
+
+            Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
-    }
-
-    /*Salvar informações na tabela associativa*/
-    public void InserirAssociativaImgVacina()
-    {
-        int id_vacina = Convert.ToInt32(lblIdVacina.Text);
-        int id_imgVacina = Convert.ToInt32(lblIdImgVacina.Text);
-
-        Conexao c = new Conexao();
-        c.AbrirConexao();
-
-        String sql = "insert into tb_imgVacina_vacina (id_vacina, id_imgVacina) values (@id_vacina, @id_imgVacina)";
-        c.command.CommandText = sql;
-
-        c.command.Parameters.Add("@id_vacina", SqlDbType.Int).Value = id_vacina;
-        c.command.Parameters.Add("@id_imgVacina", SqlDbType.Int).Value = id_imgVacina;
-
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
-        Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
     }
 }

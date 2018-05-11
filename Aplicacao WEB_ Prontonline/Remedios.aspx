@@ -57,7 +57,7 @@
         </div>
 		<div class="col-md-3">
             <button id="ButtonAdicionarImagem" runat="server"
-                class="btn btn-primary ConfButton" type="button" 
+                class="btn btn-primary ConfButton4" type="button" 
                 data-toggle="collapse" data-target="#inserirImagem" 
                 aria-expanded="false" aria-controls="#inserirImagem">Adicionar Imagens</button>
         </div>

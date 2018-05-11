@@ -40,7 +40,7 @@
         <br />
 	</div>   
                 
-    <div class="row">
+<%--    <div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 align-left">
             <asp:Label ID="LabelResposta" runat="server" Text="Resposta"></asp:Label>
@@ -48,7 +48,7 @@
         </div>
 		<div class="col-md-1"></div>
         <br />
-	</div>  
+	</div>  --%>
     
     <div class="row">
         <br />

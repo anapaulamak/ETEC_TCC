@@ -19,17 +19,20 @@
 
         <div class="col-md-8">
 		    <nav id="MenuPrincipal" class="row">
-			    <div class="col-md-3"></div>
-			    <div class="col-md-9 menuCor">
+			    <div class="col-md-2"></div>
+			    <div class="col-md-10 menuCor">
 				    <div class="row">
-					    <div class="col-md-4">
+					    <div class="col-md-3">
 						    <a href="#ProntOnline" class="ItemMenu">ProntOnline</a>
 					    </div>		
-					    <div class="col-md-4">
+					    <div class="col-md-3">
+						    <a href="#Cadastrar" class="ItemMenu">Cadastrar</a>
+					    </div>
+					    <div class="col-md-3">				
 						    <a href="#QuemSomos" class="ItemMenu">Quem Somos</a>
 					    </div>
-					    <div class="col-md-4">				
-						    <a href="#Cadastrar" class="ItemMenu">Cadastrar</a>
+                        <div class="col-md-3">				
+                            <a href="#Valores" class="ItemMenu">Valores</a>
 					    </div>
 				    </div>
 			    </div>
@@ -102,13 +105,15 @@
                     <div class="row">
                         <div class="col-md-6 align-center">
 				            <img src="img/anacarol.jpg" class="Foto" />
+                            <div class="IconsRedes">
+                                <a href="https://www.linkedin.com/in/ana-carolina-bispo-278b93148/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
+                                <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
+                                <a href="https://www.facebook.com/carolisbispo" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            </div>
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">ANA CAROLINA</p>
-                            <p class="FonteFotoDescricao"> Escrever o que fez </p>
-                            <a href="https://www.linkedin.com/in/ana-carolina-bispo-278b93148/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
-                            <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
-                            <a href="https://www.facebook.com/carolisbispo" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            <p class="FonteFotoDescricao"> </p>
                         </div>
                     </div>
 			    </div>
@@ -117,13 +122,15 @@
                     <div class="row">
                         <div class="col-md-6 align-center">
 				            <img src="img/anapaula.jpg" class="Foto"/>
+                            <div class="IconsRedes">
+                                <a href="https://www.linkedin.com/in/ana-paula-aoyama-kajihara/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
+                                <a href="https://github.com/anapaulamak" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
+                                <a href="https://www.facebook.com/anapaula.kajihara" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            </div>
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">ANA PAULA</p>
-                            <p class="FonteFotoDescricao"> Escrever o que fez </p>
-                            <a href="https://www.linkedin.com/in/ana-paula-aoyama-kajihara/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
-                            <a href="https://github.com/anapaulamak" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
-                            <a href="https://www.facebook.com/anapaula.kajihara" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            <p class="FonteFotoDescricao"></p>
                         </div>
                     </div>
 			    </div>
@@ -132,13 +139,15 @@
                     <div class="row">
                         <div class="col-md-6 align-center">
 				            <img src="img/gabi.jpg" class="Foto"/>
+                            <div class="IconsRedes">
+                                <a href="" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
+                                <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
+                                <a href="https://www.facebook.com/gabrielawv2" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a>                         
+                            </div>
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">GABRIELA</p>
-                            <p class="FonteFotoDescricao"> Escrever o que fez </p>
-                            <a href="" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
-                            <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
-                            <a href="https://www.facebook.com/gabrielawv2" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            <p class="FonteFotoDescricao"></p>
                         </div>
                     </div>
 			    </div>
@@ -150,13 +159,15 @@
                      <div class="row">
                         <div class="col-md-6 align-center">
 				            <img src="img/julia.jpg" class="Foto"/>
+                            <div class="IconsRedes">
+                                <a href="https://www.linkedin.com/in/juliafranca/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
+                                <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
+                                <a href="https://www.facebook.com/juliafranca6" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            </div>
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">JULIA</p>
-                            <p class="FonteFotoDescricao"> Escrever o que fez </p>
-                            <a href="https://www.linkedin.com/in/juliafranca/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
-                            <a href="" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
-                            <a href="https://www.facebook.com/juliafranca6" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            <p class="FonteFotoDescricao"> </p>
                         </div>
                     </div>
                 </div>
@@ -165,13 +176,15 @@
                     <div class="row">
                         <div class="col-md-6 align-center">
 				            <img src="img/mari.jpg" class="Foto"/>
+                            <div class="IconsRedes">
+                                <a href="https://www.linkedin.com/in/mariana-zangrossi-b48030148/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
+                                <a href="https://github.com/marianazangrossi" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
+                                <a href="https://www.facebook.com/mari.zangue" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            </div>
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">MARIANA</p>
-                            <p class="FonteFotoDescricao"> Escrever o que fez </p>
-                            <a href="https://www.linkedin.com/in/mariana-zangrossi-b48030148/" target="_blank"><img src="img/li.png" class="IconRedesSociais1"/></a> 
-                            <a href="https://github.com/marianazangrossi" target="_blank"><img src="img/gh.png" class="IconRedesSociais2"/></a> 
-                            <a href="https://www.facebook.com/mari.zangue" target="_blank"><img src="img/fb.png" class="IconRedesSociais1"/></a> 
+                            <p class="FonteFotoDescricao"> </p>
                         </div>
                     </div>
                 </div>
@@ -181,8 +194,7 @@
             <div class="row align-center ajustIconHome">
 			    <a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
             </div>	
-        </div>
-							
+        </div>							
 	</section>	
 
     <section id="Cadastrar" class="row">
@@ -191,29 +203,27 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 ConfForm2">
                 <div id="FormCadastro" runat="server">                      
-		            <div class="row ConfFormItens align-left Fonte">
-			            <asp:Label ID="Label7" runat="server">Nome Completo</asp:Label>
-                        <asp:TextBox ID="TextBoxNome" runat="server" maxlength="150" value="" tabindex="3" width="97%" class="ConfTextBox"></asp:TextBox>                    
-                    </div>
-
-                    <div class="row ConfFormItens">
-                        <div class="col-md-6 align-left Fonte">
+		            <div class="row ConfFormItens">
+                        <div class="col-md-8 align-left Fonte">
+			                <asp:Label ID="Label7" runat="server">Nome Completo</asp:Label>
+                            <asp:TextBox ID="TextBoxNome" runat="server" maxlength="100" value="" tabindex="3" width="97%" class="ConfTextBox"></asp:TextBox>   
+                        </div>
+                        <div class="col-md-4 align-left Fonte">
 				            <asp:Label ID="Label9" runat="server">CPF</asp:Label>
-                            <asp:TextBox ID="TextBoxCPF" runat="server" maxlength="11" value="" tabindex="5" width="95%" class="ConfTextBox"></asp:TextBox>				    
-                        </div>
-
-                        <div class="col-md-6 align-left Fonte">
-                            <asp:Label ID="Label8" runat="server">Email</asp:Label>     
-                            <asp:TextBox ID="TextBoxEmail" runat="server" maxlength="50" value="" tabindex="4" width="95%" class="ConfTextBox"></asp:TextBox>
-                        </div>
+                            <asp:TextBox ID="TextBoxCPF" runat="server" maxlength="11" value="" tabindex="4" width="95%" class="ConfTextBox"></asp:TextBox>				    
+                        </div>                       
                     </div>
 
                     <div class="row ConfFormItens">
-                        <div class="col-md-6 align-left Fonte">
+                        <div class="col-md-4 align-left Fonte">
+                            <asp:Label ID="Label8" runat="server">Email</asp:Label>     
+                            <asp:TextBox ID="TextBoxEmail" runat="server" maxlength="50" value="" tabindex="5" width="95%" class="ConfTextBox"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="Label10" runat="server">Data de Nascimento</asp:Label>                
                             <asp:TextBox ID="TextBoxNascimento" runat="server" TextMode="Date" value="" tabindex="6" width="95%" class="ConfTextBox"></asp:TextBox>
                         </div>
-                        <div class="col-md-6 align-left Fonte">
+                        <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="LabelEstado" runat="server">Estado onde mora</asp:Label>
                             <asp:DropDownList ID="DropDownListEstado" runat="server" value="" tabindex="7" width="95%" class="ConfTextBox">
                                 <asp:ListItem>AC</asp:ListItem>
@@ -245,7 +255,6 @@
                                 <asp:ListItem>TO</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-
                     </div>
 
                     <div class="row ConfFormItens">
@@ -263,18 +272,20 @@
                             </div>                            
                         </div>
 
-                        <div class="col-md-8 align-left Fonte">
+                        <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="LabelSenha1" runat="server">Cadastre uma senha</asp:Label>
 							<asp:TextBox ID="TextBoxSenha1" runat="server" type="password" maxlength="11" value="" tabindex="8" width="96%" class="ConfTextBox"></asp:TextBox>
-                            <br />
+                        </div>
+
+                        <div class="col-md-4 align-left Fonte">
 							<asp:Label ID="Label4" runat="server">Confirme sua senha</asp:Label>
 							<asp:TextBox ID="TextBoxSenha2" runat="server" type="password" maxlength="8" value="" tabindex="9" width="96%" class="ConfTextBox"></asp:TextBox>
                         </div>
 			        </div>
 
 			        <div class="row">
-                        <div class="col-md-9"></div>
-                        <div class="col-md-3">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
 					        <asp:Button ID="ButtonCadastrar" runat="server" Text="Cadastrar" class="ConfButton2" OnClick="ButtonCadastrar_Click"/>
 				        </div>
 			        </div>
@@ -287,6 +298,35 @@
 	</section>	
 	
     </form>
+
+    <section id="Valores">
+        <div class="confValores ConfFundoVerde">
+            <div class="row ">
+                <div class="col-md-4 align-center">
+                    <img src="img/missao.png" class="ConfIconValores" />
+                    <p class="FonteValores">MISSÃO</p>
+                    <p class="Fonte4">Ser um agente de transformação, simplificando o uso da tecnologia para usuários da
+área de saúde através do desenvolvimento de soluções inovadoras.</p>
+                </div>
+                <div class="col-md-4 align-center">
+                    <img src="img/visao.png" class="ConfIconValores" />
+                    <p class="FonteValores">VISÃO</p>
+                    <p class="Fonte4">Contribuir para tornar o uso da tecnologia na área de saúde abrangente, diminuindo a
+distância entre os agentes desse setor, trazendo benefícios diretos para cada um
+deles e a sociedade como um todo.</p>
+                </div>
+                <div class="col-md-4 align-center">
+                    <img src="img/valor.png" class="ConfIconValores" />
+                    <p class="FonteValores">VALORES</p>
+                    <p class="Fonte4">Inovação, Comprometimento, Integridade, Excelência, Igualdade, Empatia.</p>
+                </div>
+            </div>
+            <div class="row align-center ajustIconHome">
+			    <a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
+		    </div>	
+        </div>
+    </section>
+
 
     <footer id="Footer">
     <div class="row">

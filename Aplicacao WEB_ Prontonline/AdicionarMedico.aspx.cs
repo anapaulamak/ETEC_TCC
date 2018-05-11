@@ -23,14 +23,12 @@ public partial class AdicionarMedico : System.Web.UI.Page
 
         String novoMedico = Convert.ToString(TextBoxNomeMedico.Text);
         String CRM = Convert.ToString(TextBoxCRM.Text);
-        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-        int usuario = Convert.ToInt32(i.ID());
 
         String sql = "insert into tb_medico(nome, CRM, id_usuario) values(@nome, @CRM, @id_usuario)";
         c.command.CommandText = sql;
         c.command.Parameters.Add("@nome", SqlDbType.VarChar).Value = novoMedico;
         c.command.Parameters.Add("@CRM", SqlDbType.VarChar).Value = CRM;
-        c.command.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = usuario;
+        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = Session["IdUsuario"];
 
         c.command.ExecuteNonQuery();
         c.FecharConexao();

@@ -16,8 +16,8 @@ public partial class Memsagem : System.Web.UI.Page
             Response.Redirect("home.aspx");
         }
 
-        TextBoxResposta.Enabled = false;
-        TextBoxResposta.CssClass = "ConfTextArea";
+        //TextBoxResposta.Enabled = false;
+        //TextBoxResposta.CssClass = "ConfTextArea";
 
         if (!IsPostBack)
         {
@@ -59,6 +59,10 @@ public partial class Memsagem : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Mensagem enviada com sucesso!');</script>");
+
+            DropDownListTipo.SelectedValue = "";
+            TextBoxAssunto.Text = "";
+            TextBoxMensagem.Text = "";
         }
 
     }

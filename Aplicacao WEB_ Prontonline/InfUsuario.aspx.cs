@@ -19,7 +19,7 @@ public partial class InfUsuario : System.Web.UI.Page
         TextBoxEmail.Enabled = false;
         TextBoxEmail.CssClass = "ConfTextBox";
         TextBoxCPF.Enabled = false;
-        TextBoxCPF.CssClass = "CConfTextBox";
+        TextBoxCPF.CssClass = "ConfTextBox";
         TextBoxData.Enabled = false;
         TextBoxData.CssClass = "ConfTextBox";
         DropDownListEstado.Enabled = false;
@@ -104,7 +104,7 @@ public partial class InfUsuario : System.Web.UI.Page
 
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "update tb_usuario set nome_usuario = @nome_usuario, data_nascimento = @data_nascimento, e_mail_usuario = @e_mail_usuario estado = @estado where cpf = @cpf";
+            comando.CommandText = "update tb_usuario set nome_usuario=@nome_usuario, data_nascimento=@data_nascimento, e_mail_usuario=@e_mail_usuario, estado=@estado where cpf=@cpf";
 
             SqlParameter parametro = new SqlParameter();
             parametro.ParameterName = "@nome_usuario";

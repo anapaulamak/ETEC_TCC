@@ -37,7 +37,7 @@
             <div class="row">
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
-                    <asp:Label ID="Label2" runat="server" Text="Nome do Exame"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Descrição"></asp:Label>
                     <asp:TextBox ID="TextBoxNome" runat="server" Width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
 			    <div class="col-md-1"></div>
@@ -63,7 +63,7 @@
         </div>
 		<div class="col-md-3">
             <button id="ButtonAdicionarImagem" runat="server"
-                class="btn btn-primary ConfButton" type="button" 
+                class="btn btn-primary ConfButton4" type="button" 
                 data-toggle="collapse" data-target="#inserirImagem" 
                 aria-expanded="false" aria-controls="#inserirImagem">Adicionar Imagens</button>
         </div>
@@ -76,8 +76,8 @@
         <div class="row">
             <div>
                 <h2 class="Titulo">Imagens do Exame</h2>
-                <asp:Label ID="lblIdExame" runat="server" Text="idExame" Visible="True"></asp:Label>
-                <asp:Label ID="lblIdImgExame" runat="server" Text="idImagem" Visible="True"></asp:Label>
+                <asp:Label ID="lblIdExame" runat="server" Text="idExame" Visible="false"></asp:Label>
+                <asp:Label ID="lblIdImgExame" runat="server" Text="idImagemExame" Visible="false"></asp:Label>
             </div>
      
             <div class="col-md-8">

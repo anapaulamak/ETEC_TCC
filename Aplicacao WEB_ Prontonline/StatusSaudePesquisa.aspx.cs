@@ -27,27 +27,4 @@ public partial class StatusSaudePesquisa : System.Web.UI.Page
 
     }
 
-    //private void PesquisaStatus()
-    //{
-    //    Conexao c = new Conexao();
-    //    c.AbrirConexao();
-    //    DateTime dataStatusSaude = Convert.ToDateTime(TextBoxNome.Text);
-
-    //    IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-    //    int usuario = Convert.ToInt32(i.ID());
-
-    //    String sql = "Select id_saude, dataStatus, peso, altura, glicemia, colesterol from tb_statusSaude where dataStatus=@dataStatus and id_usuario=@id_usuario";
-    //    c.command.CommandText = sql;
-    //    c.command.Parameters.Add("@dataStatus", SqlDbType.Date).Value = dataStatusSaude;
-    //    c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
-
-    //    SqlDataAdapter dAdapter = new SqlDataAdapter();
-    //    DataSet dt = new DataSet();
-    //    dAdapter.SelectCommand = c.command;
-    //    dAdapter.Fill(dt);
-
-    //    DataGrid1.DataSource = dt;
-    //    DataGrid1.DataBind();
-    //    c.FecharConexao();
-    //}
 }

@@ -13,10 +13,6 @@ public partial class Exame : System.Web.UI.Page
     Conexao c = new Conexao();
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        //ButtonAdicionarImagem.Enabled = false;
-        //ButtonAdicionarImagem.CssClass = "ConfButton";
-
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
             Response.Redirect("home.aspx");
@@ -32,6 +28,8 @@ public partial class Exame : System.Web.UI.Page
             DropDownListConsulta.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             DropDownListConsulta.SelectedIndex = 0;
         }
+
+        ButtonAdicionarImagem.Visible = false;
     }
 
     protected void ButtonMeusExames_Click(object sender, EventArgs e)
@@ -51,7 +49,7 @@ public partial class Exame : System.Web.UI.Page
             Conexao c = new Conexao();
             c.AbrirConexao();
 
-            String sql = "insert into tb_Exame (id_tipoExame, nome, data, id_consulta) values (@tipoExame, @nome, @data, @id_consulta)";
+            String sql = "insert into tb_exame (id_tipoExame, nome, data, id_consulta) values (@tipoExame, @nome, @data, @id_consulta)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@id_consulta", SqlDbType.Int).Value = id_consulta;
@@ -63,7 +61,7 @@ public partial class Exame : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação adicionada com sucesso!');</script>");
-            //ButtonAdicionarImagem.Enabled = true;
+            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdExame();
         }
@@ -105,17 +103,9 @@ public partial class Exame : System.Web.UI.Page
         SqlCommand command = new SqlCommand();
         command.Connection = c.conexao;
 
-        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-        int usuario = Convert.ToInt32(i.ID());
-
-        String sql = "";
-            //"Select MAX(e.id_exame) as ultimoId" +
-            //"from tb_exame as e join tb_consulta as c on e.id_consulta = c.id_consulta " +
-            //"where c.id_usuario = @usuario " +
-            //"group by e.id_exame, e.id_consulta,c.id_usuario";
-
+        String sql = "Select MAX(id_exame) as ultimoId from tb_exame where id_consulta in (select id_consulta from tb_consulta where id_usuario = @usuario)";
         c.command.CommandText = sql;
-        c.command.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
+        c.command.Parameters.Add("@usuario", SqlDbType.Int).Value = Session["IdUsuario"];
 
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
@@ -135,7 +125,7 @@ public partial class Exame : System.Web.UI.Page
             c.AbrirConexao();
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "INSERT INTO tb_imgExame(imagemExame, nomeImgExame) VALUES (@imagemExame, @nomeImgExame)" + "SELECT SCOPE_IDENTITY()";
+            comando.CommandText = "INSERT INTO tb_imgExame(imagemExame, nomeImgExame, id_exame) VALUES (@imagemExame, @nomeImgExame, @id_exame)" + "SELECT SCOPE_IDENTITY()";
             // O SELECT SCOPE_IDENTITY() retorna o valor do escopo de identidade, nesse caso, o ID 
 
             SqlParameter parametro1 = new SqlParameter();
@@ -145,11 +135,12 @@ public partial class Exame : System.Web.UI.Page
             comando.Parameters.Add(parametro1);
 
             comando.Parameters.Add("@imagemExame", SqlDbType.VarBinary).Value = imagemExame.Caminho;
+            comando.Parameters.Add("@id_exame", SqlDbType.Int).Value = lblIdExame.Text;
 
             var idI = comando.ExecuteScalar();
             lblIdImgExame.Text = (idI + "");
             // O ExecuteScalar() é um método que retorna o valor da primeira coluna e da primeira linha (ou seja, o ID)
-            string url = ("IMGHandler.ashx?id=" + idI).ToString();
+            string url = ("IMGHandlerExame.ashx?id=" + idI).ToString();
             return url;
 
         }
@@ -182,29 +173,15 @@ public partial class Exame : System.Web.UI.Page
             usuario.Caminho = image;
 
             img1.ImageUrl = InserirDados(usuario);
-            InserirAssociativaImgExame();
+
+            DropDownListTipo.Text="";
+            TextBoxNome.Text="";
+            TextBoxData.Text="";
+            DropDownListConsulta.Text="";
+
+            Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
         //Criar regra para inserir até 6 imagens
         //if (img1 == nul){}
-    }
-
-    /*Salvar informações na tabela associativa*/
-    public void InserirAssociativaImgExame()
-    {
-        int id_exame = Convert.ToInt32(lblIdExame.Text);
-        int id_imgExame = Convert.ToInt32(lblIdImgExame.Text);
-
-        Conexao c = new Conexao();
-        c.AbrirConexao();
-
-        String sql = "insert into tb_imgExame_exame (id_exame, id_imgExame) values (@id_exame, @id_imgExame)";
-        c.command.CommandText = sql;
-
-        c.command.Parameters.Add("@id_exame", SqlDbType.Int).Value = id_exame;
-        c.command.Parameters.Add("@id_imgExame", SqlDbType.Int).Value = id_imgExame;
-
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
-        Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
     }
 }

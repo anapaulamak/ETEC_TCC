@@ -14,8 +14,7 @@ public partial class Remedios : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //ButtonAdicionarImagem.Enabled = true;
-        //ButtonAdicionarImagem.CssClass = "ConfButton";
+        ButtonAdicionarImagem.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -36,8 +35,6 @@ public partial class Remedios : System.Web.UI.Page
             String dosagem = Convert.ToString(TextBoxDosagem.Text);
             DateTime dataInicio = Convert.ToDateTime(TextBoxDataInicio.Text);
             DateTime dataFim = Convert.ToDateTime(TextBoxDataFim.Text);
-            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-            int usuario = Convert.ToInt32(i.ID());
 
             Conexao c = new Conexao();
             c.AbrirConexao();
@@ -45,7 +42,7 @@ public partial class Remedios : System.Web.UI.Page
             String sql = "insert into tb_remedios (id_usuario, nome, dosagem, dataInicio, dataFim) values (@id_usuario, @nome, @dosagem, @dataInicio, @dataFim)";
             c.command.CommandText = sql;
 
-            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = Session["IdUsuario"];
             c.command.Parameters.Add("@nome", SqlDbType.VarChar).Value = remedio;
             c.command.Parameters.Add("@dosagem", SqlDbType.VarChar).Value = dosagem;
             c.command.Parameters.Add("@dataInicio", SqlDbType.DateTime).Value = dataInicio;
@@ -54,7 +51,7 @@ public partial class Remedios : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação adiciona com sucesso!');</script>");
-            //ButtonAdicionarImagem.Enabled = true;
+            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdRemedio();
         }
@@ -113,7 +110,7 @@ public partial class Remedios : System.Web.UI.Page
 
 
     /*Inserção da imagem do remédio na tabela imgRemedio*/
-    public string InserirDados(DadosEImagem imagemRemedio)
+    public string InserirDadosImgRemedio(DadosEImagem imagemRemedio)
     {
         Conexao c = new Conexao();
         try
@@ -121,7 +118,7 @@ public partial class Remedios : System.Web.UI.Page
             c.AbrirConexao();
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "INSERT INTO tb_imgRemedio (imagemRemedio, nomeImgRemedio) VALUES (@imagemRemedio, @nomeImgRemedio)" + "SELECT SCOPE_IDENTITY()";
+            comando.CommandText = "INSERT INTO tb_imgRemedio (imagemRemedio, nomeImgRemedio, id_remedio) VALUES (@imagemRemedio, @nomeImgRemedio, @id_remedio)" + "SELECT SCOPE_IDENTITY()";
             // O SELECT SCOPE_IDENTITY() retorna o valor do escopo de identidade, nesse caso, o ID 
 
             SqlParameter parametro1 = new SqlParameter();
@@ -131,13 +128,13 @@ public partial class Remedios : System.Web.UI.Page
             comando.Parameters.Add(parametro1);
 
             comando.Parameters.Add("@imagemRemedio", SqlDbType.VarBinary).Value = imagemRemedio.Caminho;
+            comando.Parameters.Add("@id_remedio", SqlDbType.Int).Value = lblIdRemedio.Text;
 
             var idI = comando.ExecuteScalar();
             lblIdImgRemedio.Text = (idI + "");
             // O ExecuteScalar() é um método que retorna o valor da primeira coluna e da primeira linha (ou seja, o ID)
             string url = ("IMGHandler.ashx?id=" + idI).ToString();
             return url;
-
         }
         catch (Exception e)
         {
@@ -150,12 +147,6 @@ public partial class Remedios : System.Web.UI.Page
         }
     }
 
-
-    /*Função para salvar a Imagem*/
-    public void salvarImg()
-    {
-
-    }
 
     /*Evento no botão para salvar a imagem*/
     protected void btnImagemRemedio_Click(object sender, EventArgs e)
@@ -174,30 +165,14 @@ public partial class Remedios : System.Web.UI.Page
             usuario.Nome = NomeImagemRemedio.Text;
             usuario.Caminho = image;
 
-            img1.ImageUrl = InserirDados(usuario);
-            InserirAssociativaImgRemedio();
+            img1.ImageUrl = InserirDadosImgRemedio(usuario);
+
+            TextBoxRemedio.Text = "";
+            TextBoxDosagem.Text = "";
+            TextBoxDataInicio.Text = "";
+            TextBoxDataFim.Text = "";
+
+            Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
-    }
-
-    
-
-    /*Salvar informações na tabela associativa*/
-    public void InserirAssociativaImgRemedio()
-    {
-        int id_remedio = Convert.ToInt32(lblIdRemedio.Text);
-        int id_imgRemedio = Convert.ToInt32(lblIdImgRemedio.Text);
-
-        Conexao c = new Conexao();
-        c.AbrirConexao();
-
-        String sql = "insert into tb_imgRemedio_remedio (id_remedio, id_imgRemedio) values (@id_remedio, @id_imgRemedio)";
-        c.command.CommandText = sql;
-
-        c.command.Parameters.Add("@id_remedio", SqlDbType.Int).Value = id_remedio;
-        c.command.Parameters.Add("@id_imgRemedio", SqlDbType.Int).Value = id_imgRemedio;
-
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
-        Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
-    }
+    } 
 }
