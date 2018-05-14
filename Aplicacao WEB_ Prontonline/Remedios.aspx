@@ -51,52 +51,58 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-6"></div>
 		<div class="col-md-3">
-            <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar Agora" class="ConfButton" OnClick="ButtonAdicionar_Click" Width="90%" />
+            <asp:Button ID="ButtonAdicionarImagem" runat="server" Text="Adicionar Imagens" class="ConfButton" Width="90%" OnClick="ButtonAdicionarImagem_Click"/>
         </div>
-		<div class="col-md-3">
-            <button id="ButtonAdicionarImagem" runat="server"
-                class="btn btn-primary ConfButton4" type="button" 
-                data-toggle="collapse" data-target="#inserirImagem" 
-                aria-expanded="false" aria-controls="#inserirImagem">Adicionar Imagens</button>
-        </div>
-		<div class="col-md-3">
-            <asp:Button ID="ButtonMeusRemedios" runat="server" Text="Meus Remedios" class="ConfButton" Width="90%" OnClick="ButtonMeusRemedios_Click" />
-        </div>             
+        <div class="col-md-3">
+            <asp:Button ID="ButtonAdicionar" runat="server" Text="Salvar Remédio" class="ConfButton" OnClick="ButtonAdicionar_Click" Width="90%" />
+        </div>      
     </div>
-
-    <div id="inserirImagem" class="collapse">
+    
+    <div id="inserirImagem" runat="server" >
         <div class="row">
             <h2 class="Titulo">Imagens desse Remédio</h2>
             <asp:Label ID="lblIdRemedio" runat="server" Text="idRemedio" Visible="false"></asp:Label>
             <asp:Label ID="lblIdImgRemedio" runat="server" Text="idImagem" Visible="false"></asp:Label>
 
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="row">
 		            <div class="col-md-1"></div>
 		            <div class="col-md-10 align-left">
                         <asp:Label ID="txt_nome" runat="server" Text="Nome da imagem"></asp:Label>
+                        <br /><br />
                         <asp:TextBox ID="NomeImagemRemedio" runat="server" width="100%" class="ConfTextBox"/>
+                        <br /><br />
                         <asp:FileUpload ID="ImagemRemedio" runat="server"/>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <asp:Button ID="btnImagemRemedio" runat="server" Text="Inserir" class="ConfButton" Width="60%" OnClick="btnImagemRemedio_Click"/>
+            <div class="col-md-2">
+                <br />
+                <asp:Button ID="btnImagemRemedio" runat="server" Text="Inserir" class="ConfButton" Width="90%" OnClick="btnImagemRemedio_Click"/>
+            </div>
+
+            <div class="col-md-6 align-center">
+                <asp:Image ID="img1" runat="server" style="width:60%"/>
+<%--                <asp:Image ID="img2" runat="server" style="width:90%"/>
+                <asp:Image ID="img3" runat="server" style="width:90%"/>
+                <asp:Image ID="img4" runat="server" style="width:90%"/>
+                <asp:Image ID="img5" runat="server" style="width:90%"/>
+                <asp:Image ID="img6" runat="server" style="width:90%"/>--%>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <asp:Image ID="img1" runat="server" style="width:30%"/>
-            <asp:Image ID="img2" runat="server" style="width:30%"/>
-            <asp:Image ID="img3" runat="server" style="width:30%"/>
-            <asp:Image ID="img4" runat="server" style="width:30%"/>
-            <asp:Image ID="img5" runat="server" style="width:30%"/>
-            <asp:Image ID="img6" runat="server" style="width:30%"/>
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+            <asp:Button ID="ButtonNovoRemedio" runat="server" Text="Novo Registro" class="ConfButton" Width="90%" OnClick="ButtonNovoRemedio_Click"/>
         </div>
-
+        <div class="col-md-3">
+            <asp:Button ID="ButtonMeusRemedios" runat="server" Text="Meus Remedios" class="ConfButton" Width="90%" OnClick="ButtonMeusRemedios_Click" />
+        </div>
     </div>
 
 </asp:Content>

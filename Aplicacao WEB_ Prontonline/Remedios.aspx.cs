@@ -15,6 +15,8 @@ public partial class Remedios : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ButtonAdicionarImagem.Visible = false;
+        inserirImagem.Visible = false;
+        ButtonNovoRemedio.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -51,9 +53,9 @@ public partial class Remedios : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação adiciona com sucesso!');</script>");
-            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdRemedio();
+            ButtonAdicionarImagem.Visible = true;
         }
     }
 
@@ -85,6 +87,13 @@ public partial class Remedios : System.Web.UI.Page
         }
     }
 
+    protected void ButtonAdicionarImagem_Click(object sender, EventArgs e)
+    {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoRemedio.Visible = true;
+    }
+
     //Pegar o ultimo id_remedio gravado
     public void UltimoIdRemedio()
     {
@@ -112,6 +121,11 @@ public partial class Remedios : System.Web.UI.Page
     /*Inserção da imagem do remédio na tabela imgRemedio*/
     public string InserirDadosImgRemedio(DadosEImagem imagemRemedio)
     {
+
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoRemedio.Visible = true;
+
         Conexao c = new Conexao();
         try
         {
@@ -151,10 +165,17 @@ public partial class Remedios : System.Web.UI.Page
     /*Evento no botão para salvar a imagem*/
     protected void btnImagemRemedio_Click(object sender, EventArgs e)
     {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoRemedio.Visible = true;
+
         byte[] image;
 
         if (ImagemRemedio.HasFile)
         {
+            ButtonAdicionarImagem.Visible = true;
+            inserirImagem.Visible = true;
+
             string savePath = @"C:\Users\Ana Paula\Documents\ImagemTeste";
             string file_name = ImagemRemedio.FileName;
             savePath = savePath + @"\" + file_name;
@@ -167,12 +188,13 @@ public partial class Remedios : System.Web.UI.Page
 
             img1.ImageUrl = InserirDadosImgRemedio(usuario);
 
-            TextBoxRemedio.Text = "";
-            TextBoxDosagem.Text = "";
-            TextBoxDataInicio.Text = "";
-            TextBoxDataFim.Text = "";
-
             Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
-    } 
+    }
+
+
+    protected void ButtonNovoRemedio_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Remedios.aspx");
+    }
 }

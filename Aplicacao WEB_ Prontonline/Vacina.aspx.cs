@@ -15,6 +15,8 @@ public partial class img_Vacina : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ButtonAdicionarImagem.Visible = false;
+        inserirImagem.Visible = false;
+        ButtonNovaVacina.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -54,9 +56,9 @@ public partial class img_Vacina : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação inserida com sucesso!');</script>");
-            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdVacina();
+            ButtonAdicionarImagem.Visible = true;
         }
     }
 
@@ -76,6 +78,13 @@ public partial class img_Vacina : System.Web.UI.Page
         {
             return true;
         }
+    }
+
+    protected void ButtonAdicionarImagem_Click(object sender, EventArgs e)
+    {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovaVacina.Visible = true;
     }
 
     //Pegar o ultimo id_vacina gravado
@@ -101,10 +110,13 @@ public partial class img_Vacina : System.Web.UI.Page
         lblIdVacina.Text = ultimoId.ToString();
     }
 
-
     /*Inserção da imagem da vacina na tabela imgVacina*/
     public string InserirDadosImgVacina(DadosEImagem imagemVacina)
     {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovaVacina.Visible = true;
+
         Conexao c = new Conexao();
         try
         {
@@ -144,6 +156,10 @@ public partial class img_Vacina : System.Web.UI.Page
     /*Evento no botão para salvar a imagem e mostrá-la na tela*/
     protected void btnImagemVacina_Click(object sender, EventArgs e)
     {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovaVacina.Visible = true;
+
         byte[] image;
 
         if (ImagemVacina.HasFile)
@@ -166,4 +182,10 @@ public partial class img_Vacina : System.Web.UI.Page
             Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
     }
+
+    protected void ButtonNovaVacina_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Vacina.aspx");
+    }
+
 }

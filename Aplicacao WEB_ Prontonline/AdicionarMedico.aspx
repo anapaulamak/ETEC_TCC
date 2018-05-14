@@ -56,7 +56,7 @@
                             <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False" />
                             <asp:BoundField DataField="nome" HeaderText="Nome Médico" SortExpression="nome" />
                             <asp:BoundField DataField="CRM" HeaderText="CRM" SortExpression="CRM" />
-                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" DeleteText="Apagar" />
+                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" DeleteText="Apagar"/>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

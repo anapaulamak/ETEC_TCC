@@ -28,7 +28,7 @@
         </div>
 
         <div class="row">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="5" ForeColor="#333333" GridLines="None" CellSpacing="3">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="5" ForeColor="#333333" GridLines="None" CellSpacing="3" Width="100%">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" HorizontalAlign="Left" VerticalAlign="Middle" />
                 <Columns>
                     <asp:BoundField DataField="id_faq" HeaderText="id_faq" Visible="False" />

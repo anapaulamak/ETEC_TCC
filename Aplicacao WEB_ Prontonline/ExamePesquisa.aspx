@@ -49,7 +49,7 @@ where u.id_usuario=@usuario and e.nome LIKE ('%' + @nome + '%')
         <asp:Button ID="ButtonBuscar" runat="server" Text="Buscar" class="ConfButton2" onclick="ButtonBuscar_Click"/>
         </div>
     </div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_exame" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_exame" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="100%">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="id_exame" HeaderText="id_exame" InsertVisible="False" ReadOnly="True" SortExpression="id_exame" Visible="False" />

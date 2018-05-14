@@ -11,6 +11,7 @@
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString3 %>" 
                     DeleteCommand="DELETE FROM [tb_remedios] WHERE [id_remedio] = @id_remedio" 
+                    <%--DELETE FROM [tb_imgRemedios] WHERE [id_remedio] = @id_remedio--%>
                     InsertCommand="INSERT INTO [tb_remedios] ([id_usuario], [nome], [dosagem], [dataInicio], [dataFim]) VALUES (@id_usuario, @nome, @dosagem, @dataInicio, @dataFim)" 
                     SelectCommand="SELECT * FROM [tb_remedios] WHERE ([id_usuario] = @id_usuario) and ([nome] LIKE '%' + @nome + '%')" 
                     UpdateCommand="UPDATE [tb_remedios] SET [id_usuario] = @id_usuario, [nome] = @nome, [dosagem] = @dosagem, [dataInicio] = @dataInicio, [dataFim] = @dataFim WHERE [id_remedio] = @id_remedio">
@@ -50,7 +51,7 @@
     </div>
 
     <div class="row">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_remedio" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_remedio" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="100%">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False" />

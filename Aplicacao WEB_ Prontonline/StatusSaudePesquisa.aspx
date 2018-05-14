@@ -54,7 +54,7 @@
     </div>
 
     <div class="row">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_saude" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_saude" DataSourceID="SqlDataSource1" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False" />
                     <asp:BoundField DataField="id_saude" HeaderText="id_saude" InsertVisible="False" ReadOnly="True" SortExpression="id_saude" Visible="False" />

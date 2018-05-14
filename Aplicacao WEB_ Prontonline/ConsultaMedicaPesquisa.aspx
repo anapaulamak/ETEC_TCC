@@ -61,12 +61,12 @@ WHERE u.id_usuario=@id_usuario and ([motivo] LIKE '%' + @motivo + '%')"
     </div>
 
     <div class="row">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="ConfGridView">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="ConfGridView" Width="100%">
 
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
             <Columns>
-                <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False" />
+                <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False"/>
                 <asp:BoundField DataField="nome" HeaderText="Médico" SortExpression="nome" >
                 </asp:BoundField>
                 <asp:BoundField DataField="nome1" HeaderText="Especialidade" SortExpression="nome1" >
@@ -76,7 +76,7 @@ WHERE u.id_usuario=@id_usuario and ([motivo] LIKE '%' + @motivo + '%')"
                 <asp:BoundField DataField="diagnostico" HeaderText="Diagnostico" SortExpression="diagnostico" />
                 <asp:BoundField DataField="recomendacoes" HeaderText="Recomendações" SortExpression="recomendacoes" />
                 <asp:BoundField DataField="obs" HeaderText="Observações" SortExpression="obs" />
-                <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
             </Columns>
 
             <EditRowStyle BackColor="#999999" />

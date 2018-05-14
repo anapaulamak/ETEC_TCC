@@ -13,6 +13,10 @@ public partial class Exame : System.Web.UI.Page
     Conexao c = new Conexao();
     protected void Page_Load(object sender, EventArgs e)
     {
+        ButtonAdicionarImagem.Visible = false;
+        inserirImagem.Visible = false;
+        ButtonNovoExame.Visible = false;
+
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
             Response.Redirect("home.aspx");
@@ -28,8 +32,6 @@ public partial class Exame : System.Web.UI.Page
             DropDownListConsulta.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             DropDownListConsulta.SelectedIndex = 0;
         }
-
-        ButtonAdicionarImagem.Visible = false;
     }
 
     protected void ButtonMeusExames_Click(object sender, EventArgs e)
@@ -61,9 +63,9 @@ public partial class Exame : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informação adicionada com sucesso!');</script>");
-            ButtonAdicionarImagem.Visible = true;
 
             UltimoIdExame();
+            ButtonAdicionarImagem.Visible = true;
         }
     }
 
@@ -96,6 +98,13 @@ public partial class Exame : System.Web.UI.Page
         }
     }
 
+    protected void ButtonAdicionarImagem_Click(object sender, EventArgs e)
+    {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoExame.Visible = true;
+    }
+
     //Pegar o ultimo id_exame gravado
     public void UltimoIdExame()
     {
@@ -119,6 +128,10 @@ public partial class Exame : System.Web.UI.Page
     /*Inserção da imagem do exame na tabela imgExame*/
     public string InserirDados(DadosEImagem imagemExame)
     {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoExame.Visible = true;
+
         Conexao c = new Conexao();
         try
         {
@@ -158,6 +171,10 @@ public partial class Exame : System.Web.UI.Page
     /*Evento no botão para salvar a imagem*/
     protected void btnImagemExame_Click(object sender, EventArgs e)
     {
+        ButtonAdicionarImagem.Visible = true;
+        inserirImagem.Visible = true;
+        ButtonNovoExame.Visible = true;
+
         byte[] image;
 
         if (ImagemExame.HasFile)
@@ -183,5 +200,10 @@ public partial class Exame : System.Web.UI.Page
         }
         //Criar regra para inserir até 6 imagens
         //if (img1 == nul){}
+    }
+
+    protected void ButtonNovoExame_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Exame.aspx");
     }
 }

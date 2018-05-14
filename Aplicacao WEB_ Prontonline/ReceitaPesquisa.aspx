@@ -50,7 +50,7 @@ join tb_usuario as u on c.id_usuario=u.id_usuario
     </div>
 
     <div class="row">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="id_receita">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="id_receita" Width="100%">
 
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>

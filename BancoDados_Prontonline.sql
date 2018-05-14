@@ -452,3 +452,8 @@ insert into tb_medico (id_usuario, CRM, nome) values (1, '12345','Doutora Maria'
 
 select * from tb_remedios
 select * from tb_ImgRemedio
+
+delete from tb_remedios 
+from tb_remedios join tb_imgRemedio 
+on tb_remedios.id_remedio=tb_imgRemedio.id_remedio
+where tb_remedios.id_remedio=1
