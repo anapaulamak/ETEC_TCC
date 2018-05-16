@@ -14,7 +14,7 @@
 <body>
     <section id="inicio" class="row">
         <div class="col-md-4">       
-			<img src="img/logo.png" width="450px";/>
+			<img src="img/logo.png" class="ConfLogoHome"/>
         </div> 
 
         <div class="col-md-8">
@@ -26,13 +26,13 @@
 						    <a href="#ProntOnline" class="ItemMenu">ProntOnline</a>
 					    </div>		
 					    <div class="col-md-3">
-						    <a href="#Cadastrar" class="ItemMenu">Cadastrar</a>
+                            <a href="#QuemSomos" class="ItemMenu">Quem Somos</a>
 					    </div>
-					    <div class="col-md-3">				
-						    <a href="#QuemSomos" class="ItemMenu">Quem Somos</a>
+					    <div class="col-md-3">	
+						    <a href="#Cadastrar" class="ItemMenu">Cadastrar</a>                            
 					    </div>
                         <div class="col-md-3">				
-                            <a href="#Valores" class="ItemMenu">Valores</a>
+                            <a href="#Valores" class="ItemMenu">Nossa Missão</a>
 					    </div>
 				    </div>
 			    </div>
@@ -60,16 +60,15 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
 					        <asp:Label ID="Label1" runat="server">LOGIN</asp:Label>
-					        <asp:TextBox ID="TextBoxLogin" runat="server" class="ConfTextBox" maxlength="11" value="" tabindex="1" width="100%"></asp:TextBox>
+					        <asp:TextBox ID="TextBoxLogin" runat="server" class="ConfTextBoxHome" maxlength="11" value="" tabindex="1" width="100%"></asp:TextBox>
 					        <asp:Label ID="Label2" runat="server">SENHA</asp:Label>
-					        <asp:TextBox ID="TextBoxSenha" runat="server" class="ConfTextBox" type="password" maxlength="8" value="" tabindex="2" width="100%"></asp:TextBox>
-       		
+					        <asp:TextBox ID="TextBoxSenha" runat="server" class="ConfTextBoxHome" type="password" maxlength="8" value="" tabindex="2" width="100%"></asp:TextBox>      		
                             <div class="row">
                                 <div class="col-md-5">
-                                    <asp:Button ID="ButtonLogar" runat="server" Text="Entrar" type="submit" class="ConfButton2" width="100%" OnClick="ButtonLogar_Click"/>	
+                                    <asp:Button ID="ButtonLogar" runat="server" Text="ENTRAR" type="submit" class="ConfButton2" width="100%" OnClick="ButtonLogar_Click"/>	
                                 </div>
-                                <div class="col-md-7">  
-                                    <a href="#Cadastrar" class="align-center AjustNovoLink">Sou novo aqui!</a>									
+                                <div class="col-md-7 AjustNovoLink">  
+                                    <a href="#Cadastrar" class="align-center">Sou novo aqui!</a>									
                                 </div>
                             </div>
                         </div>
@@ -91,12 +90,13 @@
 			<div class="col-md-7 ConfVideo align-center">
              <iframe width="600" height="400" src="https://www.youtube.com/embed/GtG7kB4OGnQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 		    </div>
-		</div>
-        <div class="row align-center ajustIconHome">
-            <a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
-        </div>                       
+		</div>                   
 	</section>	
 
+    <div class="row">
+		<a href="#inicio" class=""><i class="material-icons AjustIconHome">home</i></a>
+	</div>
+        
     <section id="QuemSomos">
         <div class="ConfFundoVerde row">
 		    <header class="Fonte2">Quem Somos</header>
@@ -112,8 +112,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 align-left">
-				            <p class="FonteFoto">ANA CAROLINA</p>
-                            <p class="FonteFotoDescricao"> </p>
+				            <p class="FonteFoto">Ana Carolina</p>
+                            <p class="FonteFotoDescricao">Regra de Negócio, <br /> Banco de Dados,<br /> Código de Ética, <br />Política de Segurança</p>
                         </div>
                     </div>
 			    </div>
@@ -129,8 +129,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 align-left">
-				            <p class="FonteFoto">ANA PAULA</p>
-                            <p class="FonteFotoDescricao"></p>
+				            <p class="FonteFoto">Ana Paula</p>
+                            <p class="FonteFotoDescricao">Regra de Negócio, <br /> Aplicação Web (Asp.net) e Manual do Usuário, <br />Banco de Dados, <br /> Diagramas UML, <br />Plantas de Rede </p>
                         </div>
                     </div>
 			    </div>
@@ -146,8 +146,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 align-left">
-				            <p class="FonteFoto">GABRIELA</p>
-                            <p class="FonteFotoDescricao"></p>
+				            <p class="FonteFoto">Gabriela</p>
+                            <p class="FonteFotoDescricao">Aplicação Desktop (C#), <br />Aplicação Java e Manual do Usuário,  <br /> Identidade Visual </p>
                         </div>
                     </div>
 			    </div>
@@ -166,8 +166,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 align-left">
-				            <p class="FonteFoto">JULIA</p>
-                            <p class="FonteFotoDescricao"> </p>
+				            <p class="FonteFoto">Julia</p>
+                            <p class="FonteFotoDescricao">Aplicação Desktop (C#) e Manual do Usuário , <br />Aplicação Mobile Android, <br />CANVAS,  <br />Plantas de Rede, <br /> Identidade Visual</p>
                         </div>
                     </div>
                 </div>
@@ -183,17 +183,13 @@
                             </div>
                         </div>
                         <div class="col-md-6 align-left">
-				            <p class="FonteFoto">MARIANA</p>
-                            <p class="FonteFotoDescricao"> </p>
+				            <p class="FonteFoto">Mariana</p>
+                            <p class="FonteFotoDescricao">Aplicação Desktop (Asp.net) e Manual do Usuário , <br />Aplicação Java e Manual do Usuário </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
             </div>
-
-            <div class="row align-center ajustIconHome">
-			    <a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
-            </div>	
         </div>							
 	</section>	
 
@@ -206,26 +202,26 @@
 		            <div class="row ConfFormItens">
                         <div class="col-md-8 align-left Fonte">
 			                <asp:Label ID="Label7" runat="server">Nome Completo</asp:Label>
-                            <asp:TextBox ID="TextBoxNome" runat="server" maxlength="100" value="" tabindex="3" width="97%" class="ConfTextBox"></asp:TextBox>   
+                            <asp:TextBox ID="TextBoxNome" runat="server" maxlength="100" value="" tabindex="3" width="98%" class="ConfTextBoxHome"></asp:TextBox>   
                         </div>
                         <div class="col-md-4 align-left Fonte">
 				            <asp:Label ID="Label9" runat="server">CPF</asp:Label>
-                            <asp:TextBox ID="TextBoxCPF" runat="server" maxlength="11" value="" tabindex="4" width="95%" class="ConfTextBox"></asp:TextBox>				    
+                            <asp:TextBox ID="TextBoxCPF" runat="server" maxlength="11" value="" tabindex="4" width="95%" class="ConfTextBoxHome"></asp:TextBox>				    
                         </div>                       
                     </div>
 
                     <div class="row ConfFormItens">
                         <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="Label8" runat="server">Email</asp:Label>     
-                            <asp:TextBox ID="TextBoxEmail" runat="server" maxlength="50" value="" tabindex="5" width="95%" class="ConfTextBox"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxEmail" runat="server" maxlength="50" value="" tabindex="5" width="95%" class="ConfTextBoxHome"></asp:TextBox>
                         </div>
                         <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="Label10" runat="server">Data de Nascimento</asp:Label>                
-                            <asp:TextBox ID="TextBoxNascimento" runat="server" TextMode="Date" value="" tabindex="6" width="95%" class="ConfTextBox"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxNascimento" runat="server" TextMode="Date" value="" tabindex="6" width="95%" class="ConfTextBoxHome"></asp:TextBox>
                         </div>
                         <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="LabelEstado" runat="server">Estado onde mora</asp:Label>
-                            <asp:DropDownList ID="DropDownListEstado" runat="server" value="" tabindex="7" width="95%" class="ConfTextBox">
+                            <asp:DropDownList ID="DropDownListEstado" runat="server" value="" tabindex="7" width="95%" class="ConfTextBoxHome">
                                 <asp:ListItem>AC</asp:ListItem>
                                 <asp:ListItem>AL</asp:ListItem>
                                 <asp:ListItem>AP</asp:ListItem>
@@ -274,12 +270,12 @@
 
                         <div class="col-md-4 align-left Fonte">
                             <asp:Label ID="LabelSenha1" runat="server">Cadastre uma senha</asp:Label>
-							<asp:TextBox ID="TextBoxSenha1" runat="server" type="password" maxlength="11" value="" tabindex="8" width="96%" class="ConfTextBox"></asp:TextBox>
+							<asp:TextBox ID="TextBoxSenha1" runat="server" type="password" maxlength="11" value="" tabindex="8" width="96%" class="ConfTextBoxHome"></asp:TextBox>
                         </div>
 
                         <div class="col-md-4 align-left Fonte">
 							<asp:Label ID="Label4" runat="server">Confirme sua senha</asp:Label>
-							<asp:TextBox ID="TextBoxSenha2" runat="server" type="password" maxlength="8" value="" tabindex="9" width="96%" class="ConfTextBox"></asp:TextBox>
+							<asp:TextBox ID="TextBoxSenha2" runat="server" type="password" maxlength="8" value="" tabindex="9" width="96%" class="ConfTextBoxHome"></asp:TextBox>
                         </div>
 			        </div>
 
@@ -292,9 +288,6 @@
                 </div>
 		    </div>
 		</div>
-        <div class="row align-center ajustIconHome">
-			<a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
-		</div>	
 	</section>	
 	
     </form>
@@ -318,15 +311,16 @@ deles e a sociedade como um todo.</p>
                 <div class="col-md-4 align-center">
                     <img src="img/valor.png" class="ConfIconValores" />
                     <p class="FonteValores">VALORES</p>
-                    <p class="Fonte4">Inovação, Comprometimento, Integridade, Excelência, Igualdade, Empatia.</p>
+                    <p class="Fonte4">Inovação
+                        <br />Comprometimento
+                        <br />Integridade 
+                        <br />Excelência
+                        <br />Igualdade
+                        <br />Empatia</p>
                 </div>
             </div>
-            <div class="row align-center ajustIconHome">
-			    <a href="#inicio"><i class="material-icons" style="font-size:36px; color:black">home</i></a>
-		    </div>	
         </div>
     </section>
-
 
     <footer id="Footer">
     <div class="row">

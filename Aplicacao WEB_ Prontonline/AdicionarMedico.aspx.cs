@@ -33,6 +33,7 @@ public partial class AdicionarMedico : System.Web.UI.Page
         c.command.ExecuteNonQuery();
         c.FecharConexao();
         Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
+        Response.Redirect("AdicionarMedico.aspx");
     }
 
     protected void ButtonVoltar_Click(object sender, EventArgs e)

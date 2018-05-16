@@ -10,8 +10,8 @@
             <ContentTemplate>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString3 %>" 
-                    DeleteCommand="DELETE FROM [tb_remedios] WHERE [id_remedio] = @id_remedio" 
-                    <%--DELETE FROM [tb_imgRemedios] WHERE [id_remedio] = @id_remedio--%>
+                    DeleteCommand="DELETE FROM [tb_remedios] WHERE [tb_remedios.id_remedio] = @id_remedio
+DELETE from tb_imgRemedio where tb_imgRemedio.id_remedio = @id_remedio" 
                     InsertCommand="INSERT INTO [tb_remedios] ([id_usuario], [nome], [dosagem], [dataInicio], [dataFim]) VALUES (@id_usuario, @nome, @dosagem, @dataInicio, @dataFim)" 
                     SelectCommand="SELECT * FROM [tb_remedios] WHERE ([id_usuario] = @id_usuario) and ([nome] LIKE '%' + @nome + '%')" 
                     UpdateCommand="UPDATE [tb_remedios] SET [id_usuario] = @id_usuario, [nome] = @nome, [dosagem] = @dosagem, [dataInicio] = @dataInicio, [dataFim] = @dataFim WHERE [id_remedio] = @id_remedio">
@@ -60,7 +60,7 @@
                 <asp:BoundField DataField="dosagem" HeaderText="Dosagem" SortExpression="dosagem" />
                 <asp:BoundField DataField="dataInicio" HeaderText="Começou em" SortExpression="dataInicio" />
                 <asp:BoundField DataField="dataFim" HeaderText="Parou em" SortExpression="dataFim" />
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" DeleteText="Apagar" />
+                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" DeleteText="Apagar" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

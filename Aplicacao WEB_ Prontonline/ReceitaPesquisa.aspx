@@ -58,7 +58,7 @@ join tb_usuario as u on c.id_usuario=u.id_usuario
                 <asp:BoundField DataField="id_consulta" HeaderText="id_consulta" SortExpression="id_consulta" Visible="False" />
                 <asp:BoundField DataField="nome" HeaderText="Nome da Receita" SortExpression="nome" />
                 <asp:BoundField DataField="data" HeaderText="Data" SortExpression="data" />
-                <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

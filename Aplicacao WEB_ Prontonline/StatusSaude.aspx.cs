@@ -28,6 +28,9 @@ public partial class Receitas : System.Web.UI.Page
             IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
             int id_usuario = Convert.ToInt32(i.ID());
 
+            String mes = Convert.ToString(DropDownListMeses.Text);
+            String ano = Convert.ToString(TextBoxAno.Text);
+
             double altura = Convert.ToDouble(TextBoxAltura.Text);
             double peso = Convert.ToDouble(TextBoxPeso.Text);
 
@@ -37,7 +40,7 @@ public partial class Receitas : System.Web.UI.Page
             Conexao c = new Conexao();
             c.AbrirConexao();
 
-            String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia) values (@id_usuario, @altura, @peso, @colesterol, @glicemia)";
+            String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia, mes, ano) values (@id_usuario, @altura, @peso, @colesterol, @glicemia, @mes, @ano)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
@@ -45,18 +48,26 @@ public partial class Receitas : System.Web.UI.Page
             c.command.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
             c.command.Parameters.Add("@colesterol", SqlDbType.Decimal).Value = colesterol;
             c.command.Parameters.Add("@glicemia", SqlDbType.Decimal).Value = glicemia;
+            c.command.Parameters.Add("@mes", SqlDbType.VarChar).Value = mes;
+            c.command.Parameters.Add("@ano", SqlDbType.VarChar).Value = ano;
 
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informações salvas com sucesso!');</script>");
-
+            Response.Redirect("StatusSaude.aspx");
         }
 
     }
 
     protected Boolean Validar()
     {
-        if (TextBoxPeso.Text == "")
+        if (TextBoxAno.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha uma ano válido!');</script>");
+            return false;
+        }
+            
+        else if(TextBoxPeso.Text == "")
         {
             Response.Write("<script language = 'javascript'> alert ('Preencha o seu peso corretamente!');</script>");
             return false;

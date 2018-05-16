@@ -5,16 +5,40 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div id="FormStatusSaude" runat="server">
         <h1 class="Titulo">STATUS SAÚDE</h1>
+
+        <div id="DataStatusSaude" class="row">
+            <div class="col-md-3 align-left">
+                <asp:Label ID="LabelMes" runat="server" Text="Mês" ></asp:Label>
+                <asp:DropDownList ID="DropDownListMeses" runat="server" Width="90%" class="ConfTextBox">
+                    <asp:ListItem Value="Janeiro">Janeiro</asp:ListItem>
+                    <asp:ListItem Value="Fevereiro">Fevereiro</asp:ListItem>
+                    <asp:ListItem Value="Março">Março</asp:ListItem>
+                    <asp:ListItem Value="Abril">Abril</asp:ListItem>
+                    <asp:ListItem Value="Maio">Maio</asp:ListItem>
+                    <asp:ListItem Value="Junho">Junho</asp:ListItem>
+                    <asp:ListItem Value="Julho">Julho</asp:ListItem>
+                    <asp:ListItem Value="Agosto">Agosto</asp:ListItem>
+                    <asp:ListItem Value="Setembro">Setembro</asp:ListItem>
+                    <asp:ListItem Value="Outubro">Outubro</asp:ListItem>
+                    <asp:ListItem Value="Novembro">Novembro</asp:ListItem>
+                    <asp:ListItem Value="Dezembro">Dezembro</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-md-3 align-left">
+                <asp:Label ID="LabelANo" runat="server" Text="Ano"></asp:Label>
+                <asp:TextBox ID="TextBoxAno" runat="server" Width="90%" class="ConfTextBox" MaxLength="4"></asp:TextBox>        
+            </div>
+        </div>
             
         <div class="row">
             <div class="col-md-2 align-left">
                 <asp:Label ID="Label2" runat="server" Text="Peso"></asp:Label>
-                <asp:TextBox ID="TextBoxPeso" runat="server" Width="90%" class="ConfTextArea"></asp:TextBox>
+                <asp:TextBox ID="TextBoxPeso" runat="server" Width="90%" class="ConfTextBox"></asp:TextBox>
             </div>
 
             <div class="col-md-2 align-left">
                 <asp:Label ID="Label3" runat="server" Text="Altura"></asp:Label>
-                <asp:TextBox ID="TextBoxAltura" runat="server" Width="90%" class="ConfTextArea"></asp:TextBox>
+                <asp:TextBox ID="TextBoxAltura" runat="server" Width="90%" class="ConfTextBox"></asp:TextBox>
             </div>
 
             <div class="col-md-2 align-left">            
@@ -23,7 +47,7 @@
 
             <div class="col-md-2 align-left"> 
                 <asp:Label ID="Label4" runat="server" Text="IMC"></asp:Label>
-                <asp:TextBox ID="TextBoxIMC" runat="server" Width="90%" class="ConfTextArea"></asp:TextBox>
+                <asp:TextBox ID="TextBoxIMC" runat="server" Width="90%" class="ConfTextBox"></asp:TextBox>
             </div>
 
             <div class="col-md-4 align-left">

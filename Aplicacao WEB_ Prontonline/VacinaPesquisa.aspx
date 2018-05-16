@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-	<h1 class="Titulo">MINHAS VACINAS</h1>
+    <h1 class="Titulo">MINHAS VACINAS</h1>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -54,7 +54,7 @@ FROM tb_tipoVacina as tv join tb_vacina as v on tv.id_tipoVacina=v.id_tipoVacina
                     <asp:BoundField DataField="id_vacina" HeaderText="id_vacina" InsertVisible="False" ReadOnly="True" SortExpression="id_vacina" Visible="False" />
                     <asp:BoundField DataField="descricao" HeaderText="Descricao" SortExpression="descricao" />
                     <asp:BoundField DataField="data" HeaderText="Data da Aplicação" SortExpression="data" />
-                    <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" ShowEditButton="True" />
+                    <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

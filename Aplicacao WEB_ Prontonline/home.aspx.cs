@@ -42,12 +42,8 @@ public partial class home : System.Web.UI.Page
             c.command.Parameters.Add("@estado", SqlDbType.Char).Value = estado;
 
             c.command.ExecuteNonQuery();
-            Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
             c.FecharConexao();
-
-            Session["logado"] = 1;
-            Session["UserId"] = cpf;
-
+            Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso, Insira o seu Login e Senha cadastrados para entrar no ProntOnline!');</script>");
             Response.Redirect("InfUsuario.aspx");
         }
         else

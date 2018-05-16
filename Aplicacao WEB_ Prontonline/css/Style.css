@@ -32,31 +32,46 @@ html, body {
 }
 
 #MenuPrincipal {
-    padding-top: 9%;
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
 .ItemMenu {
     font-size: 1.8em;
-    color: #333333;
-    text-decoration: none!important;
-    font-family: "Arial Rounded MT";
+    color: var(--cinza);
+    text-decoration: none !important;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    font-weight: 600;
     align-content: center;
-    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right:5px;
+    padding-top:2px;
+    padding-bottom:2px;
 }
 
 .menuCor {
-    background-color: #ccc;
+    background-color: white;
     padding-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 6%;
     text-align: center;
     border-radius: 4px;
 }
 
+.ConfLogoMaster {
+    width: 380px;
+    margin-top: 3%;
+}
+
+.ConfLogoHome {
+    width: 440px;
+    margin-top: 2.5%;
+}
+
 .ConfImagem {
-    width: 95%;
-    padding-top:20px;
+    width: 75%;
+    padding-top: 5%;
 }
 
 .ConfForm1 {
@@ -68,7 +83,11 @@ html, body {
     margin-bottom: 10%;
     padding: 20px;
     font-size: 1.5em;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    font-weight: 600;
+    color: var(--cinza);
 }
 
 .ConfForm2 {
@@ -81,19 +100,27 @@ html, body {
     padding-left: 20%;
     padding-right: 20%;
     font-size: 1.3em;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    color: var(--cinza);
 }
 
 .AjustNovoLink {
-    margin-left: 15%;
     text-decoration: none;
+    padding-top: 5%;
+    text-align: center;
+    color: var(--cinza);
 }
 
 .CadastroForm {
     background: #eee;
     padding: 20px;
-    font-family: Arial;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 1.7em;
+    color: var(--cinza);
     margin-bottom: 30px;
     margin-top: 30px;
 }
@@ -111,14 +138,20 @@ html, body {
     margin-left: 10%;
     text-align: center;
     vertical-align: middle;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    color: var(--cinza);
     margin-top: 15%;
-    font-size:1.8em;
+    font-size: 1.8em;
 }
 
-.ajustIconHome {
-    margin-top: 1%;
-    margin-bottom:1%;
+.AjustIconHome {
+    font-size: 3em!important;
+    color: var(--cinza)!important;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
 }
 
 .ConfVideo {
@@ -131,19 +164,26 @@ html, body {
 }
 
 .FonteFoto {
-    font-family: 'Arial Rounded MT';
-    font-size: 2em;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--cinza);
     margin-left: 3%;
 }
 
 .FonteFotoDescricao {
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 1em;
+    color: var(--cinza);
     margin-left: 3%;
 }
 
 .ConfFotos {
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     margin-left: 3% !important;
 }
 
@@ -171,6 +211,10 @@ html, body {
     padding:5%;
 }
 
+#TextBoxCPF {
+    margin-top:4%;
+}
+
 .ConfFundoVerde {
     background-color: var(--VerdeAzulado);
     max-height: 100%;
@@ -190,7 +234,9 @@ html, body {
     text-align: center;
     text-decoration: none;
     font-size: 1.2em;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
 }
 
 .ConfButton2 {
@@ -204,7 +250,9 @@ html, body {
     text-align: center;
     text-decoration: none;
     font-size: 0.9em;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     cursor: pointer;
     width: 100%;
 }
@@ -221,24 +269,32 @@ html, body {
     margin: 3px 1px;
     cursor: pointer;
     width: 100%;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
 }
 
 .ConfButton4 {
-    background-color: var(--AzulEscuro)!important;
-    color: #ffffff!important;
-    border: none!important;
-    border-radius: 5px!important;
-    padding: 10px 20px!important;
-    margin-top: 7%!important;
-    margin-bottom: 5%!important;
-    cursor: pointer!important;
-    width: 90%!important;
-    text-align: center!important;
-    text-decoration: none!important;
-    font-size: 1.2em!important;
-    font-family: 'Arial Rounded MT'!important;
+    background-color: var(--AzulEscuro) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 10px 20px !important;
+    margin-top: 7% !important;
+    margin-bottom: 5% !important;
+    cursor: pointer !important;
+    width: 90% !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    font-size: 1.2em !important;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
 }
+
+.AjustButtonLogout{
+    margin-bottom:4%;
+} 
 
 .align-left {
     text-align: left !important;
@@ -257,7 +313,9 @@ h1 {
 
 .Titulo {
     text-align: left;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     color: var(--cinza);
     margin-top: 5%;
     margin-bottom: 5%;
@@ -265,7 +323,10 @@ h1 {
 
 #Footer {
     text-align: center;
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    color: var(--cinza);
     font-size: 1.2em;
     padding: 2%;
     /*background-color: var(--VerdeAzulado);*/
@@ -281,7 +342,8 @@ h1 {
     border: solid 3px var(--VerdeAzulado);
     border-radius: 20px;
     padding-top:1%;
-    padding-bottom:5%;
+    padding-bottom:0;
+    margin-bottom: 10px;
 }
 
 .IconeConf {
@@ -314,11 +376,18 @@ h1 {
     border: solid, 3px, var(--AzulEscuro);
 }
 
+.ConfTextBoxHome {
+    height: 25px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 3%;
+    border: none;
+}
+
 .ConfTextBox{
     height: 25px;
     margin-top: 2%;
     margin-bottom: 2%;
-    margin-left:3%;
     margin-right:3%;
     border: none;
 }
@@ -326,44 +395,59 @@ h1 {
 .ConfTextArea {
     margin-top: 2%;
     margin-bottom: 2%;
-    margin-left: 3%;
     margin-right: 3%;
     border: none;
 }
 
 .Fonte1 {
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 1.2em;
+    color: var(--cinza);
 }
 
 .Fonte2 {
-    font-family: 'Arial Rounded MT';
-    font-size: 3em;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    font-weight: 600;
+    font-size: 2.6em;
+    color: var(--cinza);
     margin-bottom: 3%;
-    margin-top: 3%;
+    margin-top: 2%;
     text-align: center;
 }
 
 .Fonte3 {
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 2em;
+    color: var(--cinza);
 }
 
 .Fonte4 {
-    font-family: 'Arial Rounded MT';
-    font-size: 1.2em;
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
+    font-size: 1.4em;
+    color: var(--cinza);
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top:5%;
-    margin-bottom:5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     color: White;
 }
 
 title {
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 1.2em;
-    padding:5px;
+    color: var(--cinza);
+    padding: 5px;
 }
 
 .button_menu {
@@ -399,8 +483,16 @@ title {
 }
 
 .FonteValores {
-    font-family: 'Arial Rounded MT';
+    font-family: Gill Sans, sans-serif;
+    font-variant: small-caps;
+    font-stretch: expanded;
     font-size: 2em;
-    margin-left: 3%;
+    color: var(--cinza);
+    text-align: center;
+    margin-left: 1%;
     color: white;
+}
+
+#DataStatusSaude{
+    margin-bottom:5%;
 }

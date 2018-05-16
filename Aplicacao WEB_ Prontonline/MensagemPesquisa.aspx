@@ -69,7 +69,6 @@
                         <asp:CheckBoxField DataField="situacao" HeaderText="situacao" SortExpression="situacao" Visible="False" />
                         <asp:BoundField DataField="resposta" HeaderText="Resposta" SortExpression="resposta" />
                         <asp:BoundField DataField="dataResposta" HeaderText="Respondido em" SortExpression="dataResposta" />
-                        <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
                     </Columns>
 
                     <EditRowStyle BackColor="#999999" />

@@ -11,7 +11,7 @@
                 ConnectionString="<%$ ConnectionStrings:ProntonlineConnectionString3 %>" 
                 DeleteCommand="DELETE FROM [tb_consulta] WHERE [id_consulta] = @id_consulta" 
                 InsertCommand="INSERT INTO [tb_consulta] ([id_medico], [id_especialidade], [id_usuario], [data], [motivo], [diagnostico], [recomendacoes], [obs]) VALUES (@id_medico, @id_especialidade, @id_usuario, @data, @motivo, @diagnostico, @recomendacoes, @obs)" 
-                SelectCommand="SELECT  c.id_usuario, m.nome, esp.nome, c.data, c.diagnostico, c.motivo, c.recomendacoes, c.obs 
+                SelectCommand="SELECT  c.id_usuario, c.id_consulta, m.nome, esp.nome, c.data, c.diagnostico, c.motivo, c.recomendacoes, c.obs 
 from tb_especialidade as esp 
 join tb_consulta as c on esp.id_especialidade=c.id_especialidade
 join tb_medico as m on m.id_medico=c.id_medico
@@ -61,22 +61,24 @@ WHERE u.id_usuario=@id_usuario and ([motivo] LIKE '%' + @motivo + '%')"
     </div>
 
     <div class="row">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="ConfGridView" Width="100%">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="ConfGridView" Width="100%" DataKeyNames="id_consulta">
 
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
             <Columns>
                 <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False"/>
-                <asp:BoundField DataField="nome" HeaderText="Médico" SortExpression="nome" >
+                <asp:BoundField DataField="id_consulta" HeaderText="id_consulta" InsertVisible="False" ReadOnly="True" SortExpression="id_consulta" Visible="False" />
+                <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" >
                 </asp:BoundField>
-                <asp:BoundField DataField="nome1" HeaderText="Especialidade" SortExpression="nome1" >
+                <asp:BoundField DataField="nome1" HeaderText="nome1" SortExpression="nome1" >
                 </asp:BoundField>
-                <asp:BoundField DataField="data" HeaderText="Data" SortExpression="data" />
-                <asp:BoundField DataField="motivo" HeaderText="Motivos" SortExpression="motivo" />
-                <asp:BoundField DataField="diagnostico" HeaderText="Diagnostico" SortExpression="diagnostico" />
-                <asp:BoundField DataField="recomendacoes" HeaderText="Recomendações" SortExpression="recomendacoes" />
-                <asp:BoundField DataField="obs" HeaderText="Observações" SortExpression="obs" />
+                <asp:BoundField DataField="data" HeaderText="data" SortExpression="data" />
+                <asp:BoundField DataField="diagnostico" HeaderText="diagnostico" SortExpression="diagnostico" />
+                <asp:BoundField DataField="motivo" HeaderText="motivo" SortExpression="motivo" />
+                <asp:BoundField DataField="recomendacoes" HeaderText="recomendacoes" SortExpression="recomendacoes" />
+                <asp:BoundField DataField="obs" HeaderText="obs" SortExpression="obs" />
                 <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
+                <asp:HyperLinkField DataNavigateUrlFields="id_consulta" DataNavigateUrlFormatString="ConsultaMedica.aspx/id_consulta?{0}" Text="Editar" />
             </Columns>
 
             <EditRowStyle BackColor="#999999" />

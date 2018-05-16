@@ -22,9 +22,9 @@ public partial class StatusSaudePesquisa : System.Web.UI.Page
         Response.Redirect("StatusSaude.aspx");
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+
+    protected void ButtonBuscar_Click(object sender, EventArgs e)
     {
 
     }
-
 }

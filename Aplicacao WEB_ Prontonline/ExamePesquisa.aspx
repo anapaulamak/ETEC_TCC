@@ -56,7 +56,7 @@ where u.id_usuario=@usuario and e.nome LIKE ('%' + @nome + '%')
                     <asp:BoundField DataField="nome" HeaderText="Exame" SortExpression="nome" />
                     <asp:BoundField DataField="data" HeaderText="Data" SortExpression="data" />
                     <asp:BoundField DataField="exame" HeaderText="Descrição" SortExpression="exame" />
-                    <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" ShowEditButton="True" />
+                    <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
