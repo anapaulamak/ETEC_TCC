@@ -17,6 +17,7 @@ public partial class img_Vacina : System.Web.UI.Page
         ButtonAdicionarImagem.Visible = false;
         inserirImagem.Visible = false;
         ButtonNovaVacina.Visible = false;
+        ButtonEditar.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -25,9 +26,21 @@ public partial class img_Vacina : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            DropDownListTipo.AppendDataBoundItems = true;
-            DropDownListTipo.Items.Insert(0, new ListItem(String.Empty, String.Empty));
-            DropDownListTipo.SelectedIndex = 0;
+            //    DropDownListTipo.AppendDataBoundItems = true;
+            //    DropDownListTipo.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            //    DropDownListTipo.SelectedIndex = 0;
+        }
+
+        if (Request.QueryString["id_vacina"] != null)
+        {
+            ButtonAdicionarImagem.Visible = true;
+            inserirImagem.Visible = true;
+            ButtonNovaVacina.Visible = true;
+            ButtonEditar.Visible = true;
+            ButtonSalvar.Visible = false;
+
+            PopulaInfos1();
+            PopulaInfos2();
         }
     }
 
@@ -113,6 +126,7 @@ public partial class img_Vacina : System.Web.UI.Page
     /*Inserção da imagem da vacina na tabela imgVacina*/
     public string InserirDadosImgVacina(DadosEImagem imagemVacina)
     {
+
         ButtonAdicionarImagem.Visible = true;
         inserirImagem.Visible = true;
         ButtonNovaVacina.Visible = true;
@@ -133,14 +147,13 @@ public partial class img_Vacina : System.Web.UI.Page
             comando.Parameters.Add(parametro1);
 
             comando.Parameters.Add("@imagemVacina", SqlDbType.VarBinary).Value = imagemVacina.Caminho;
-            c.command.Parameters.Add("@id_vacina", SqlDbType.Int).Value = lblIdVacina;
+            comando.Parameters.Add("@id_vacina", SqlDbType.Int).Value = lblIdVacina.Text;
 
             var idI = comando.ExecuteScalar();
             lblIdImgVacina.Text = (idI + "");
             // O ExecuteScalar() é um método que retorna o valor da primeira coluna e da primeira linha (ou seja, o ID)
-            string url = ("IMGHandlerVacina.ashx?id=" + idI).ToString();
+            string url = ("IMGHandler.ashx?id=" + idI + "&indiceSql=1").ToString();
             return url;
-
         }
         catch (Exception e)
         {
@@ -153,6 +166,8 @@ public partial class img_Vacina : System.Web.UI.Page
         }
     }
 
+
+
     /*Evento no botão para salvar a imagem e mostrá-la na tela*/
     protected void btnImagemVacina_Click(object sender, EventArgs e)
     {
@@ -164,7 +179,7 @@ public partial class img_Vacina : System.Web.UI.Page
 
         if (ImagemVacina.HasFile)
         {
-            string savePath = @"C:\Users\Ana Paula\Documents\ImagemTeste";
+            string savePath = @"C:\Users\Ana Paula\Documents\ImagemTesteVacina";
             string file_name = ImagemVacina.FileName;
             savePath = savePath + @"\" + file_name;
             ImagemVacina.SaveAs(savePath);
@@ -176,9 +191,6 @@ public partial class img_Vacina : System.Web.UI.Page
 
             img1.ImageUrl = InserirDadosImgVacina(usuario);
 
-            DropDownListTipo.Text = "";
-            TextBoxData.Text = "";
-
             Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
     }
@@ -188,4 +200,115 @@ public partial class img_Vacina : System.Web.UI.Page
         Response.Redirect("Vacina.aspx");
     }
 
+    protected void PopulaInfos1()
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        String sql = "SELECT * from tb_vacina where id_vacina=@id_vacina";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@id_vacina", SqlDbType.Int).Value = Request.QueryString["id_vacina"];
+
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+
+        String id_tipoVacina = dt.Tables[0].Rows[0]["id_tipoVacina"].ToString();
+        DropDownListTipo.Text = id_tipoVacina;
+
+        String data = dt.Tables[0].Rows[0]["data"].ToString();
+        TextBoxData.Text = data;
+
+        c.FecharConexao();
+    }
+
+    protected void PopulaInfos2()
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        String sql = "Select * from tb_imgVacina where id_vacina=@id_vacina";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@id_vacina", SqlDbType.Int).Value = Request.QueryString["id_vacina"];
+
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+
+        String imagemVacina = dt.Tables[0].Rows[0]["imagemVacina"].ToString();
+        img1.AlternateText = imagemVacina;
+
+        String nomeImgVacina = dt.Tables[0].Rows[0]["nomeImgVacina"].ToString();
+        NomeImagemVacina.Text = nomeImgVacina;
+        c.FecharConexao();
+    }
+
+    protected void UpdateInfos1(int id_tipoVacina, DateTime data)
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        SqlCommand comando = new SqlCommand();
+        comando.Connection = c.conexao;
+        comando.CommandText = "update tb_vacina set id_tipoVacina=@id_tipoVacina, data=@data where id_vacina=@id_vacina";
+
+        SqlParameter parametro = new SqlParameter();
+        parametro.ParameterName = "@id_tipoVacina";
+        parametro.SqlDbType = SqlDbType.Int;
+        parametro.Value = id_tipoVacina;
+        comando.Parameters.Add(parametro);
+
+        SqlParameter parametro1 = new SqlParameter();
+        parametro1.ParameterName = "@data";
+        parametro1.SqlDbType = SqlDbType.DateTime;
+        parametro1.Value = data;
+        comando.Parameters.Add(parametro1);
+
+        SqlParameter parametro2 = new SqlParameter();
+        parametro2.ParameterName = "@id_vacina";
+        parametro2.SqlDbType = SqlDbType.Int;
+        parametro2.Value = Request.QueryString["id_vacina"];
+        comando.Parameters.Add(parametro2);
+
+        comando.ExecuteNonQuery();
+    }
+
+    protected void UpdateInfos2(string imagemVacina, string nomeImgVacina)
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        SqlCommand comando = new SqlCommand();
+        comando.Connection = c.conexao;
+        comando.CommandText = "update tb_imgVacina set imagemVacina=@id_imagemVacina, nomeImgVacina=@nomeImgVacina where id_vacina=@id_vacina";
+
+        SqlParameter parametro = new SqlParameter();
+        parametro.ParameterName = "@imagemVacina";
+        parametro.SqlDbType = SqlDbType.VarChar;
+        parametro.Value = imagemVacina;
+        comando.Parameters.Add(parametro);
+
+        SqlParameter parametro1 = new SqlParameter();
+        parametro1.ParameterName = "@nomeImgVacina";
+        parametro1.SqlDbType = SqlDbType.VarChar;
+        parametro1.Value = nomeImgVacina;
+        comando.Parameters.Add(parametro1);
+
+        SqlParameter parametro2 = new SqlParameter();
+        parametro2.ParameterName = "@id_vacina";
+        parametro2.SqlDbType = SqlDbType.Int;
+        parametro2.Value = Request.QueryString["id_vacina"];
+        comando.Parameters.Add(parametro2);
+
+        comando.ExecuteNonQuery();
+    }
+
+    protected void ButtonEditar_Click(object sender, EventArgs e)
+    {
+        UpdateInfos1(Convert.ToInt32(DropDownListTipo.Text), Convert.ToDateTime(TextBoxData.Text));
+        UpdateInfos2(NomeImagemVacina.Text, img1.AlternateText);
+
+    }
 }

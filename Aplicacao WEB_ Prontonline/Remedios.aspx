@@ -96,7 +96,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <asp:Button ID="ButtonEditar" runat="server" Text="Salvar Edições" class="ConfButton" Width="90%"/>
+        </div>
         <div class="col-md-3">
             <asp:Button ID="ButtonNovoRemedio" runat="server" Text="Novo Registro" class="ConfButton" Width="90%" OnClick="ButtonNovoRemedio_Click"/>
         </div>

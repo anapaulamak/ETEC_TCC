@@ -72,15 +72,15 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_saude" DataSourceID="SqlDataSource1" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="id_saude" HeaderText="id_saude" InsertVisible="False" ReadOnly="True" SortExpression="id_saude" />
-                <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" />
-                <asp:BoundField DataField="colesterol" HeaderText="colesterol" SortExpression="colesterol" />
-                <asp:BoundField DataField="glicemia" HeaderText="glicemia" SortExpression="glicemia" />
-                <asp:BoundField DataField="peso" HeaderText="peso" SortExpression="peso" />
-                <asp:BoundField DataField="altura" HeaderText="altura" SortExpression="altura" />
-                <asp:BoundField DataField="mes" HeaderText="mes" SortExpression="mes" />
-                <asp:BoundField DataField="ano" HeaderText="ano" SortExpression="ano" />
-                <asp:CommandField DeleteText="Apagar" ShowDeleteButton="True" />
+                <asp:BoundField DataField="id_saude" HeaderText="id_saude" InsertVisible="False" ReadOnly="True" SortExpression="id_saude" Visible="False" />
+                <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False" />
+                <asp:BoundField DataField="ano" HeaderText="Ano" SortExpression="ano" />
+                <asp:BoundField DataField="mes" HeaderText="Mês" SortExpression="mes" />
+                <asp:BoundField DataField="peso" HeaderText="Peso" SortExpression="peso" />
+                <asp:BoundField DataField="altura" HeaderText="Altura" SortExpression="altura" />
+                <asp:BoundField DataField="colesterol" HeaderText="Colesterol" SortExpression="colesterol" />
+                <asp:BoundField DataField="glicemia" HeaderText="Glicemia" SortExpression="glicemia" />
+                <asp:CommandField DeleteText="Apagar" ShowDeleteButton="True" ButtonType="Button" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

@@ -35,7 +35,7 @@ public class Conexao
     }
 
     
-    public SqlDataReader SelecionaImg(string contextquery)
+    public SqlDataReader SelecionaImg(string contextquery, string indiceSql)
     {
         Conexao c = new Conexao();
         try
@@ -43,7 +43,7 @@ public class Conexao
             c.AbrirConexao();
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "SELECT imagemRemedio FROM tb_imgRemedio WHERE id_imgRemedio= @Id";
+            comando.CommandText = indiceSql;
             comando.Parameters.AddWithValue("@Id", contextquery);
             var datareader = comando.ExecuteReader();
             return datareader;

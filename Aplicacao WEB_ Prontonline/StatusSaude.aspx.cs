@@ -54,7 +54,6 @@ public partial class Receitas : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Informações salvas com sucesso!');</script>");
-            Response.Redirect("StatusSaude.aspx");
         }
 
     }

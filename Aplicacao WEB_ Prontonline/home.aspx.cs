@@ -44,7 +44,6 @@ public partial class home : System.Web.UI.Page
             c.command.ExecuteNonQuery();
             c.FecharConexao();
             Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso, Insira o seu Login e Senha cadastrados para entrar no ProntOnline!');</script>");
-            Response.Redirect("InfUsuario.aspx");
         }
         else
         {

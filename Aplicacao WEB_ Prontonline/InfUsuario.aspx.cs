@@ -106,6 +106,12 @@ public partial class InfUsuario : System.Web.UI.Page
             comando.Connection = c.conexao;
             comando.CommandText = "update tb_usuario set nome_usuario=@nome_usuario, data_nascimento=@data_nascimento, e_mail_usuario=@e_mail_usuario, estado=@estado where cpf=@cpf";
 
+            SqlParameter parametro4 = new SqlParameter();
+            parametro4.ParameterName = "@cpf";
+            parametro4.SqlDbType = SqlDbType.VarChar;
+            parametro4.Value = Session["UserId"];
+            comando.Parameters.Add(parametro4);
+
             SqlParameter parametro = new SqlParameter();
             parametro.ParameterName = "@nome_usuario";
             parametro.SqlDbType = SqlDbType.VarChar;
@@ -125,16 +131,10 @@ public partial class InfUsuario : System.Web.UI.Page
             comando.Parameters.Add(parametro2);
 
             SqlParameter parametro3 = new SqlParameter();
-            parametro3.ParameterName = "@cpf";
+            parametro3.ParameterName = "@estado";
             parametro3.SqlDbType = SqlDbType.VarChar;
-            parametro3.Value = cpf;
+            parametro3.Value = estado;
             comando.Parameters.Add(parametro3);
-
-            SqlParameter parametro4 = new SqlParameter();
-            parametro4.ParameterName = "@estado";
-            parametro4.SqlDbType = SqlDbType.VarChar;
-            parametro4.Value = estado;
-            comando.Parameters.Add(parametro4);
 
             comando.ExecuteNonQuery();
         }

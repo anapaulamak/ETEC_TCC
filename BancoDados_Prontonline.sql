@@ -455,12 +455,8 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Ressonância Magnética do Tórax',1),     
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
-                         
-select * from tb_exame
-select * from tb_imgExame
+                    
 
-Select e.id_exame, e.data, e.nome as exame, te.nome, 
-from tb_exame as e join tb_tipoExame as te on e.id_tipoExame=te.id_tipoExame
-join tb_consulta as c on e.id_consulta=c.id_consulta 
-join tb_usuario as u on c.id_usuario=u.id_usuario
-where u.id_usuario=@usuario and e.nome LIKE ('%' + @nome + '%')
+select * from tb_receita
+select * from tb_imgReceita
+update tb_usuario set nome_usuario='Erick Cordeiro', data_nascimento='1991-03-14', e_mail_usuario='erick.cordeiro@locaweb.com.br', estado='SP' where cpf='11111111111'

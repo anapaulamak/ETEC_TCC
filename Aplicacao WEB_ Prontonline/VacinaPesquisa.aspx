@@ -55,6 +55,7 @@ FROM tb_tipoVacina as tv join tb_vacina as v on tv.id_tipoVacina=v.id_tipoVacina
                     <asp:BoundField DataField="descricao" HeaderText="Descricao" SortExpression="descricao" />
                     <asp:BoundField DataField="data" HeaderText="Data da Aplicação" SortExpression="data" />
                     <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
+                    <asp:HyperLinkField DataNavigateUrlFields="id_vacina" DataNavigateUrlFormatString="Vacina.aspx?id_vacina={0}" Text="Editar" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

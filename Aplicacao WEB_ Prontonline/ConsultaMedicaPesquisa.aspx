@@ -78,7 +78,7 @@ WHERE u.id_usuario=@id_usuario and ([motivo] LIKE '%' + @motivo + '%')"
                 <asp:BoundField DataField="recomendacoes" HeaderText="recomendacoes" SortExpression="recomendacoes" />
                 <asp:BoundField DataField="obs" HeaderText="obs" SortExpression="obs" />
                 <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
-                <asp:HyperLinkField DataNavigateUrlFields="id_consulta" DataNavigateUrlFormatString="ConsultaMedica.aspx/id_consulta?{0}" Text="Editar" />
+                <asp:HyperLinkField DataNavigateUrlFields="id_consulta" DataNavigateUrlFormatString="ConsultaMedica.aspx?id_consulta={0}" Text="Editar" />
             </Columns>
 
             <EditRowStyle BackColor="#999999" />

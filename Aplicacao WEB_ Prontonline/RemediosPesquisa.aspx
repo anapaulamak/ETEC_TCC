@@ -61,6 +61,7 @@ DELETE from tb_imgRemedio where tb_imgRemedio.id_remedio = @id_remedio"
                 <asp:BoundField DataField="dataInicio" HeaderText="Começou em" SortExpression="dataInicio" />
                 <asp:BoundField DataField="dataFim" HeaderText="Parou em" SortExpression="dataFim" />
                 <asp:CommandField ButtonType="Button" ShowDeleteButton="True" DeleteText="Apagar" />
+                <asp:HyperLinkField DataNavigateUrlFields="id_remedio" DataNavigateUrlFormatString="Remedios.aspx?id_remedio={0}" Text="Editar" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

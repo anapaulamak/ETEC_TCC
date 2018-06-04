@@ -16,6 +16,7 @@ public partial class Receita : System.Web.UI.Page
         ButtonAdicionarImagem.Visible = false;
         inserirImagem.Visible = false;
         ButtonNovaReceita.Visible = false;
+        ButtonEditar.Visible = false;
 
         if (Convert.ToInt32(Session["logado"]) != 1)
         {
@@ -24,10 +25,23 @@ public partial class Receita : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            DropDownListConsulta.AppendDataBoundItems = true;
-            DropDownListConsulta.Items.Insert(0, new ListItem(String.Empty, String.Empty));
-            DropDownListConsulta.SelectedIndex = 0;
+            //DropDownListConsulta.AppendDataBoundItems = true;
+            //DropDownListConsulta.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+            //DropDownListConsulta.SelectedIndex = 0;
         }
+
+        if (Request.QueryString["id_receita"] != null)
+        {
+            ButtonAdicionarImagem.Visible = true;
+            inserirImagem.Visible = true;
+            ButtonNovaReceita.Visible = true;
+            ButtonEditar.Visible = true;
+            ButtonSalvar.Visible = false;
+
+            PopulaInfos1();
+            PopulaInfos2();
+        }
+
     }
 
     protected void ButtonMinhasReceitas_Click(object sender, EventArgs e)
@@ -35,6 +49,7 @@ public partial class Receita : System.Web.UI.Page
         Response.Redirect("ReceitaPesquisa.aspx");
     }
 
+    //função de adicionar uma nova receita
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
         if (Validar() == true)
@@ -62,6 +77,7 @@ public partial class Receita : System.Web.UI.Page
         }
     }
 
+    //Função para validar os dados inseridos para uma nova receita
     protected Boolean Validar()
     {
         if (TextBoxNomeReceita.Text == "")
@@ -86,6 +102,7 @@ public partial class Receita : System.Web.UI.Page
         }
     }
 
+    // Botão para habilitar a inserção de imagens
     protected void ButtonAdicionarImagem_Click(object sender, EventArgs e)
     {
         ButtonAdicionarImagem.Visible = true;
@@ -114,8 +131,9 @@ public partial class Receita : System.Web.UI.Page
     }
 
     /*Inserção da imagem da receita na tabela imgReceita*/
-    public string InserirDados(DadosEImagem imagemReceita)
+    public string InserirDadosImgReceita(DadosEImagem imagemReceita)
     {
+
         ButtonAdicionarImagem.Visible = true;
         inserirImagem.Visible = true;
         ButtonNovaReceita.Visible = true;
@@ -126,8 +144,8 @@ public partial class Receita : System.Web.UI.Page
             c.AbrirConexao();
             SqlCommand comando = new SqlCommand();
             comando.Connection = c.conexao;
-            comando.CommandText = "INSERT INTO tb_imgReceita(imagemReceita, nomeImgReceita, id_receita) VALUES (@imagemReceita, @nomeImgReceita, @id_receita)" + "SELECT SCOPE_IDENTITY()";
-            // O SELECT SCOPE_IDENTITY() retorna o valor do escopo de identidade, nesse caso, o ID )
+            comando.CommandText = "INSERT INTO tb_imgReceita (imagemReceita, nomeImgReceita, id_receita) VALUES (@imagemReceita, @nomeImgReceita, @id_receita)" + "SELECT SCOPE_IDENTITY()";
+            // O SELECT SCOPE_IDENTITY() retorna o valor do escopo de identidade, nesse caso, o ID 
 
             SqlParameter parametro1 = new SqlParameter();
             parametro1.ParameterName = "@nomeImgReceita";
@@ -136,14 +154,13 @@ public partial class Receita : System.Web.UI.Page
             comando.Parameters.Add(parametro1);
 
             comando.Parameters.Add("@imagemReceita", SqlDbType.VarBinary).Value = imagemReceita.Caminho;
-            c.command.Parameters.Add("@id_receita", SqlDbType.Int).Value = lblIdReceita.Text;
+            comando.Parameters.Add("@id_receita", SqlDbType.Int).Value = lblIdReceita.Text;
 
             var idI = comando.ExecuteScalar();
             lblIdImgReceita.Text = (idI + "");
             // O ExecuteScalar() é um método que retorna o valor da primeira coluna e da primeira linha (ou seja, o ID)
-            string url = ("IMGHandlerReceita.ashx?id=" + idI).ToString();
+            string url = ("IMGHandler.ashx?id=" + idI + "&indiceSql=2").ToString();
             return url;
-
         }
         catch (Exception e)
         {
@@ -167,7 +184,10 @@ public partial class Receita : System.Web.UI.Page
 
         if (ImagemReceita.HasFile)
         {
-            string savePath = @"C:\Users\Ana Paula\Documents\ImagemTeste";
+            ButtonAdicionarImagem.Visible = true;
+            inserirImagem.Visible = true;
+
+            string savePath = @"C:\Users\Ana Paula\Documents\ImagemTesteReceita";
             string file_name = ImagemReceita.FileName;
             savePath = savePath + @"\" + file_name;
             ImagemReceita.SaveAs(savePath);
@@ -177,20 +197,137 @@ public partial class Receita : System.Web.UI.Page
             usuario.Nome = NomeImagemReceita.Text;
             usuario.Caminho = image;
 
-            img1.ImageUrl = InserirDados(usuario);
-
-            TextBoxNomeReceita.Text = "";
-            TextBoxData.Text = "";
-            DropDownListConsulta.Text = "";
+            img1.ImageUrl = InserirDadosImgReceita(usuario);
 
             Response.Write("<script language = 'javascript'> alert ('Imagem adiciona com sucesso!');</script>");
         }
-        //Criar regra para inserir até 6 imagens
-        //if (img1 == nul){}
     }
 
     protected void ButtonNovaReceita_Click(object sender, EventArgs e)
     {
         Response.Redirect("Receita.aspx");
+    }
+
+    //Função para popular os campos para edição
+    public void PopulaInfos1()
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        String sql = "SELECT * from tb_receita where id_receita=@id_receita";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@id_receita", SqlDbType.Int).Value = Request.QueryString["id_receita"];
+
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+
+        String id_consulta = dt.Tables[0].Rows[0]["id_consulta"].ToString();
+        DropDownListConsulta.Text = id_consulta;
+
+        String nome = dt.Tables[0].Rows[0]["nome"].ToString();
+        TextBoxNomeReceita.Text = nome;
+
+        String data = dt.Tables[0].Rows[0]["data"].ToString();
+        TextBoxData.Text = data;
+
+        c.FecharConexao();        
+    }
+
+    //Função para popular os campos para edição
+    protected void PopulaInfos2()
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        String sql = "Select * from tb_imgReceita where id_receita=@id_receita";
+        c.command.CommandText = sql;
+        c.command.Parameters.Add("@id_receita", SqlDbType.Int).Value = Request.QueryString["id_receita"];
+
+        SqlDataAdapter dAdapter = new SqlDataAdapter();
+        DataSet dt = new DataSet();
+        dAdapter.SelectCommand = c.command;
+        dAdapter.Fill(dt);
+
+        String imagemReceita = dt.Tables[0].Rows[0]["imagemReceita"].ToString();
+        img1.AlternateText = imagemReceita;
+
+        String nomeImgReceita = dt.Tables[0].Rows[0]["nomeImgReceita"].ToString();
+        NomeImagemReceita.Text = nomeImgReceita;
+
+        c.FecharConexao();
+    }
+
+    protected void UpdateInfos1(int id_consulta, DateTime data, string nome)
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        SqlCommand comando = new SqlCommand();
+        comando.Connection = c.conexao;
+        comando.CommandText = "update tb_receita set id_consulta=@id_consulta, data=@data, nome=@nome where id_receita=@id_receita";
+
+        SqlParameter parametro1 = new SqlParameter();
+        parametro1.ParameterName = "@id_consulta";
+        parametro1.SqlDbType = SqlDbType.Int;
+        parametro1.Value = id_consulta;
+        comando.Parameters.Add(parametro1);
+
+        SqlParameter parametro2 = new SqlParameter();
+        parametro2.ParameterName = "@data";
+        parametro2.SqlDbType = SqlDbType.DateTime;
+        parametro2.Value = data;
+        comando.Parameters.Add(parametro2);
+
+        SqlParameter parametro4 = new SqlParameter();
+        parametro4.ParameterName = "@nome";
+        parametro4.SqlDbType = SqlDbType.VarChar;
+        parametro4.Value = nome;
+        comando.Parameters.Add(parametro4);
+
+        SqlParameter parametro5 = new SqlParameter();
+        parametro5.ParameterName = "@id_receita";
+        parametro5.SqlDbType = SqlDbType.Int;
+        parametro5.Value = Request.QueryString["id_receita"];
+        comando.Parameters.Add(parametro5);
+
+        comando.ExecuteNonQuery();
+    }
+
+    protected void UpdateInfos2(string imagemReceita, string nomeImgReceita)
+    {
+        Conexao c = new Conexao();
+        c.AbrirConexao();
+
+        SqlCommand comando = new SqlCommand();
+        comando.Connection = c.conexao;
+        comando.CommandText = "update tb_imgReceita set imagemReceita=@id_imagemReceita, nomeImgReceita=@nomeImgReceita where id_receita=@id_receita";
+
+        SqlParameter parametro = new SqlParameter();
+        parametro.ParameterName = "@imagemReceita";
+        parametro.SqlDbType = SqlDbType.VarChar;
+        parametro.Value = imagemReceita;
+        comando.Parameters.Add(parametro);
+
+        SqlParameter parametro1 = new SqlParameter();
+        parametro1.ParameterName = "@nomeImgReceita";
+        parametro1.SqlDbType = SqlDbType.VarChar;
+        parametro1.Value = nomeImgReceita;
+        comando.Parameters.Add(parametro1);
+
+        SqlParameter parametro5 = new SqlParameter();
+        parametro5.ParameterName = "@id_receita";
+        parametro5.SqlDbType = SqlDbType.Int;
+        parametro5.Value = Request.QueryString["id_receita"];
+        comando.Parameters.Add(parametro5);
+
+        comando.ExecuteNonQuery();
+    }
+
+    protected void ButtonEditar_Click(object sender, EventArgs e)
+    {
+        UpdateInfos1( Convert.ToInt32(DropDownListConsulta.Text), Convert.ToDateTime(TextBoxData.Text), TextBoxNomeReceita.Text);
+        UpdateInfos2(NomeImagemReceita.Text, img1.AlternateText);
     }
 }
