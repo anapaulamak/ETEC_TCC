@@ -98,11 +98,11 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-2">
-				<asp:Button ID="ButtonEditar" runat="server" Text="Editar" class="ConfButton" OnClick="ButtonEditar_Click"/>
+                <asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton"/>				
 			</div>
             <div class="col-md-1"></div>
 			<div class="col-md-2">
-				<asp:Button ID="ButtonSalvar" runat="server" Text="Salvar" class="ConfButton"/>
+                <asp:Button ID="ButtonEditar" runat="server" Text="Editar" class="ConfButton" OnClick="ButtonEditar_Click"/>
 			</div>
             <div class="col-md-1"></div>
 			<div class="col-md-2">

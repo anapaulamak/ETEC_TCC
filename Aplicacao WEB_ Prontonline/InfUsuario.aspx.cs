@@ -26,8 +26,7 @@ public partial class InfUsuario : System.Web.UI.Page
         DropDownListEstado.CssClass = "ConfTextBox";
         RadioButtonList1.Enabled = false;
         RadioButtonList1.CssClass = "ConfTextBox";
-        ButtonSalvar.Enabled = false;
-        ButtonSalvar.CssClass = "ConfButton";
+        ButtonSalvar.Visible = false;
         ButtonCancelar.Enabled = false;
         ButtonCancelar.CssClass = "ConfButton";
         ButtonEditar.Enabled = true;
@@ -83,7 +82,7 @@ public partial class InfUsuario : System.Web.UI.Page
         TextBoxData.Enabled = true;
         DropDownListEstado.Enabled = true;
         RadioButtonList1.Enabled = true;
-        ButtonSalvar.Enabled = true;
+        ButtonSalvar.Visible = true;
         ButtonCancelar.Enabled = true;
         ButtonEditar.Enabled = false;
         ButtonEditar.CssClass = "ConfButton";

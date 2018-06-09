@@ -284,6 +284,8 @@ create table tb_cirurgia(
 	dataCirurgia DATE
 )
 go
+ 
+CREATE VIEW usuarios AS SELECT id_usuario FROM tb_usuario;
 
 INSERT INTO tb_tipoAlergia (descricao, situacao) 
 VALUES	('Polén', 1),
@@ -456,7 +458,3 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
                     
-
-select * from tb_receita
-select * from tb_imgReceita
-update tb_usuario set nome_usuario='Erick Cordeiro', data_nascimento='1991-03-14', e_mail_usuario='erick.cordeiro@locaweb.com.br', estado='SP' where cpf='11111111111'

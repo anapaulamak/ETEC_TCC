@@ -257,9 +257,9 @@ public partial class Exame : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        String strBase64 = dt.Tables[0].Rows[0]["imagemExame"].ToString();
-        byte[] image = Convert.FromBase64String(strBase64);
-        img1.ImageUrl = "data:Image;base64," + strBase64;
+        byte[] bytes = (byte[])dt.Tables[0].DefaultView[0].Row["imagemExame"];
+        String base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+        img1.ImageUrl = "data:image/png;base64," + base64String;
 
         String nomeImgExame = dt.Tables[0].Rows[0]["nomeImgExame"].ToString();
         NomeImagemExame.Text = nomeImgExame;

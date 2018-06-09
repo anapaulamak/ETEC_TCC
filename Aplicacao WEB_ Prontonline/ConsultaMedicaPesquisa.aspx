@@ -61,31 +61,31 @@ WHERE u.id_usuario=@id_usuario and ([motivo] LIKE '%' + @motivo + '%')"
     </div>
 
     <div class="row">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="ConfGridView" Width="100%" DataKeyNames="id_consulta">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="0" ForeColor="#333333" GridLines="None" CssClass="ConfGridView" Width="100%" DataKeyNames="id_consulta" CellSpacing="3">
 
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
             <Columns>
                 <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" SortExpression="id_usuario" Visible="False"/>
                 <asp:BoundField DataField="id_consulta" HeaderText="id_consulta" InsertVisible="False" ReadOnly="True" SortExpression="id_consulta" Visible="False" />
-                <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" >
+                <asp:BoundField DataField="nome" HeaderText="Médico" SortExpression="nome" >
                 </asp:BoundField>
-                <asp:BoundField DataField="nome1" HeaderText="nome1" SortExpression="nome1" >
+                <asp:BoundField DataField="nome1" HeaderText="Consulta" SortExpression="nome1" >
                 </asp:BoundField>
-                <asp:BoundField DataField="data" HeaderText="data" SortExpression="data" />
-                <asp:BoundField DataField="diagnostico" HeaderText="diagnostico" SortExpression="diagnostico" />
-                <asp:BoundField DataField="motivo" HeaderText="motivo" SortExpression="motivo" />
-                <asp:BoundField DataField="recomendacoes" HeaderText="recomendacoes" SortExpression="recomendacoes" />
-                <asp:BoundField DataField="obs" HeaderText="obs" SortExpression="obs" />
+                <asp:BoundField DataField="data" HeaderText="Data" SortExpression="data" />
+                <asp:BoundField DataField="diagnostico" HeaderText="Diagnóstico" SortExpression="diagnostico" />
+                <asp:BoundField DataField="motivo" HeaderText="Motivo" SortExpression="motivo" />
+                <asp:BoundField DataField="recomendacoes" HeaderText="Recomendações" SortExpression="recomendacoes" />
+                <asp:BoundField DataField="obs" HeaderText="Observações" SortExpression="obs" />
                 <asp:CommandField ButtonType="Button" DeleteText="Apagar" ShowDeleteButton="True" />
                 <asp:HyperLinkField DataNavigateUrlFields="id_consulta" DataNavigateUrlFormatString="ConsultaMedica.aspx?id_consulta={0}" Text="Editar" />
             </Columns>
 
-            <EditRowStyle BackColor="#999999" />
+            <EditRowStyle BackColor="#999999" Wrap="True" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" CssClass="confCelula" />
             <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
             <SortedAscendingCellStyle BackColor="#E9E7E2" />
             <SortedAscendingHeaderStyle BackColor="#506C8C" />
