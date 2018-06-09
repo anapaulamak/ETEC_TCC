@@ -20,8 +20,9 @@ public partial class home : System.Web.UI.Page
         String nomeUsuario = Convert.ToString(TextBoxNome.Text);
         String emailUsuario = Convert.ToString(TextBoxEmail.Text);
         String cpf = Convert.ToString(TextBoxCPF.Text);
-        DateTime dataNascimento = Convert.ToDateTime(TextBoxNascimento.Text);
+        String dataNascimento = Convert.ToString(TextBoxNascimento.Text);
         String sexo = Convert.ToString(RadioButtonList1.SelectedValue);
+        String estado = Convert.ToString(DropDownListEstado.Text);
         String senha = Convert.ToString(TextBoxSenha1.Text);
 
         Conexao c = new Conexao();
@@ -29,7 +30,7 @@ public partial class home : System.Web.UI.Page
 
         if (Validar() == true)
         {
-            String sql = "insert into tb_usuario (nome_usuario, e_mail_usuario, cpf, data_nascimento, sexo, senha) values (@nomeUsuario, @emailUsuario, @cpf, @dataNascimento, @sexo, @senha)";
+            String sql = "insert into tb_usuario (nome_usuario, e_mail_usuario, cpf, data_nascimento, sexo, senha, estado) values (@nomeUsuario, @emailUsuario, @cpf, @dataNascimento, @sexo, @senha, @estado)";
             c.command.CommandText = sql;
 
             c.command.Parameters.Add("@nomeUsuario", SqlDbType.VarChar).Value = nomeUsuario;
@@ -38,15 +39,11 @@ public partial class home : System.Web.UI.Page
             c.command.Parameters.Add("@dataNascimento", SqlDbType.VarChar).Value = dataNascimento;
             c.command.Parameters.Add("@sexo", SqlDbType.Char).Value = sexo;
             c.command.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+            c.command.Parameters.Add("@estado", SqlDbType.Char).Value = estado;
 
             c.command.ExecuteNonQuery();
-            //Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso!');</script>");
             c.FecharConexao();
-
-            //Session["logado"] = 1;
-            //Session["UserId"] = cpf;
-
-            Response.Redirect("Inicial.aspx");
+            Response.Write("<script language = 'javascript'> alert ('Cadastro realizado com sucesso, Insira o seu Login e Senha cadastrados para entrar no ProntOnline!');</script>");
         }
         else
         {
@@ -70,6 +67,11 @@ public partial class home : System.Web.UI.Page
         else if (TextBoxCPF.Text == "" || TextBoxCPF.Text.Length < 11)
         {
             Response.Write("<script language = 'javascript'> alert ('Preencha corretamente o seu CPF!');</script>");
+            return false;
+        }
+        else if (TextBoxNascimento.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha corretamente a data no seu nascimento!');</script>");
             return false;
         }
         else if (TextBoxSenha1.Text == "" || TextBoxSenha1.Text.Length != 8)
@@ -96,25 +98,25 @@ public partial class home : System.Web.UI.Page
         SqlDataAdapter dAdapter = new SqlDataAdapter();
         DataSet dt = new DataSet();
 
-        String login = TextBoxLogin.Text;
-        String senha = TextBoxSenha.Text;
-
-        c.command.CommandText = "Select count(*) as LOGINS from tb_usuario where cpf=@cpf and senha=@senha";
-        c.command.Parameters.Add("@cpf", SqlDbType.VarChar).Value = login;
-        c.command.Parameters.Add("@senha", SqlDbType.VarChar).Value = senha;
+        c.command.CommandText = "Select * from tb_usuario where cpf=@cpf and senha=@senha";
+        c.command.Parameters.Add("@cpf", SqlDbType.VarChar).Value = TextBoxLogin.Text;
+        c.command.Parameters.Add("@senha", SqlDbType.VarChar).Value = TextBoxSenha.Text;
 
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        if (Convert.ToInt32(dt.Tables[0].DefaultView[0].Row["LOGINS"]) == 1)
+        if (dt.Tables[0].DefaultView.Count == 1)
         {
             Session["logado"] = 1;
-            Session["UserId"] = login;
-            Response.Redirect("Inicial.aspx");
+            Session["UserId"] = dt.Tables[0].DefaultView[0].Row["cpf"].ToString();
+            Session["IdUsuario"] = Convert.ToInt32(dt.Tables[0].DefaultView[0].Row["id_usuario"].ToString());
+            Response.Redirect("InfUsuario.aspx");
         }
         else
         {
             Response.Write("<script language = 'javascript'> alert ('Login Invalido');</script>");
+            TextBoxLogin.Text = "";
+            TextBoxSenha.Text = "";
         }
     }
 }

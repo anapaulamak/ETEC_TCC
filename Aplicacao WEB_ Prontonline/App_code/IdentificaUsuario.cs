@@ -1,4 +1,4 @@
-﻿  using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +10,7 @@ using System.Web;
 /// </summary>
 public class IdentificaUsuario
 {
-    String SessionCPF; 
+    String SessionCPF;
 
     public IdentificaUsuario(String CPF)
     {
@@ -35,5 +35,4 @@ public class IdentificaUsuario
         c.FecharConexao();
         return id_usuario;
     }
-
 }

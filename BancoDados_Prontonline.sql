@@ -19,13 +19,15 @@ create table tb_usuario(
 	sexo CHAR,
 	data_nascimento DATE,
 	e_mail_usuario VARCHAR(30),
-	senha CHAR(8)
+	senha CHAR(8),
+	estado CHAR(2)
 ) 
 go
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_medico' AND xtype='U')
 create table tb_medico(
 	id_medico INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	CRM VARCHAR(20),
 	nome VARCHAR(50)
 )
@@ -75,9 +77,16 @@ create table tb_exame(
 	id_tipoExame INT FOREIGN KEY REFERENCES tb_tipoExame(id_tipoExame),
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	data DATE,
-	nome VARCHAR(200),
-	imagem VARCHAR(300)
+	nome VARCHAR(200)
+)
+go
 
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgExame' AND xtype='U')
+create table tb_imgExame(
+	id_imgExame INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_exame INT FOREIGN KEY REFERENCES  tb_exame(id_exame) ON DELETE CASCADE,
+	imagemExame VARBINARY(MAX),
+	nomeImgExame VARCHAR(100)
 )
 go
 
@@ -86,8 +95,36 @@ create table tb_receita(
 	id_receita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	id_consulta INT FOREIGN KEY REFERENCES  tb_consulta(id_consulta),
 	nome VARCHAR(200),
-	imagem VARCHAR(300),
 	data DATE
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgReceita' AND xtype='U')
+create table tb_imgReceita(
+	id_imgReceita INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_receita INT FOREIGN KEY REFERENCES  tb_receita(id_receita) ON DELETE CASCADE,
+	imagemReceita VARBINARY(MAX),
+	nomeImgReceita VARCHAR(100)
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_remerio' AND xtype='U')
+create table tb_remedios(
+	id_remedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_usuario INT FOREIGN KEY REFERENCES  tb_usuario(id_usuario),
+	nome VARCHAR(200),
+	dosagem VARCHAR(200),
+	dataInicio DATE, 
+	dataFim DATE
+)
+go
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgRemedio' AND xtype='U')
+create table tb_imgRemedio(
+	id_imgRemedio INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_remedio INT FOREIGN KEY REFERENCES  tb_remedios(id_remedio) ON DELETE CASCADE,
+	imagemRemedio VARBINARY(MAX),
+	nomeImgRemedio VARCHAR(100)
 )
 go
 
@@ -105,10 +142,17 @@ create table tb_vacina(
 	id_tipoVacina INT FOREIGN KEY REFERENCES tb_tipoVacina(id_tipoVacina),
 	id_usuario INT FOREIGN KEY REFERENCES tb_usuario (id_usuario),
 	data DATE,
-	imagem VARCHAR(300)
 )
 go
 
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_imgVacina' AND xtype='U')
+create table tb_imgVacina(
+	id_imgVacina INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	id_vacina INT FOREIGN KEY REFERENCES  tb_vacina(id_vacina) ON DELETE CASCADE,
+	imagemVacina VARBINARY(MAX),
+	nomeImgVacina VARCHAR(100)
+)
+go
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_faq' AND xtype='U')
 create table tb_faq(
@@ -129,61 +173,66 @@ go
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_funcionario' AND xtype='U')
 create table tb_funcionario(
 	id_funcionario INT IDENTITY(1,1) PRIMARY KEY not null,
+	id_permissao INT FOREIGN KEY REFERENCES tb_permissao(id_permissao),
 	nome VARCHAR(50),
 	CPF CHAR(20),
 	senha CHAR(8),
 	email VARCHAR(50),
+	genero VARCHAR(20),
+	funcao VARCHAR(30),
 	telefone CHAR(28),
+	situacao bit,	
 )
 go
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_mensagem' AND xtype='U')
 create table tb_mensagem(
 	id_mensagem INT IDENTITY(1,1) PRIMARY KEY not null,
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	tipoMensagem VARCHAR(50),
 	titulo VARCHAR(50),
 	mensagem VARCHAR(500),
 	dataEnvio DATETIME,
 	situacao BIT,
-	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	resposta VARCHAR(500),
 	dataResposta DATETIME
 )
 go
 
 --esse codigo adiciona a data de cadastro da informação na data
-
 CREATE TRIGGER dataEnvioMensagem
 ON tb_mensagem
 instead of insert 
 AS 
 BEGIN
 
-INSERT INTO tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario, dataEnvio)
-SELECT tipoMensagem, titulo, mensagem, id_usuario, GETDATE() FROM INSERTED
+INSERT INTO tb_mensagem (tipoMensagem, titulo, mensagem, id_usuario, situacao, resposta, dataResposta, dataEnvio)
+SELECT tipoMensagem, titulo, mensagem, id_usuario, situacao, resposta, dataResposta, GETDATE() FROM INSERTED
 END
+go
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_statusSaude' AND xtype='U')
 create table tb_statusSaude(
 	id_saude INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
-	dataStatus DATE,
 	colesterol DECIMAL,
 	glicemia DECIMAL,
-	peso DECIMAL,
-	altura DECIMAL
+	peso DECIMAL (10,2),
+	altura DECIMAL (10,2),
+	mes VARCHAR(9),
+	ano VARCHAR(4)
 )
 go
 
 --esse codigo adiciona a data de cadastro da informação na data
-CREATE TRIGGER dataStatusSaude
-ON tb_statusSaude
-instead of insert 
-AS 
-BEGIN
-INSERT INTO tb_statusSaude (colesterol, glicemia, peso, altura, id_usuario, dataStatus)
-SELECT colesterol, glicemia, peso, altura, id_usuario, GETDATE() FROM INSERTED
-END
+--CREATE TRIGGER dataStatusSaude
+--ON tb_statusSaude
+--instead of insert 
+--AS 
+--BEGIN
+--INSERT INTO tb_statusSaude (colesterol, glicemia, peso, altura, id_usuario, dataStatus)
+--SELECT colesterol, glicemia, peso, altura, id_usuario, GETDATE() FROM INSERTED
+--END
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_tipoFratura' AND xtype='U')
 create table tb_tipoFratura(
@@ -197,7 +246,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_fratura' AND xtype='U')
 create table tb_fratura(
 	id_fratura INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoFratura INT FOREIGN KEY REFERENCES tb_tipoFratura(id_tipoFratura),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataFratura DATE
 )
 go
@@ -214,7 +263,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_alergia' AND xtype='U')
 create table tb_alergia(
 	id_alergia INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoAlergia INT FOREIGN KEY REFERENCES tb_tipoAlergia(id_tipoAlergia),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataAlergia DATE
 )
 go
@@ -231,15 +280,10 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tb_cirurgia' AND xtype='U')
 create table tb_cirurgia(
 	id_cirurgia INT IDENTITY(1,1) PRIMARY KEY not null,
 	id_tipoCirurgia INT FOREIGN KEY REFERENCES tb_tipoCirurgia(id_tipoCirurgia),
-	id_saude INT FOREIGN KEY REFERENCES tb_statusSaude(id_saude),
+	id_usuario INT FOREIGN KEY REFERENCES tb_usuario(id_usuario),
 	dataCirurgia DATE
 )
 go
-
-select * from tb_usuario
-select * from tb_tipoAlergia
-
-delete from tb_usuario where id_usuario = 3
 
 INSERT INTO tb_tipoAlergia (descricao, situacao) 
 VALUES	('Polén', 1),
@@ -254,6 +298,7 @@ VALUES	('Polén', 1),
 	('Corante', 1),
 	('Soja', 1),
 	('Milho', 1)
+go
 
 INSERT INTO tb_tipoCirurgia (descricao, situacao)
 VALUES  ('Apendicectomia', 1),
@@ -268,6 +313,7 @@ VALUES  ('Apendicectomia', 1),
 	('Hisperopexia', 1),
 	('Nefropexia', 1),
 	('Rinoplastia', 1)
+go
 
 INSERT INTO tb_especialidade (nome, situacao)
 VALUES  ('Alergia e Imunologia', 1),
@@ -282,8 +328,8 @@ VALUES  ('Alergia e Imunologia', 1),
 	('Oftalmologia', 1),
 	('Ortopedia', 1),
 	('Pediatria', 1)
-	   
-
+go
+   
 INSERT INTO tb_tipoVacina (descricao, situacao)
 VALUES 	('BCG',1),
 	('Hepatite B ',1),
@@ -299,20 +345,7 @@ VALUES 	('BCG',1),
 	('HPV',1),
 	('Dupla Adulto',1),
 	('dTpa*',1)
-
-INSERT INTO tb_medico (CRM, nome)
-VALUES  ('CRM-SP 789441', 'Isabela Forni'),
-	('CRM-SP 785245', 'Natan Silva'),
-	('CRM-MG 545431', 'Sabrina Marques'),
-	('CRN-RJ 548214', 'Ana Freitas'),
-	('CRM-MG 394356', 'Carina Peixoto'),
-	('CRM-RS 294120', 'Rafael Villar'),
-	('CRM-RJ 124816', 'Jose Teixeira Filho'),
-	('CRM-MG 364331', 'Amanda Marreiro'),
-	('CRM-SP 125647', 'Flavio Zanardi'),
-	('CRM-BA 875426', 'Bruno Reis'),
-	('CRM-PE 343864', 'Flavio Hiroshi'),
-	('CRM-RJ 347896', 'Bruno Barreiro')
+go
 
 INSERT INTO tb_faq (pergunta, resposta, situacao)
 VALUES  ('Se eu tiver problemas com o sistema, como faço para solucioná-los?', 'O ProntOnline possui uma equipe de suporte altamente qualificada e preparada para resolver seus problemas, além de oferecer um atendimento rápido e eficiente. Você também conta com o suporte online via chat.', 1),
@@ -320,6 +353,7 @@ VALUES  ('Se eu tiver problemas com o sistema, como faço para solucioná-los?', '
 	('Como recuperar minha senha?', 'Para recuperar sua senha, clique em Esqueci a senha, na pagina de login.', 1),
 	('Preciso me preocupar com backup?', 'Não. O ProntOnline faz o backup automaticamente para você.', 1),
 	('Qual o valor para utilização por mês?', 'O ProntOnline é totalmente GRATUITO!', 1)
+go
 
 INSERT INTO tb_funcionario (nome, CPF, senha, email, telefone)
 VALUES	('Ana Paula', 13367597089, 'admin123', 'anapaula@prontonline.com', 977676440),
@@ -327,6 +361,7 @@ VALUES	('Ana Paula', 13367597089, 'admin123', 'anapaula@prontonline.com', 977676
 	('Julia', 45628840051, 'admin123', 'julia@prontonline.com', 936569585),
 	('Mariana', 67067661751, 'admin123', 'mariana@prontonline.com', 957727524),
 	('Ana Carolina', 58781624820, 'admin123', 'anacarolina@prontonline.com', 997367493)
+go
 
 INSERT INTO tb_tipoFratura (descricao, situacao)
 VALUES 
@@ -353,6 +388,7 @@ VALUES
 ('Patela',1), 
 ('Fíbula',1),
 ('Tíbia',1)
+go
 
 INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Bilirrubina direta',1),
@@ -419,5 +455,8 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Ressonância Magnética do Tórax',1),     
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
-             
+                    
 
+select * from tb_receita
+select * from tb_imgReceita
+update tb_usuario set nome_usuario='Erick Cordeiro', data_nascimento='1991-03-14', e_mail_usuario='erick.cordeiro@locaweb.com.br', estado='SP' where cpf='11111111111'

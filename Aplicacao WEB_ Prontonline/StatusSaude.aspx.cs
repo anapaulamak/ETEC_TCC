@@ -16,67 +16,114 @@ public partial class Receitas : System.Web.UI.Page
         }
     }
 
+    protected void ButtonMeusStatus_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StatusSaudePesquisa.aspx");
+    }
+
     protected void ButtonSalvar_Click(object sender, EventArgs e)
     {
-        IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
-        int id_usuario = Convert.ToInt32(i.ID());
+        if (Validar() == true)
+        {
+            IdentificaUsuario i = new IdentificaUsuario(Session["UserId"].ToString());
+            int id_usuario = Convert.ToInt32(i.ID());
 
-        double altura = Convert.ToDouble(TextBoxAltura.Text);
-        double peso = Convert.ToDouble(TextBoxPeso.Text);
+            String mes = Convert.ToString(DropDownListMeses.Text);
+            String ano = Convert.ToString(TextBoxAno.Text);
 
-        double colesterol = Convert.ToDouble(TextBoxColesterol.Text);
-        double glicemia = Convert.ToDouble(TextBoxGlicemia.Text);
+            double altura = Convert.ToDouble(TextBoxAltura.Text);
+            double peso = Convert.ToDouble(TextBoxPeso.Text);
 
-        Conexao c = new Conexao();
-        c.AbrirConexao();
+            double colesterol = Convert.ToDouble(TextBoxColesterol.Text);
+            double glicemia = Convert.ToDouble(TextBoxGlicemia.Text);
 
-        String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia) values (@id_usuario, @altura, @peso, @colesterol, @glicemia)";
-        c.command.CommandText = sql;
+            Conexao c = new Conexao();
+            c.AbrirConexao();
 
-        c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
-        c.command.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
-        c.command.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
-        c.command.Parameters.Add("@colesterol", SqlDbType.Decimal).Value = colesterol;
-        c.command.Parameters.Add("@glicemia", SqlDbType.Decimal).Value = glicemia;
+            String sql = "insert into tb_statusSaude (id_usuario, altura, peso, colesterol, glicemia, mes, ano) values (@id_usuario, @altura, @peso, @colesterol, @glicemia, @mes, @ano)";
+            c.command.CommandText = sql;
 
-        c.command.ExecuteNonQuery();
-        c.FecharConexao();
+            c.command.Parameters.Add("@id_usuario", SqlDbType.Int).Value = id_usuario;
+            c.command.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
+            c.command.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
+            c.command.Parameters.Add("@colesterol", SqlDbType.Decimal).Value = colesterol;
+            c.command.Parameters.Add("@glicemia", SqlDbType.Decimal).Value = glicemia;
+            c.command.Parameters.Add("@mes", SqlDbType.VarChar).Value = mes;
+            c.command.Parameters.Add("@ano", SqlDbType.VarChar).Value = ano;
 
-        Response.Redirect("StatusSaude2.aspx");
+            c.command.ExecuteNonQuery();
+            c.FecharConexao();
+            Response.Write("<script language = 'javascript'> alert ('Informações salvas com sucesso!');</script>");
+        }
+
+    }
+
+    protected Boolean Validar()
+    {
+        if (TextBoxAno.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha uma ano válido!');</script>");
+            return false;
+        }
+            
+        else if(TextBoxPeso.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu peso corretamente!');</script>");
+            return false;
+        }
+        else if (TextBoxAltura.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha a sua altura corretamente!');</script>");
+            return false;
+        }
+        else if (TextBoxColesterol.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu Colesterol Total!');</script>");
+            return false;
+        }
+        else if (TextBoxGlicemia.Text == "")
+        {
+            Response.Write("<script language = 'javascript'> alert ('Preencha o seu nível glicêmico!');</script>");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     protected void ButtonCalcularIMC_Click(object sender, EventArgs e)
     {
-        double A = (Convert.ToDouble(TextBoxAltura.Text))/100;
+        double A = (Convert.ToDouble(TextBoxAltura.Text)) / 100;
         double P = Convert.ToDouble(TextBoxPeso.Text);
-        double IMC = P/Math.Pow(A,2);
+        double IMC = P / Math.Pow(A, 2);
 
-        TextBoxIMC.Text = Convert.ToString(System.Math.Round(IMC,2));
+        TextBoxIMC.Text = Convert.ToString(System.Math.Round(IMC, 2));
 
-            if (IMC < 18.5)
-            {
-                LabelIMC.Text = "Você está abaixo do peso";
-            }
-            else if (IMC <= 24.9)
-            {
-                LabelIMC.Text = "Você está com o peso ideal";
-            }
-            else if (IMC <= 29.9)
-            {
-                LabelIMC.Text = "Você está levemente acima do peso";
-            }
-            else if (IMC <= 34.9)
-            {
-                LabelIMC.Text = "Você está com obesidade grau 1";
-            }
-            else if (IMC <= 39.9)
-            {
-                LabelIMC.Text = "Você está com obesidade grau 2";
-            }
-            else
-            {
-                LabelIMC.Text = "Você está com obesidade mórbida!";
-            }
+        if (IMC < 18.5)
+        {
+            LabelIMC.Text = "Você está abaixo do peso";
+        }
+        else if (IMC <= 24.9)
+        {
+            LabelIMC.Text = "Você está com o peso ideal";
+        }
+        else if (IMC <= 29.9)
+        {
+            LabelIMC.Text = "Você está levemente acima do peso";
+        }
+        else if (IMC <= 34.9)
+        {
+            LabelIMC.Text = "Você está com obesidade grau 1";
+        }
+        else if (IMC <= 39.9)
+        {
+            LabelIMC.Text = "Você está com obesidade grau 2";
+        }
+        else
+        {
+            LabelIMC.Text = "Você está com obesidade mórbida!";
+        }
     }
 
     protected void ButtonColesterol_Click(object sender, EventArgs e)
