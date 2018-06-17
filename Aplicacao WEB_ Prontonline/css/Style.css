@@ -496,3 +496,12 @@ title {
 #DataStatusSaude{
     margin-bottom:5%;
 }
+
+.confCelula{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+td{
+    padding:4px!important;
+}

@@ -20,9 +20,8 @@ public partial class ConsultaMedica : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            //DropDownListMedico.AppendDataBoundItems = true;
-            //DropDownListMedico.Items.Insert(0, new ListItem(String.Empty, String.Empty));
-            //DropDownListMedico.SelectedIndex = 0;
+            DropDownListMedico.AppendDataBoundItems = true;
+            DropDownListMedico.Items.Insert(0, new ListItem(String.Empty, String.Empty));
 
             //DropDownListEspecialidade.AppendDataBoundItems = true;
             //DropDownListEspecialidade.Items.Insert(0, new ListItem(String.Empty, String.Empty));
@@ -152,14 +151,13 @@ public partial class ConsultaMedica : System.Web.UI.Page
 
         c.FecharConexao();
     }
-
     //Popular os campos do formulário para edição
     protected void PopulaInfos()
     {
         Conexao c = new Conexao();
         c.AbrirConexao();
 
-        String sql = "SELECT * from tb_consulta where id_consulta=@id_consulta";
+        String sql = "SELECT c.id_medico, c.id_especialidade, c.data, c.motivo, c.diagnostico, c.recomendacoes, c.obs, m.CRM from tb_consulta as c join tb_medico as m on c.id_medico=m.id_medico where id_consulta=@id_consulta";
         c.command.CommandText = sql;
         c.command.Parameters.Add("@id_consulta", SqlDbType.Int).Value = Request.QueryString["id_consulta"];
 
@@ -174,7 +172,7 @@ public partial class ConsultaMedica : System.Web.UI.Page
         String id_especialidade = dt.Tables[0].Rows[0]["id_especialidade"].ToString();
         DropDownListEspecialidade.Text = id_especialidade;
 
-        String data = dt.Tables[0].Rows[0]["data"].ToString();
+        String data = Convert.ToDateTime(dt.Tables[0].Rows[0]["data"]).ToString();
         TextBoxData.Text = data;
 
         String motivo = dt.Tables[0].Rows[0]["motivo"].ToString();
@@ -188,6 +186,9 @@ public partial class ConsultaMedica : System.Web.UI.Page
 
         String obs = dt.Tables[0].Rows[0]["obs"].ToString();
         TextBoxOutrasInformacoes.Text = obs;
+
+        String CRM = dt.Tables[0].Rows[0]["CRM"].ToString();
+        TextBoxCRM.Text = CRM;
 
         c.FecharConexao();
     }
@@ -263,6 +264,5 @@ public partial class ConsultaMedica : System.Web.UI.Page
     {
         UpdateInfos(Convert.ToInt32(DropDownListMedico.Text), Convert.ToInt32(DropDownListEspecialidade.Text), Convert.ToInt32(Session["IdUsuario"]), Convert.ToDateTime(TextBoxData.Text), TextBoxMotivo.Text, TextBoxDiagnostico.Text, TextBoxRecomendacoes.Text, TextBoxOutrasInformacoes.Text);
         Response.Write("<script language = 'javascript'> alert ('Alterações salvas com sucesso!');</script>");
-        Response.Redirect("ConsultaMedica.aspx");
     }
 }

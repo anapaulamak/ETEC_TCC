@@ -22,7 +22,7 @@
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
                     <asp:Label ID="LabelData" runat="server" Text="Data"></asp:Label>
-                    <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" width="100%" class="ConfTextBox"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxData" runat="server" onblur="validaData(this);" Text="dd/mm/aaaa" width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
 		    </div>
         </div> 
@@ -62,7 +62,7 @@
             <asp:Button ID="btnImagemVacina" runat="server" Text="Inserir" class="ConfButton" Width="90%" OnClick="btnImagemVacina_Click"/>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 align-center">
             <asp:Image ID="img1" runat="server" style="width:60%"/>
 <%--            <asp:Image ID="img2" runat="server" style="width:30%"/>
             <asp:Image ID="img3" runat="server" style="width:30%"/>

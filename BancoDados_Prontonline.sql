@@ -284,6 +284,8 @@ create table tb_cirurgia(
 	dataCirurgia DATE
 )
 go
+ 
+CREATE VIEW usuarios AS SELECT id_usuario FROM tb_usuario;
 
 INSERT INTO tb_tipoAlergia (descricao, situacao) 
 VALUES	('Polén', 1),
@@ -359,7 +361,7 @@ INSERT INTO tb_funcionario (nome, CPF, senha, email, telefone)
 VALUES	('Ana Paula', 13367597089, 'admin123', 'anapaula@prontonline.com', 977676440),
 	('Gabriela', 25302780696, 'admin123', 'gabriela@prontonline.com', 944073275),
 	('Julia', 45628840051, 'admin123', 'julia@prontonline.com', 936569585),
-	('Mariana', 67067661751, 'admin123', 'mariana@prontonline.com', 957727524),
+	('Mariana', 49195193898, 'admin123', 'mariana@prontonline.com', 957727524),
 	('Ana Carolina', 58781624820, 'admin123', 'anacarolina@prontonline.com', 997367493)
 go
 
@@ -456,7 +458,4 @@ INSERT INTO tb_tipoExame (nome, situacao) VALUES
 ('Tomografia Computadorizada do Pescoço',1),   
 ('Radiografia',1) 
                     
-
-select * from tb_receita
-select * from tb_imgReceita
-update tb_usuario set nome_usuario='Erick Cordeiro', data_nascimento='1991-03-14', e_mail_usuario='erick.cordeiro@locaweb.com.br', estado='SP' where cpf='11111111111'
+select * from tb_statusSaude

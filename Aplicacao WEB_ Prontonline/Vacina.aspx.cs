@@ -237,8 +237,10 @@ public partial class img_Vacina : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        String imagemVacina = dt.Tables[0].Rows[0]["imagemVacina"].ToString();
-        img1.AlternateText = imagemVacina;
+
+        byte[] bytes = (byte[])dt.Tables[0].DefaultView[0].Row["imagemVacina"];
+        String base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+        img1.ImageUrl = "data:image/png;base64," + base64String;
 
         String nomeImgVacina = dt.Tables[0].Rows[0]["nomeImgVacina"].ToString();
         NomeImagemVacina.Text = nomeImgVacina;

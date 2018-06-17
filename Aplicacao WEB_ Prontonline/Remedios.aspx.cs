@@ -253,8 +253,9 @@ public partial class Remedios : System.Web.UI.Page
         dAdapter.SelectCommand = c.command;
         dAdapter.Fill(dt);
 
-        String imagemRemedio = dt.Tables[0].Rows[0]["imagemRemedio"].ToString();
-        img1.AlternateText = imagemRemedio;
+        byte[] bytes = (byte[])dt.Tables[0].DefaultView[0].Row["imagemRemedio"];
+        String base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+        img1.ImageUrl = "data:image/png;base64," + base64String;
 
         String nomeImgRemedio = dt.Tables[0].Rows[0]["nomeImgRemedio"].ToString();
         NomeImagemRemedio.Text = nomeImgRemedio;
@@ -304,7 +305,7 @@ public partial class Remedios : System.Web.UI.Page
         comando.ExecuteNonQuery();
     }
 
-    //Função para edutar as informações 
+    //Função para editar as informações 
     protected void UpdateInfos2(string imagemRemedio, string nomeImgRemedio)
     {
         Conexao c = new Conexao();

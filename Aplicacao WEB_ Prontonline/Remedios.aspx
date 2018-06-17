@@ -32,7 +32,7 @@
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
                     <asp:Label ID="LabelDataInicio" runat="server" Text="Começou a tomar em: "></asp:Label>
-                    <asp:TextBox ID="TextBoxDataInicio" runat="server" TextMode="Date" width="100%" class="ConfTextBox"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxDataInicio" runat="server" onblur="validaData(this);" Text="dd/mm/aaaa" width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
 			    <div class="col-md-1"></div>
                 <br />
@@ -42,7 +42,7 @@
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
                     <asp:Label ID="LabelDataFim" runat="server" Text="Parar de tomar em: "></asp:Label>
-                    <asp:TextBox ID="TextBoxDataFim" runat="server" TextMode="Date" width="100%" class="ConfTextBox"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxDataFim" runat="server" onblur="validaData(this);" Text="dd/mm/aaaa" width="100%" class="ConfTextBox"></asp:TextBox>
                 </div>
 			    <div class="col-md-1"></div>
                 <br />

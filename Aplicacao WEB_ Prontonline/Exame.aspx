@@ -48,7 +48,7 @@
 		        <div class="col-md-1"></div>
 		        <div class="col-md-10 align-left">
                     <asp:Label ID="Label3" runat="server" Text="Data do Exame"></asp:Label>
-                    <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" Width="100%" class="ConfTextBox"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxData" runat="server" Width="100%" class="ConfTextBox" onblur="validaData(this);" Text="dd/mm/aaaa"></asp:TextBox>
                 </div>
 			    <div class="col-md-1"></div>
                 <br />
@@ -74,10 +74,10 @@
                 <asp:Label ID="lblIdImgExame" runat="server" Text="idImagemExame" Visible="false"></asp:Label>
             </div>
      
-            <div class="col-md-4">
+            <div class="col-md-4 align-left">
                 <div class="row">
 		            <div class="col-md-1"></div>
-		            <div class="col-md-10 align-left">
+		            <div class="col-md-10">
                         <asp:Label ID="Label5" runat="server" Text="Nome da imagem"></asp:Label>
                         <br /><br />
                         <asp:TextBox ID="NomeImagemExame" runat="server" width="100%" class="ConfTextBox" />
@@ -93,7 +93,7 @@
                     <asp:Button ID="btnImagemExame" runat="server" Text="Inserir" Width="90%" class= "ConfButton" OnClick="btnImagemExame_Click"/>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 align-center">
                 <asp:Image ID="img1" runat="server" style="width:60%"/>
 <%--                <asp:Image ID="img2" runat="server" style="width:30%"/>
                 <asp:Image ID="img3" runat="server" style="width:30%"/>
