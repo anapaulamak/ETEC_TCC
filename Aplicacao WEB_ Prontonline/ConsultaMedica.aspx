@@ -62,7 +62,7 @@
         <div>
             <p class="align-left Fonte3">Informações da Consulta</p>
             <asp:Label ID="Label9" runat="server" Text="Data do Exame" ></asp:Label>
-            <asp:TextBox ID="TextBoxData" runat="server" TextMode="Date" class="ConfTextBox"></asp:TextBox>
+            <asp:TextBox ID="TextBoxData" runat="server" class="ConfTextBox" onblur="validaData(this);" Text="dd/mm/aaaa"></asp:TextBox>
         </div>
  
         <div class="col-md-5">

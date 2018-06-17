@@ -80,7 +80,8 @@
                 <asp:BoundField DataField="altura" HeaderText="Altura" SortExpression="altura" />
                 <asp:BoundField DataField="colesterol" HeaderText="Colesterol" SortExpression="colesterol" />
                 <asp:BoundField DataField="glicemia" HeaderText="Glicemia" SortExpression="glicemia" />
-                <asp:CommandField DeleteText="Apagar" ShowDeleteButton="True" ButtonType="Button" />
+                <asp:CommandField DeleteText="Apagar" ButtonType="Button" ShowEditButton="True" />
+                <asp:HyperLinkField DataNavigateUrlFields="id_saude" DataNavigateUrlFormatString="StatusSaude.aspx?id_saude={0}" HeaderText="Editar" Text="Editar" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

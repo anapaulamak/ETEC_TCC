@@ -235,9 +235,10 @@ public partial class Exame : System.Web.UI.Page
 
         String nome = dt.Tables[0].Rows[0]["nome"].ToString();
         TextBoxNome.Text = nome;
-
+                
         String data = dt.Tables[0].Rows[0]["data"].ToString();
         TextBoxData.Text = data;
+
 
         c.FecharConexao();
     }

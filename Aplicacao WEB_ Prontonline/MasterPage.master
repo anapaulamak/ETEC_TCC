@@ -74,5 +74,29 @@
 <script src="Scripts/js/bootstrap.min.js"></script>
 <!--Jquery/Bootstrap-->
 
+<script type="text/javascript">
+
+    function validaData(obj) {
+        var data = obj.value;
+        var dia = data.substring(0, 2)
+        var mes = data.substring(3, 5)
+        var ano = data.substring(6, 10)
+
+        var novaData = new Date(ano, (mes - 1), dia);
+
+        var msmDia = parseInt(dia, 10) == parseInt(novaData.getDate());
+        var msmMes = parseInt(mes, 10) == parseInt(novaData.getMonth()) + 1;
+        var msmAno = parseInt(ano) == parseInt(novaData.getFullYear());
+
+        if (!((msmDia) && (msmMes) && (msmAno))) {
+            alert('Data inválida!');
+            obj.focus;
+            return false;
+        }
+        return true;
+    }
+
+</script>
+
 </body>
 </html>

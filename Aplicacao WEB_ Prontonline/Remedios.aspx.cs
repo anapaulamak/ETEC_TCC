@@ -305,7 +305,7 @@ public partial class Remedios : System.Web.UI.Page
         comando.ExecuteNonQuery();
     }
 
-    //Função para edutar as informações 
+    //Função para editar as informações 
     protected void UpdateInfos2(string imagemRemedio, string nomeImgRemedio)
     {
         Conexao c = new Conexao();

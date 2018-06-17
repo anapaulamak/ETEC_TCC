@@ -88,7 +88,7 @@
 				</article>
 			</div>
 			<div class="col-md-7 ConfVideo align-center">
-             <iframe width="600" height="400" src="https://www.youtube.com/embed/GtG7kB4OGnQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+             <iframe width="640" height="360" src="https://www.youtube.com/embed/ZTrAuUAixvI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 		    </div>
 		</div>                   
 	</section>	
@@ -113,7 +113,13 @@
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">Ana Carolina</p>
-                            <p class="FonteFotoDescricao">Regra de Negócio, <br /> Banco de Dados,<br /> Código de Ética, <br />Política de Segurança</p>
+                            <p/ class="FonteFotoDescricao">
+                                Regra de Negócio, <br /> 
+                                Pesquisas, <br />
+                                Banco de Dados,<br /> 
+                                Código de Ética, <br />
+                                Política de Segurança, <br/> 
+                                Processos </p>
                         </div>
                     </div>
 			    </div>
@@ -130,7 +136,13 @@
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">Ana Paula</p>
-                            <p class="FonteFotoDescricao">Regra de Negócio, <br /> Aplicação Web (Asp.net) e Manual do Usuário, <br />Banco de Dados, <br /> Diagramas UML, <br />Plantas de Rede </p>
+                            <p class="FonteFotoDescricao">
+                                Regra de Negócio, <br /> 
+                                Banco de Dados, <br /> 
+                                Diagramas UML, <br />
+                                Processos, <br />
+                                Aplicação Web (Asp.net) e Manual do Usuário, <br />
+                                Plantas de Rede </p>
                         </div>
                     </div>
 			    </div>
@@ -147,7 +159,12 @@
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">Gabriela</p>
-                            <p class="FonteFotoDescricao">Aplicação Desktop (C#), <br />Aplicação Java e Manual do Usuário,  <br /> Identidade Visual </p>
+                            <p class="FonteFotoDescricao">
+                                Pesquisa, <br />
+                                Documentação, <br />
+                                Processos, <br />
+                                Aplicação Desktop (C#), <br />
+                                Aplicação Java e Manual do Usuário,  <br /> 
                         </div>
                     </div>
 			    </div>
@@ -167,7 +184,13 @@
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">Julia</p>
-                            <p class="FonteFotoDescricao">Aplicação Desktop (C#) e Manual do Usuário , <br />Aplicação Mobile Android, <br />CANVAS,  <br />Plantas de Rede, <br /> Identidade Visual</p>
+                            <p class="FonteFotoDescricao">
+                                Documentação, <br />
+                                Processos, <br />
+                                Aplicação Desktop (C#) e Manual do Usuário , <br />
+                                Aplicação Mobile Android, <br />
+                                CANVAS,  <br />
+                                Plantas de Rede</p> 
                         </div>
                     </div>
                 </div>
@@ -184,7 +207,11 @@
                         </div>
                         <div class="col-md-6 align-left">
 				            <p class="FonteFoto">Mariana</p>
-                            <p class="FonteFotoDescricao">Aplicação Desktop (Asp.net) e Manual do Usuário , <br />Aplicação Java e Manual do Usuário </p>
+                            <p class="FonteFotoDescricao">
+                                Processos, <br />
+                                Documentação, <br />
+                                Aplicação Desktop (Asp.net) e Manual do Usuário , <br />
+                                Aplicação Java e Manual do Usuário </p>
                         </div>
                     </div>
                 </div>
@@ -316,7 +343,9 @@ deles e a sociedade como um todo.</p>
                         <br />Integridade 
                         <br />Excelência
                         <br />Igualdade
-                        <br />Empatia</p>
+                        <br />Empatia
+                        <br />Inovação
+                    </p>
                 </div>
             </div>
         </div>
